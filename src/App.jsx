@@ -93,7 +93,7 @@ const ROTATIONS = {
     {time:"11:00–11:50 AM", session:"FUNdamentals",                       host:"Tyler Rice & Jacob Mellor",                    loc:"Auditorium 4",  emoji:"🎉"},
     {time:"12:00 PM",       session:"Lunch & Networking",                 host:"",                                              loc:"Johnnie's",     emoji:"🍽️", isLunch:true},
     {time:"1:00–1:50 PM",   session:"HR Behind the Handbook",                             host:"Pam Carr & James Warner",                      loc:"Auditorium 6",  emoji:"💼"},
-    {time:"2:00–2:30 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Stockroom",     emoji:"⭐"},
+    {time:"2:00–2:30 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby Ford & Brett Zornes",                  loc:"Stockroom",     emoji:"⭐"},
     {time:"2:30–3:00 PM",   session:"Lights Camera, Loyalty",host:"Paul Weiss",                                   loc:"TBD",           emoji:"🎟️"},
     {time:"3:00–3:50 PM",   session:"Driving the Magic with Metrics",               host:"Curtis Diehl, Michael Hagan & Kent Peterson",   loc:"Auditorium 7",  emoji:"💰"},
     {time:"4:00–4:50 PM",   session:"Stock Room Glow Up",                          host:"Jason Foster & Chad Christopher",              loc:"Auditorium 9",  emoji:"📦"},
@@ -129,7 +129,7 @@ const HOTEL_INFO = {
     notes:"Flyers & select corporate staff. Free hot breakfast daily. Check-in after 3 PM." },
   "Hampton Inn":{ emoji:"🏨", color:"#4CAF7D",
     address:"1571 Main St, Kansas City, MO 64108", phone:"(816) 255-3915",
-    notes:"Theatre managers & drivers. Free hot breakfast + on-site Starbucks. Check-in after 3 PM." },
+    notes:"Theatre managers & drivers. Free hot breakfast +. Check-in after 3 PM." },
 };
 
 // ─── VENDORS ─────────────────────────────────────────────────────────────────
