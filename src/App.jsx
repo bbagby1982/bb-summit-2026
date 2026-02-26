@@ -275,8 +275,8 @@ const VENDORS = [
 // ─── SCHEDULE ────────────────────────────────────────────────────────────────
 const SCHEDULE = {
   "Monday, March 9":[
-    {time:"1:30 – 3:00 PM",  event:"District Manager Stockroom Training",                loc:"Stockroom",                  venue:"🏪"},
-    {time:"2:30 – 3:00 PM",  event:"Registration",                                       loc:"Main Lobby",                 venue:"🏛️"},
+    {time:"1:30 – 2:45 PM",  event:"📦 District Manager Stockroom Training",                loc:"Stockroom",                  venue:"🏪"},
+    {time:"2:30 – 3:00 PM",  event:"Registration for CEC's",                                       loc:"Main Lobby",                 venue:"🏛️"},
     {time:"3:00 – 6:00 PM",  event:"CEC Meeting",                                        loc:"Auditorium 12",              venue:"🎬"},
     {time:"6:00 PM+",        event:"🍽️ Dinner for out of town Attendees",                loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
     {time:"6:15 PM",         event:"RealD — Special Guest Dinner. Meet and Greet",       loc:"Johnnie's Jazz Bar & Grill", venue:"🎷"},
