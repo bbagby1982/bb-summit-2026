@@ -7,12 +7,12 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 // ── FIREBASE CONFIG ── Replace these values with your own from Firebase console
 const FB_CONFIG = {
-  apiKey:            "REPLACE_WITH_YOUR_API_KEY",
-  authDomain:        "REPLACE_WITH_YOUR_AUTH_DOMAIN",
-  projectId:         "REPLACE_WITH_YOUR_PROJECT_ID",
-  storageBucket:     "REPLACE_WITH_YOUR_STORAGE_BUCKET",
-  messagingSenderId: "REPLACE_WITH_YOUR_MESSAGING_SENDER_ID",
-  appId:             "REPLACE_WITH_YOUR_APP_ID",
+  apiKey:            "AIzaSyCU9q6r1qAGCWCsFE8gwro8bSOoSLTr_YQ",
+  authDomain:        "bb-summit-2026.firebaseapp.com",
+  projectId:         "bb-summit-2026",
+  storageBucket:     "bb-summit-2026.firebasestorage.app",
+  messagingSenderId: "251888268350",
+  appId:             "1:251888268350:web:e90a8a0522b7a87ff08d6f",
 };
 let db = null;
 let messaging = null;
