@@ -379,7 +379,6 @@ const VERIFY_QUESTIONS = [
 // ─── ALL ATTENDEES (134 people, A–Z) ─────────────────────────────────────────
 const GROUP_COLOR = {"Group 1":"#F4A261","Group 2":"#A78BFA","Group 3":"#4CAF7D","Group 4":"#5B8FFF","Group 5":"#D4AF37","Group 6":"#E63946","Corporate":"#6A4C93"};
 const ATTENDEES = [
-  // Non-corporate sorted A–Z
   { id:  1, name:"Abraham LaFrance",    role:"General Manager",                   theatre:"Monett",                    group:"Group 1", corporate:false },
   { id:  2, name:"Alyssa Valenti",      role:"Operations Manager",                theatre:"Wesley Chapel",             group:"Group 5", corporate:false },
   { id:  3, name:"Bobby Hartley",       role:"General Manager",                   theatre:"Overland Park",             group:"Group 4", corporate:false },
@@ -449,7 +448,6 @@ const ATTENDEES = [
   { id: 67, name:"Wesley Minet",        role:"General Manager",                   theatre:"Dodge City",                group:"Group 2", corporate:false },
   { id: 68, name:"Yasemin Henningsen",  role:"General Manager",                   theatre:"Wesley Chapel",             group:"Group 5", corporate:false },
   { id: 69, name:"Zane Fincham",        role:"Operations Manager",                theatre:"Northland 14",              group:"Group 4", corporate:false },
-  // Corporate (earn 50 pts, no nomination step)
   { id: 70, name:"Alyssa McManus",      role:"Creative",           theatre:"B&B Corporate", group:"Corporate", corporate:true },
   { id: 71, name:"Amanda Koebbe",       role:"Corporate Staff",    theatre:"B&B Corporate", group:"Corporate", corporate:true },
   { id: 72, name:"Andrea Zlab",         role:"Corporate Staff",    theatre:"B&B Corporate", group:"Corporate", corporate:true },
@@ -553,115 +551,115 @@ const NAV = [
 const css = `
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:${C.bg};color:${C.text};font-family:'DM Sans',sans-serif}
+body{background:#0A0A0F;color:#E8E8F0;font-family:'DM Sans',sans-serif}
 .wrap{max-width:480px;margin:0 auto;padding:14px 14px 90px}
-.hdr{margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid ${C.border}}
+.hdr{margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #2A2A40}
 .hdr-row{display:flex;justify-content:space-between;align-items:flex-start}
-.logo{font-family:'Playfair Display',serif;font-size:21px;font-weight:900;background:linear-gradient(135deg,${C.gold},${C.goldBright});-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.sub{font-size:11px;color:${C.muted};margin-top:2px}
-.pts-badge{background:${C.gold}15;border:1px solid ${C.gold}40;border-radius:10px;padding:5px 10px;text-align:right;cursor:pointer}
-.pts-n{font-family:'Playfair Display',serif;font-size:17px;color:${C.gold};font-weight:900;line-height:1}
-.pts-l{font-size:9px;color:${C.muted};margin-top:1px}
-.nav-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:${C.surface};border-top:1px solid ${C.border};display:flex;z-index:100;padding:6px 0 env(safe-area-inset-bottom,6px)}
-.ni{display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 0;flex:1;border:none;background:none;color:${C.muted};cursor:pointer;transition:color .2s}
-.ni.on{color:${C.gold}}
+.logo{font-family:'Playfair Display',serif;font-size:21px;font-weight:900;background:linear-gradient(135deg,#D4AF37,#F0D060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{font-size:11px;color:#7A7A9A;margin-top:2px}
+.pts-badge{background:#D4AF3715;border:1px solid #D4AF3740;border-radius:10px;padding:5px 10px;text-align:right;cursor:pointer}
+.pts-n{font-family:'Playfair Display',serif;font-size:17px;color:#D4AF37;font-weight:900;line-height:1}
+.pts-l{font-size:9px;color:#7A7A9A;margin-top:1px}
+.nav-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#12121A;border-top:1px solid #2A2A40;display:flex;z-index:100;padding:6px 0 env(safe-area-inset-bottom,6px)}
+.ni{display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 0;flex:1;border:none;background:none;color:#7A7A9A;cursor:pointer;transition:color .2s}
+.ni.on{color:#D4AF37}
 .ni .ico{font-size:19px;line-height:1}
 .ni .lbl{font-size:9px;font-weight:600;letter-spacing:.3px;text-transform:uppercase}
-.card{background:${C.card};border:1px solid ${C.border};border-radius:14px;padding:14px;margin-bottom:10px}
+.card{background:#1A1A28;border:1px solid #2A2A40;border-radius:14px;padding:14px;margin-bottom:10px}
 .stitle{font-family:'Playfair Display',serif;font-size:20px;font-weight:900;margin-bottom:4px}
-.ssub{font-size:12px;color:${C.muted};margin-bottom:14px;line-height:1.5}
+.ssub{font-size:12px;color:#7A7A9A;margin-bottom:14px;line-height:1.5}
 .tabs{display:flex;gap:5px;margin-bottom:13px;overflow-x:auto;scrollbar-width:none;flex-wrap:wrap}
-.tab{padding:5px 12px;border-radius:20px;border:1px solid ${C.border};background:${C.card};color:${C.muted};font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap}
-.tab.on{background:${C.gold};color:${C.bg};border-color:${C.gold};font-weight:700}
-.si{display:flex;gap:9px;padding:9px 12px;background:${C.card};border:1px solid ${C.border};border-radius:9px;margin-bottom:5px}
-.si-time{font-size:10px;color:${C.gold};min-width:78px;padding-top:2px;flex-shrink:0;line-height:1.4}
+.tab{padding:5px 12px;border-radius:20px;border:1px solid #2A2A40;background:#1A1A28;color:#7A7A9A;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap}
+.tab.on{background:#D4AF37;color:#0A0A0F;border-color:#D4AF37;font-weight:700}
+.si{display:flex;gap:9px;padding:9px 12px;background:#1A1A28;border:1px solid #2A2A40;border-radius:9px;margin-bottom:5px}
+.si-time{font-size:10px;color:#D4AF37;min-width:78px;padding-top:2px;flex-shrink:0;line-height:1.4}
 .si-ev{font-size:13px;font-weight:500;line-height:1.4}
 .si-meta{display:flex;align-items:center;gap:5px;margin-top:3px;flex-wrap:wrap}
 .vpill{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:8px;font-size:10px;font-weight:600}
 .vp-j{background:#E6394614;color:#E63946;border:1px solid #E6394630}
 .vp-a{background:#5B8FFF14;color:#7BA8FF;border:1px solid #5B8FFF30}
-.vp-m{background:${C.gold}14;color:${C.gold};border:1px solid ${C.gold}30}
-.vp-h{background:${C.green}14;color:${C.green};border:1px solid ${C.green}30}
-.vp-b{background:#88888814;color:${C.muted};border:1px solid #88888830}
+.vp-m{background:#D4AF3714;color:#D4AF37;border:1px solid #D4AF3730}
+.vp-h{background:#4CAF7D14;color:#4CAF7D;border:1px solid #4CAF7D30}
+.vp-b{background:#88888814;color:#7A7A9A;border:1px solid #88888830}
 .vp-f{background:#F4A26114;color:#F4A261;border:1px solid #F4A26130}
-.vc{border-radius:14px;border:1px solid ${C.border};margin-bottom:9px;overflow:hidden}
-.vc-hdr{display:flex;align-items:center;gap:11px;padding:14px;background:${C.card}}
+.vc{border-radius:14px;border:1px solid #2A2A40;margin-bottom:9px;overflow:hidden}
+.vc-hdr{display:flex;align-items:center;gap:11px;padding:14px;background:#1A1A28}
 .vc-logo{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
 .vc-name{font-weight:700;font-size:14px}
-.vc-booth{font-size:11px;color:${C.muted};margin-top:2px}
+.vc-booth{font-size:11px;color:#7A7A9A;margin-top:2px}
 .vc-acts{display:flex;gap:6px;padding:0 14px 14px}
 .btn{padding:9px 13px;border-radius:9px;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;flex:1;text-align:center}
-.btn-g{background:linear-gradient(135deg,${C.gold},${C.goldBright});color:${C.bg}}
-.btn-s{background:${C.border};color:${C.text}}
-.ci-ok{display:flex;align-items:center;justify-content:center;gap:6px;padding:9px 10px;border-radius:9px;font-size:12px;font-weight:600;flex:1;background:${C.green}18;color:${C.green};border:1px solid ${C.green}35}
-.pb-wrap{height:5px;border-radius:3px;background:${C.border};margin-bottom:4px;overflow:hidden}
-.pb-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,${C.gold},${C.goldBright});transition:width .5s ease}
-.le{display:flex;align-items:center;gap:10px;padding:12px 14px;background:${C.card};border:1px solid ${C.border};border-radius:11px;margin-bottom:6px}
+.btn-g{background:linear-gradient(135deg,#D4AF37,#F0D060);color:#0A0A0F}
+.btn-s{background:#2A2A40;color:#E8E8F0}
+.ci-ok{display:flex;align-items:center;justify-content:center;gap:6px;padding:9px 10px;border-radius:9px;font-size:12px;font-weight:600;flex:1;background:#4CAF7D18;color:#4CAF7D;border:1px solid #4CAF7D35}
+.pb-wrap{height:5px;border-radius:3px;background:#2A2A40;margin-bottom:4px;overflow:hidden}
+.pb-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#D4AF37,#F0D060);transition:width .5s ease}
+.le{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#1A1A28;border:1px solid #2A2A40;border-radius:11px;margin-bottom:6px}
 .le.g1{border-color:#FFD700;background:#FFD70010}
 .le.g2{border-color:#C0C0C0;background:#C0C0C010}
 .le.g3{border-color:#CD7F32;background:#CD7F3210}
 .rb{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0}
-.r1{background:#FFD700;color:#0A0A0F}.r2{background:#C0C0C0;color:#0A0A0F}.r3{background:#CD7F32;color:#0A0A0F}.ro{background:${C.border};color:${C.muted}}
+.r1{background:#FFD700;color:#0A0A0F}.r2{background:#C0C0C0;color:#0A0A0F}.r3{background:#CD7F32;color:#0A0A0F}.ro{background:#2A2A40;color:#7A7A9A}
 .lb-n{font-weight:600;font-size:14px;flex:1}
-.lb-l{font-size:11px;color:${C.muted}}
-.lb-t{font-size:10px;padding:2px 6px;border-radius:4px;background:${C.gold}18;color:${C.gold};display:inline-block;margin-top:3px}
-.lb-p{font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:${C.gold};text-align:right}
-.lb-pl{font-size:10px;color:${C.muted};text-align:right}
-.srch{width:100%;padding:10px 15px;border-radius:10px;border:1px solid ${C.border};background:${C.card};color:${C.text};font-family:'DM Sans',sans-serif;font-size:14px;outline:none;margin-bottom:10px}
-.srch:focus{border-color:${C.gold}}
-.srch::placeholder{color:${C.muted}}
-.rs{display:flex;gap:10px;padding:11px 13px;border-radius:10px;border:1px solid ${C.border};background:${C.card};margin-bottom:6px}
-.rs.lunch{background:${C.green}0A;border-color:${C.green}35}
-.rs-time{font-size:11px;color:${C.gold};min-width:90px;flex-shrink:0;padding-top:1px;line-height:1.5}
+.lb-l{font-size:11px;color:#7A7A9A}
+.lb-t{font-size:10px;padding:2px 6px;border-radius:4px;background:#D4AF3718;color:#D4AF37;display:inline-block;margin-top:3px}
+.lb-p{font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:#D4AF37;text-align:right}
+.lb-pl{font-size:10px;color:#7A7A9A;text-align:right}
+.srch{width:100%;padding:10px 15px;border-radius:10px;border:1px solid #2A2A40;background:#1A1A28;color:#E8E8F0;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;margin-bottom:10px}
+.srch:focus{border-color:#D4AF37}
+.srch::placeholder{color:#7A7A9A}
+.rs{display:flex;gap:10px;padding:11px 13px;border-radius:10px;border:1px solid #2A2A40;background:#1A1A28;margin-bottom:6px}
+.rs.lunch{background:#4CAF7D0A;border-color:#4CAF7D35}
+.rs-time{font-size:11px;color:#D4AF37;min-width:90px;flex-shrink:0;padding-top:1px;line-height:1.5}
 .rs-session{font-size:13px;font-weight:600;line-height:1.3}
 .gc{border-radius:14px;padding:16px;margin-bottom:14px;text-align:center}
 .hcard{border-radius:14px;padding:18px;margin-bottom:12px}
 .hname{font-family:'Playfair Display',serif;font-size:20px;font-weight:900;margin-bottom:6px}
-.hrow{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid ${C.border};font-size:13px}
+.hrow{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #2A2A40;font-size:13px}
 .hrow:last-child{border-bottom:none}
-.hrow-l{color:${C.muted};font-size:11px;min-width:60px;flex-shrink:0}
-.att{display:flex;align-items:center;gap:10px;padding:10px 12px;background:${C.card};border:1px solid ${C.border};border-left:3px solid transparent;border-radius:11px;margin-bottom:5px;cursor:pointer;transition:border-color .2s}
-.att.met{border-color:${C.green}50;border-left-color:${C.green};background:${C.green}06}
+.hrow-l{color:#7A7A9A;font-size:11px;min-width:60px;flex-shrink:0}
+.att{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#1A1A28;border:1px solid #2A2A40;border-left:3px solid transparent;border-radius:11px;margin-bottom:5px;cursor:pointer;transition:border-color .2s}
+.att.met{border-color:#4CAF7D50;border-left-color:#4CAF7D;background:#4CAF7D06}
 .att-av{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0}
 .ws{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100vh;padding:36px 22px;text-align:center}
-.wlogo{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;background:linear-gradient(135deg,${C.gold},${C.goldBright});-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
-.wsub{color:${C.muted};font-size:14px;margin-bottom:28px;line-height:1.7}
-.wi{width:100%;max-width:340px;padding:13px 16px;border-radius:12px;border:2px solid ${C.border};background:${C.card};color:${C.text};font-family:'DM Sans',sans-serif;font-size:16px;outline:none;transition:border-color .2s;margin-bottom:8px}
-.wi:focus{border-color:${C.gold}}
+.wlogo{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;background:linear-gradient(135deg,#D4AF37,#F0D060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.wsub{color:#7A7A9A;font-size:14px;margin-bottom:28px;line-height:1.7}
+.wi{width:100%;max-width:340px;padding:13px 16px;border-radius:12px;border:2px solid #2A2A40;background:#1A1A28;color:#E8E8F0;font-family:'DM Sans',sans-serif;font-size:16px;outline:none;transition:border-color .2s;margin-bottom:8px}
+.wi:focus{border-color:#D4AF37}
 .wsel{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7A9A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
-.web{padding:13px 34px;border-radius:12px;border:none;background:linear-gradient(135deg,${C.gold},${C.goldBright});color:${C.bg};font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s;width:100%;max-width:340px;margin-top:4px}
+.web{padding:13px 34px;border-radius:12px;border:none;background:linear-gradient(135deg,#D4AF37,#F0D060);color:#0A0A0F;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s;width:100%;max-width:340px;margin-top:4px}
 .web:hover{opacity:.9;transform:translateY(-2px)}
 .web:disabled{opacity:.4;cursor:not-allowed;transform:none}
 .qo{position:fixed;inset:0;background:rgba(10,10,15,.97);z-index:200;display:flex;align-items:flex-end;justify-content:center}
-.qm{background:${C.card};border-radius:22px 22px 0 0;padding:22px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto}
+.qm{background:#1A1A28;border-radius:22px 22px 0 0;padding:22px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto}
 .qq{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;margin-bottom:15px;line-height:1.35}
-.qopt{width:100%;padding:12px 14px;border-radius:11px;border:1px solid ${C.border};background:${C.surface};color:${C.text};font-family:'DM Sans',sans-serif;font-size:14px;text-align:left;cursor:pointer;margin-bottom:6px;transition:all .15s}
-.qopt:hover{border-color:${C.gold};background:${C.gold}10}
-.qopt.ok{border-color:${C.green};background:${C.green}18;color:${C.green}}
-.qopt.no{border-color:${C.red};background:${C.red}15;color:${C.red}}
+.qopt{width:100%;padding:12px 14px;border-radius:11px;border:1px solid #2A2A40;background:#12121A;color:#E8E8F0;font-family:'DM Sans',sans-serif;font-size:14px;text-align:left;cursor:pointer;margin-bottom:6px;transition:all .15s}
+.qopt:hover{border-color:#D4AF37;background:#D4AF3710}
+.qopt.ok{border-color:#4CAF7D;background:#4CAF7D18;color:#4CAF7D}
+.qopt.no{border-color:#E63946;background:#E6394615;color:#E63946}
 .qprog{display:flex;gap:4px;margin-bottom:16px}
-.qpip{flex:1;height:4px;border-radius:2px;background:${C.border};transition:background .3s}
-.qpip.done{background:${C.gold}}.qpip.cur{background:${C.goldBright}}
+.qpip{flex:1;height:4px;border-radius:2px;background:#2A2A40;transition:background .3s}
+.qpip.done{background:#D4AF37}.qpip.cur{background:#F0D060}
 .ctm{position:fixed;inset:0;background:rgba(10,10,15,.85);z-index:300;display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}
-.csh{background:${C.surface};border-radius:22px 22px 0 0;width:100%;max-width:480px;max-height:92vh;overflow-y:auto}
+.csh{background:#12121A;border-radius:22px 22px 0 0;width:100%;max-width:480px;max-height:92vh;overflow-y:auto}
 .csh-hdr{padding:22px 18px 14px;border-radius:22px 22px 0 0;display:flex;flex-direction:column;align-items:center;gap:3px;position:relative}
 .csh-av{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;border:2px solid rgba(255,255,255,.2);margin-bottom:5px}
 .csh-body{padding:18px 16px}
 .step-lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(240,230,211,.35);margin-bottom:11px}
 .q-box{background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.18);border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;margin-bottom:11px}
 .q-text{margin:0;font-size:14px;line-height:1.55;font-style:italic;font-weight:600}
-.ctextarea{width:100%;box-sizing:border-box;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:${C.text};font-size:14px;padding:10px 12px;resize:vertical;outline:none;font-family:'DM Sans',sans-serif;line-height:1.6;margin-bottom:5px}
+.ctextarea{width:100%;box-sizing:border-box;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#E8E8F0;font-size:14px;padding:10px 12px;resize:vertical;outline:none;font-family:'DM Sans',sans-serif;line-height:1.6;margin-bottom:5px}
 .hint{font-size:11px;color:rgba(240,230,211,.38);margin-bottom:9px}
 .pts-note{font-size:12px;color:rgba(255,215,0,.6);margin-bottom:13px;background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.12);border-radius:8px;padding:8px 12px;line-height:1.5}
-.prim-btn{width:100%;background:linear-gradient(135deg,${C.gold},${C.goldBright});border:none;border-radius:12px;color:${C.bg};font-size:15px;font-weight:700;padding:13px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:5px;transition:opacity .2s}
+.prim-btn{width:100%;background:linear-gradient(135deg,#D4AF37,#F0D060);border:none;border-radius:12px;color:#0A0A0F;font-size:15px;font-weight:700;padding:13px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:5px;transition:opacity .2s}
 .prim-btn:disabled{opacity:.35;cursor:not-allowed}
 .ghost-btn{flex:1;background:transparent;border:1px solid rgba(255,255,255,.13);border-radius:12px;color:rgba(240,230,211,.55);font-size:14px;padding:12px;cursor:pointer;font-family:'DM Sans',sans-serif}
 .award-card{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:10px 12px;margin-bottom:6px;cursor:pointer;user-select:none}
 .award-card.sel{background:rgba(255,215,0,.09);border-color:rgba(255,215,0,.35)}
-.check{margin-left:auto;width:21px;height:21px;border-radius:50%;border:1.5px solid rgba(255,215,0,.25);display:flex;align-items:center;justify-content:center;color:${C.gold};font-weight:700;font-size:12px;flex-shrink:0}
+.check{margin-left:auto;width:21px;height:21px;border-radius:50%;border:1.5px solid rgba(255,215,0,.25);display:flex;align-items:center;justify-content:center;color:#D4AF37;font-weight:700;font-size:12px;flex-shrink:0}
 .check.sel{background:rgba(255,215,0,.18);border-color:rgba(255,215,0,.6)}
 .met-banner{display:flex;align-items:center;gap:12px;margin-bottom:14px;background:rgba(0,200,83,.07);border:1px solid rgba(0,200,83,.18);border-radius:12px;padding:12px 14px}
-.nom-chip{display:inline-block;background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.22);border-radius:20px;padding:4px 10px;font-size:11px;color:${C.gold};margin-right:5px;margin-bottom:5px}
+.nom-chip{display:inline-block;background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.22);border-radius:20px;padding:4px 10px;font-size:11px;color:#D4AF37;margin-right:5px;margin-bottom:5px}
 .admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:600;overflow-y:auto;padding:20px 16px 40px}
 .admin-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(255,215,0,.2)}
 .admin-title{font-family:"Playfair Display",serif;font-size:22px;font-weight:900;color:#D4AF37}
@@ -686,7 +684,7 @@ body{background:${C.bg};color:${C.text};font-family:'DM Sans',sans-serif}
 .notice-txt{font-size:13px;color:#fff;font-weight:600;line-height:1.4;flex:1}
 .notice-close{background:none;border:none;color:rgba(255,255,255,.5);font-size:18px;cursor:pointer;padding:0 4px;flex-shrink:0;font-family:sans-serif}
 .tut-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(6px)}
-.tut-sheet{background:linear-gradient(160deg,#1a0a2e 0%,#0d1b2e 60%,#0f1923 100%);border-radius:28px 28px 0 0;width:100%;max-width:480px;padding:32px 24px 40px;border-top:1px solid rgba(255,215,0,.2)}
+.tut-sheet{background:linear-gradient(160deg,#1a0a2e 0%,#0d1b2e 60%,#0f1923 100%);border-radius:28px 28px 0 0;width:100%;max-width:480px;padding:32px 24px 40px;border-top:1px solid rgba(255,215,0,.2);animation:slideUp .4s ease-out}
 .tut-dots{display:flex;gap:6px;justify-content:center;margin-bottom:24px}
 .tut-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);transition:all .3s}
 .tut-dot.on{background:#D4AF37;width:24px;border-radius:4px}
@@ -701,7 +699,6 @@ body{background:${C.bg};color:${C.text};font-family:'DM Sans',sans-serif}
 .tut-skip{background:none;border:none;color:rgba(240,230,211,.3);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;padding:4px 8px;flex-shrink:0}
 .tut-next{flex:1;background:linear-gradient(135deg,#D4AF37,#F0D060);border:none;border-radius:14px;color:#0A0A0F;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;padding:15px;cursor:pointer;transition:opacity .2s}
 @keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
-.tut-sheet{animation:slideUp .4s ease-out}
 .gallery-grid{columns:2;gap:8px;margin-top:12px}
 .gallery-item{break-inside:avoid;margin-bottom:8px;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;background:#1A1A28;border:1px solid #2A2A40}
 .gallery-item img{width:100%;display:block;transition:transform .3s}
@@ -719,7 +716,7 @@ body{background:${C.bg};color:${C.text};font-family:'DM Sans',sans-serif}
 .pending-photo img{width:72px;height:72px;border-radius:8px;object-fit:cover;flex-shrink:0}
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#00c853;color:#fff;padding:10px 20px;border-radius:30px;font-weight:700;font-size:14px;box-shadow:0 4px 20px rgba(0,200,83,.4);z-index:400;display:flex;gap:8px;align-items:center;white-space:nowrap}
 @keyframes fup{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-120%) scale(1.3)}}
-.pfloat{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,${C.gold},${C.goldBright});color:${C.bg};padding:10px 22px;border-radius:40px;font-family:'Playfair Display',serif;font-size:20px;font-weight:900;animation:fup 1.6s ease-out forwards;z-index:500;pointer-events:none}
+.pfloat{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#D4AF37,#F0D060);color:#0A0A0F;padding:10px 22px;border-radius:40px;font-family:'Playfair Display',serif;font-size:20px;font-weight:900;animation:fup 1.6s ease-out forwards;z-index:500;pointer-events:none}
 `;
 
 // ─── MAIN APP ─────────────────────────────────────────────────────────────────
@@ -729,7 +726,6 @@ export default function App() {
   const [uLoc,   setULoc]   = useState(() => load("loc",""));
   const [nameIn, setNameIn] = useState("");
   const [locIn,  setLocIn]  = useState("");
-  // Photos (attendee id -> base64, "me" for own photo)
   const [photos, setPhotos] = useState(() => load("photos",{}));
   function handlePhotoUpload(attendeeId, file) {
     if (!file) return;
@@ -746,23 +742,19 @@ export default function App() {
   const [tutSlide, setTutSlide] = useState(0);
   function dismissTutorial() { save("tutorialSeen", true); setShowTutorial(false); }
 
-  // ── LIVE NOTICE BANNER ────────────────────────────────────────────────────
+  // Live notice banner
   const [notice, setNotice] = useState(null);
   const [noticeDismissed, setNoticeDismissed] = useState(() => load("noticeDismissed",""));
   useEffect(() => {
     if (!db) return;
-    // Subscribe to live banner updates from Firebase
     const unsub = onSnapshot(doc(db, "config", "notice"), snap => {
       if (snap.exists()) {
         const data = snap.data();
         setNotice(data.active && data.message ? data : null);
-        // Sync banner editor in admin panel
         if (data.message) setBannerMsg(data.message);
         if (data.type)    setBannerType(data.type);
-      } else {
-        setNotice(null);
-      }
-    }, () => {}); // silent fail if offline
+      } else { setNotice(null); }
+    }, () => {});
     return () => unsub();
   }, []);
   const noticeVisible = notice && noticeDismissed !== notice.updated;
@@ -794,54 +786,30 @@ export default function App() {
   const [cGroup,  setCGroup] = useState("All");
   const [toast,   setToast]  = useState(null);
   const [ptsAnim, setPtsAnim]= useState(false);
-
-  // Attendee search
   const [attSearch, setAttSearch] = useState("");
 
-  // ── FIREBASE / ADMIN ────────────────────────────────────────────────────────
+  // Admin state
   const [adminTaps, setAdminTaps]   = useState(0);
   const [showAdmin, setShowAdmin]   = useState(false);
-  const [adminData, setAdminData]   = useState(null);   // live nominations from Firebase
-  const [lbData,    setLbData]      = useState(null);   // live scores from Firebase
+  const [adminData, setAdminData]   = useState(null);
+  const [lbData,    setLbData]      = useState(null);
   const adminTapTimer = useRef(null);
-
-  // Banner editor state
   const [bannerMsg,  setBannerMsg]  = useState("");
   const [bannerType, setBannerType] = useState("warning");
   const [bannerSaving, setBannerSaving] = useState(false);
   const [bannerSaved,  setBannerSaved]  = useState(false);
-
-  // Push notification state
   const [pushGranted, setPushGranted] = useState(false);
   const [pushMsg,     setPushMsg]     = useState("");
   const [pushSending, setPushSending] = useState(false);
   const [pushSent,    setPushSent]    = useState(false);
 
-  // Register device for push notifications after onboarding
+  // Push notification registration (disabled)
   useEffect(() => {
     if (!uName || !uLoc || !db) return;
-    // Push notifications disabled - requires FCM setup
-    return;
-    async function registerPush() {
-      try {
-        const perm = await Notification.requestPermission();
-        if (perm !== "granted") return;
-        setPushGranted(true);
-        // const token = await getToken(messaging, { vapidKey: VAPID_KEY });
-        const token = null;
-        if (!token) return;
-        const id = `${uName.replace(/[^a-zA-Z0-9]/g,"-")}_${uLoc.replace(/[^a-zA-Z0-9]/g,"-")}`;
-        await setDoc(doc(db, "fcmTokens", id), {
-          token, name: uName, location: uLoc,
-          updatedAt: serverTimestamp(),
-        }, { merge: true });
-      } catch(e) { /* silently skip if blocked */ }
-    }
-    registerPush();
-    // Foreground message handler — disabled (requires FCM setup)
+    return; // Push notifications disabled - requires FCM setup
   }, [uName, uLoc]);
 
-  // ── GALLERY ──────────────────────────────────────────────────────────────
+  // Gallery state
   const [galleryPhotos, setGalleryPhotos] = useState([]);
   const [pendingPhotos, setPendingPhotos] = useState([]);
   const [galleryCaption, setGalleryCaption] = useState("");
@@ -849,7 +817,6 @@ export default function App() {
   const [galleryUploaded, setGalleryUploaded] = useState(false);
   const [lightbox, setLightbox] = useState(null);
 
-  // Subscribe to approved photos
   useEffect(() => {
     if (!db) return;
     const unsub = onSnapshot(collection(db, "gallery"), snap => {
@@ -867,82 +834,33 @@ export default function App() {
     return () => unsub();
   }, []);
 
-  async function uploadPhoto(file) {
-    if (!file || !db) return;
-    setGalleryUploading(true);
-    try {
-      const id = `${Date.now()}_${uName.replace(/[^a-zA-Z0-9]/g,"-")}`;
-      // Storage upload disabled - requires Firebase Storage setup
-      const url = URL.createObjectURL(file);
-      await setDoc(doc(db, "gallery", id), {
-        url, caption: galleryCaption.trim(),
-        uploaderName: uName, uploaderLoc: uLoc,
-        status: "pending",
-        uploadedAt: serverTimestamp(),
-      });
-      setGalleryCaption("");
-      setGalleryUploaded(true);
-      setTimeout(() => setGalleryUploaded(false), 3000);
-    } catch(e) { alert("Upload failed: " + e.message); }
-    setGalleryUploading(false);
-  }
+  // ══════════════════════════════════════════════════════════════════════════
+  // ██ FIX: Derived values MUST be declared BEFORE the useEffect that uses them
+  // ══════════════════════════════════════════════════════════════════════════
+  const myGroup = uLoc ? LOCATION_GROUP[uLoc] || null : null;
+  const myHotel = uLoc ? (LOCATION_HOTEL[uLoc] || null) : null;
+  const hotelInfo = myHotel ? HOTEL_INFO[myHotel] : null;
 
-  async function approvePhoto(id, approve) {
-    if (!db) return;
-    await setDoc(doc(db, "gallery", id), { status: approve ? "approved" : "rejected" }, { merge: true });
-  }
+  const vendorPts = Object.keys(checkedIn).length * BOOTH_PTS +
+    Object.values(quizDone).reduce((s,v) => s + (v||0)*QUIZ_PTS, 0);
 
-  async function downloadPhoto(url, caption, uploaderName) {
-    try {
-      const res = await fetch(url);
-      const blob = await res.blob();
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      const safeName = (caption || uploaderName || "summit-photo").replace(/[^a-zA-Z0-9]/g,"-").slice(0,40);
-      a.download = `BBSummit2026_${safeName}.jpg`;
-      a.click();
-      URL.revokeObjectURL(a.href);
-    } catch(e) { alert("Download failed — try long-pressing the photo instead."); }
-  }
+  const connectPts = Object.entries(conns).reduce((acc,[idStr,conn]) => {
+    const p = ATTENDEES.find(a=>a.id===Number(idStr));
+    if (!p) return acc;
+    if (p.corporate) return acc + CONNECT_PTS;
+    if (conn.nominations?.length > 0) return acc + CONNECT_PTS;
+    return acc;
+  }, 0);
 
-  async function deletePhoto(id) {
-    if (!db) return;
-    await setDoc(doc(db, "gallery", id), { status: "rejected" }, { merge: true });
-  }
+  const totalPts = vendorPts + connectPts;
+  const metCount = Object.keys(conns).length;
+  const pct = Math.round((metCount / ATTENDEES.length) * 100);
+  const cQuestion = modal ? VERIFY_QUESTIONS[(modal.id-1) % VERIFY_QUESTIONS.length] : "";
+  const allGroups = ["All","Group 1","Group 2","Group 3","Group 4","Group 5","Group 6","Corporate"];
 
-  async function sendPushNotification() {
-    if (!db || !pushMsg.trim()) return;
-    setPushSending(true);
-    try {
-      await setDoc(doc(db, "config", "pushNotification"), {
-        active: true,
-        title: "B&B Summit 2026",
-        message: pushMsg.trim(),
-        type: bannerType,
-        sentAt: serverTimestamp(),
-      });
-      setPushSent(true);
-      setPushMsg("");
-      setTimeout(() => setPushSent(false), 3000);
-    } catch(e) { alert("Error: " + e.message); }
-    setPushSending(false);
-  }
-
-  async function publishBanner(active) {
-    if (!db) return;
-    setBannerSaving(true);
-    try {
-      await setDoc(doc(db, "config", "notice"), {
-        active, message: bannerMsg.trim(),
-        type: bannerType,
-        updated: new Date().toISOString(),
-      });
-      setBannerSaved(true);
-      setTimeout(() => setBannerSaved(false), 2500);
-      if (!active) setBannerMsg("");
-    } catch(e) { alert("Firebase error: " + e.message); }
-    setBannerSaving(false);
-  }
+  // ══════════════════════════════════════════════════════════════════════════
+  // NOW it's safe to use totalPts, metCount, etc. in effects below
+  // ══════════════════════════════════════════════════════════════════════════
 
   // Push my score to Firebase whenever points change
   useEffect(() => {
@@ -982,35 +900,74 @@ export default function App() {
     adminTapTimer.current = setTimeout(() => setAdminTaps(0), 4000);
   }
 
-  // ── Derived ────────────────────────────────────────────────────────────────
-  const myGroup = uLoc ? LOCATION_GROUP[uLoc] || null : null;
-  const myHotel = uLoc ? (LOCATION_HOTEL[uLoc] || null) : null;
-  const hotelInfo = myHotel ? HOTEL_INFO[myHotel] : null;
+  // Gallery functions
+  async function uploadPhoto(file) {
+    if (!file || !db) return;
+    setGalleryUploading(true);
+    try {
+      const id = `${Date.now()}_${uName.replace(/[^a-zA-Z0-9]/g,"-")}`;
+      const url = URL.createObjectURL(file);
+      await setDoc(doc(db, "gallery", id), {
+        url, caption: galleryCaption.trim(),
+        uploaderName: uName, uploaderLoc: uLoc,
+        status: "pending", uploadedAt: serverTimestamp(),
+      });
+      setGalleryCaption("");
+      setGalleryUploaded(true);
+      setTimeout(() => setGalleryUploaded(false), 3000);
+    } catch(e) { alert("Upload failed: " + e.message); }
+    setGalleryUploading(false);
+  }
+  async function approvePhoto(id, approve) {
+    if (!db) return;
+    await setDoc(doc(db, "gallery", id), { status: approve ? "approved" : "rejected" }, { merge: true });
+  }
+  async function downloadPhoto(url, caption, uploaderName) {
+    try {
+      const res = await fetch(url);
+      const blob = await res.blob();
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      const safeName = (caption || uploaderName || "summit-photo").replace(/[^a-zA-Z0-9]/g,"-").slice(0,40);
+      a.download = `BBSummit2026_${safeName}.jpg`;
+      a.click(); URL.revokeObjectURL(a.href);
+    } catch(e) { alert("Download failed — try long-pressing the photo instead."); }
+  }
+  async function deletePhoto(id) {
+    if (!db) return;
+    await setDoc(doc(db, "gallery", id), { status: "rejected" }, { merge: true });
+  }
+  async function sendPushNotification() {
+    if (!db || !pushMsg.trim()) return;
+    setPushSending(true);
+    try {
+      await setDoc(doc(db, "config", "pushNotification"), {
+        active: true, title: "B&B Summit 2026", message: pushMsg.trim(),
+        type: bannerType, sentAt: serverTimestamp(),
+      });
+      setPushSent(true); setPushMsg("");
+      setTimeout(() => setPushSent(false), 3000);
+    } catch(e) { alert("Error: " + e.message); }
+    setPushSending(false);
+  }
+  async function publishBanner(active) {
+    if (!db) return;
+    setBannerSaving(true);
+    try {
+      await setDoc(doc(db, "config", "notice"), {
+        active, message: bannerMsg.trim(), type: bannerType, updated: new Date().toISOString(),
+      });
+      setBannerSaved(true);
+      setTimeout(() => setBannerSaved(false), 2500);
+      if (!active) setBannerMsg("");
+    } catch(e) { alert("Firebase error: " + e.message); }
+    setBannerSaving(false);
+  }
 
-  const vendorPts = Object.keys(checkedIn).length * BOOTH_PTS +
-    Object.values(quizDone).reduce((s,v) => s + (v||0)*QUIZ_PTS, 0);
-
-  const connectPts = Object.entries(conns).reduce((acc,[idStr,conn]) => {
-    const p = ATTENDEES.find(a=>a.id===Number(idStr));
-    if (!p) return acc;
-    if (p.corporate) return acc + CONNECT_PTS;
-    if (conn.nominations?.length > 0) return acc + CONNECT_PTS;
-    return acc;
-  }, 0);
-
-  const totalPts = vendorPts + connectPts;
-
-  const metCount = Object.keys(conns).length;
-  const pct = Math.round((metCount / ATTENDEES.length) * 100);
-  const cQuestion = modal ? VERIFY_QUESTIONS[(modal.id-1) % VERIFY_QUESTIONS.length] : "";
-
-  const allGroups = ["All","Group 1","Group 2","Group 3","Group 4","Group 5","Group 6","Corporate"];
-
-  // ── Vendor quiz ───────────────────────────────────────────────────────────
+  // Vendor quiz handlers
   function checkIn(id) {
     const updated = {...checkedIn,[id]:true};
-    setCI(updated); save("ci",updated);
-    addPopup(BOOTH_PTS);
+    setCI(updated); save("ci",updated); addPopup(BOOTH_PTS);
   }
   function startQuiz(v) { setAQ(v); setQI(0); setSel(null); setAns([]); setFin(false); }
   function pickAns(i) {
@@ -1025,17 +982,13 @@ export default function App() {
       else {
         const score = newAns.filter(Boolean).length;
         const updated = {...quizDone,[aq.id]:score};
-        setQD(updated); save("qd",updated);
-        setFin(true);
+        setQD(updated); save("qd",updated); setFin(true);
       }
     },900);
   }
-  function addPopup(pts) {
-    setPopup(pts);
-    setTimeout(()=>setPopup(null),1600);
-  }
+  function addPopup(pts) { setPopup(pts); setTimeout(()=>setPopup(null),1600); }
 
-  // ── Connect ───────────────────────────────────────────────────────────────
+  // Connect handlers
   function openModal(p) {
     const ex = conns[p.id];
     setModal(p);
@@ -1051,14 +1004,12 @@ export default function App() {
     const earned = modal.corporate || noms.length > 0;
     const updated = {...conns,[modal.id]:{answer:cAnswer,nominations:noms,nomNote:note,metAt:new Date().toISOString()}};
     setConns(updated); save("conns",updated);
-    // Write nominations to Firebase so admin panel can tally them
     if (db && noms.length > 0) {
       const docId = `${uName.replace(/[^a-zA-Z0-9]/g,"-")}_to_${modal.id}`;
       setDoc(doc(db,"nominations",docId), {
         nominatorName: uName, nominatorLoc: uLoc,
         nomineeName: modal.name, nomineeId: modal.id,
-        nominations: noms, note: note,
-        submittedAt: serverTimestamp(),
+        nominations: noms, note: note, submittedAt: serverTimestamp(),
       }, { merge:true }).catch(()=>{});
     }
     const label = modal.name;
@@ -1067,27 +1018,24 @@ export default function App() {
       setPtsAnim(true);
       setToast({msg:`Connected with ${label}!`,pts:`+${CONNECT_PTS} pts`});
       setTimeout(()=>setPtsAnim(false),900);
-    } else {
-      setToast({msg:`Connected with ${label}!`,pts:null});
-    }
+    } else { setToast({msg:`Connected with ${label}!`,pts:null}); }
     setTimeout(()=>setToast(null),3000);
   }
   function toggleNom(id) { setCNoms(prev=>prev.includes(id)?prev.filter(n=>n!==id):[...prev,id]); }
 
-  // ── Filtered attendees ────────────────────────────────────────────────────
+  // Filtered attendees
   const filtConns = useMemo(()=>ATTENDEES.filter(a=>{
     const q = cSearch.toLowerCase();
     const ms = a.name.toLowerCase().includes(q)||a.theatre.toLowerCase().includes(q)||a.group.toLowerCase().includes(q);
     const met = !!conns[a.id];
     const mm = cFilter==="all"||(cFilter==="met"?met:!met);
-    const mg = cGroup==="All"||a.group===cGroup||(cGroup==="Group 6"&&a.group==="Group 6");
+    const mg = cGroup==="All"||a.group===cGroup;
     return ms&&mm&&mg;
   }),[cSearch,cFilter,cGroup,conns]);
 
-  // ── Leaderboard (my score displayed, rest is sample) ─────────────────────
+  // Leaderboard
   const myEntry = uName ? {name:`${uName} (You)`,loc:uLoc,pts:totalPts,v:Object.keys(checkedIn).length,q:Object.values(quizDone).reduce((s,v)=>s+(v||0),0),c:metCount} : null;
-  const sampleLb = [];
-  const lb = myEntry ? [myEntry,...sampleLb].sort((a,b)=>b.pts-a.pts) : sampleLb;
+  const lb = myEntry ? [myEntry].sort((a,b)=>b.pts-a.pts) : [];
 
   // ─── ONBOARDING ────────────────────────────────────────────────────────────
   if (!uName || !uLoc) {
@@ -1117,7 +1065,7 @@ export default function App() {
     );
   }
 
-  // ─── MAIN APP ──────────────────────────────────────────────────────────────
+  // ─── MAIN RETURN ──────────────────────────────────────────────────────────
   return (
     <>
       <style>{css}</style>
@@ -1132,8 +1080,7 @@ export default function App() {
               </span>
               <span className="notice-txt">{notice.message}</span>
               <button className="notice-close" onClick={()=>{
-                setNoticeDismissed(notice.updated);
-                save("noticeDismissed", notice.updated);
+                setNoticeDismissed(notice.updated); save("noticeDismissed", notice.updated);
               }}>✕</button>
             </div>
           </div>
@@ -1163,7 +1110,7 @@ export default function App() {
                 </div>
               </div>
             </div>
-            <div className={`pts-badge`} style={ptsAnim?{transform:"scale(1.1)",transition:"transform .15s"}:{transition:"transform .15s"}} onClick={()=>setTab("leaderboard")}>
+            <div className="pts-badge" style={ptsAnim?{transform:"scale(1.1)",transition:"transform .15s"}:{transition:"transform .15s"}} onClick={()=>setTab("leaderboard")}>
               <div className="pts-n">{totalPts.toLocaleString()}</div>
               <div className="pts-l">pts · tap for lb</div>
             </div>
@@ -1256,9 +1203,7 @@ export default function App() {
                 <div className="gc" style={{background:`${GROUP_INFO[myGroup].color}15`,border:`1px solid ${GROUP_INFO[myGroup].color}50`}}>
                   <div style={{fontSize:32,marginBottom:4}}>🎬</div>
                   <div style={{fontFamily:"'Playfair Display',serif",fontSize:24,fontWeight:900,color:GROUP_INFO[myGroup].color}}>{GROUP_INFO[myGroup].label}</div>
-                  <div style={{fontSize:11,color:C.muted,marginTop:4,lineHeight:1.6}}>
-                    {GROUP_INFO[myGroup].locations.join(" · ")}
-                  </div>
+                  <div style={{fontSize:11,color:C.muted,marginTop:4,lineHeight:1.6}}>{GROUP_INFO[myGroup].locations.join(" · ")}</div>
                 </div>
                 <div style={{fontSize:12,fontWeight:600,color:C.muted,marginBottom:8,letterSpacing:.4,textTransform:"uppercase"}}>Your Wednesday Rotation</div>
                 {ROTATIONS[myGroup].map((s,i)=>(
@@ -1363,7 +1308,6 @@ export default function App() {
 
         {/* ── CONNECT ── */}
         {tab==="connect"&&<>
-          {/* Header ring + points */}
           <div style={{background:"linear-gradient(160deg,#1a0a2e 0%,#0d1b2e 60%,#0f1923 100%)",borderRadius:14,padding:"16px",marginBottom:12,border:"1px solid rgba(255,215,0,.12)"}}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
               <div>
@@ -1372,17 +1316,13 @@ export default function App() {
                 <div style={{fontSize:12,color:"rgba(240,230,211,.45)",fontStyle:"italic",marginTop:2}}>Meet everyone. Make it count.</div>
               </div>
               <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:8}}>
-                {/* Ring */}
                 <div style={{position:"relative",width:60,height:60}}>
                   <svg width="60" height="60" viewBox="0 0 60 60">
                     <circle cx="30" cy="30" r="25" fill="none" stroke="rgba(255,255,255,.1)" strokeWidth="5"/>
                     <circle cx="30" cy="30" r="25" fill="none" stroke={C.gold} strokeWidth="5"
-                      strokeLinecap="round"
-                      strokeDasharray={`${2*Math.PI*25}`}
+                      strokeLinecap="round" strokeDasharray={`${2*Math.PI*25}`}
                       strokeDashoffset={`${2*Math.PI*25*(1-pct/100)}`}
-                      transform="rotate(-90 30 30)"
-                      style={{transition:"stroke-dashoffset .6s ease"}}
-                    />
+                      transform="rotate(-90 30 30)" style={{transition:"stroke-dashoffset .6s ease"}}/>
                   </svg>
                   <div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",textAlign:"center"}}>
                     <div style={{fontSize:14,fontWeight:700,color:C.gold,lineHeight:1}}>{metCount}</div>
@@ -1400,9 +1340,7 @@ export default function App() {
             </div>
             <div style={{fontSize:10,color:"rgba(240,230,211,.35)",marginTop:4}}>{pct}% connected · {CONNECT_PTS} pts per connection</div>
           </div>
-
           <input className="srch" placeholder="🔍  Search name, theatre, group…" value={cSearch} onChange={e=>setCSearch(e.target.value)}/>
-
           <div className="tabs" style={{marginBottom:6}}>
             {["all","met","not yet"].map(f=>(
               <button key={f} className={`tab${cFilter===f?" on":""}`} onClick={()=>setCFilter(f)}>
@@ -1414,19 +1352,13 @@ export default function App() {
             {allGroups.map(g=>{
               const gc = GROUP_COLOR[g]||C.gold;
               const on = cGroup===g;
-              return(
-                <button key={g} className="tab" style={on?{borderColor:gc,color:gc,background:`${gc}18`}:{}}
-                  onClick={()=>setCGroup(g)}>{g}</button>
-              );
+              return(<button key={g} className="tab" style={on?{borderColor:gc,color:gc,background:`${gc}18`}:{}} onClick={()=>setCGroup(g)}>{g}</button>);
             })}
           </div>
-          <div style={{fontSize:11,color:`${C.muted}`,marginBottom:8}}>Showing {filtConns.length} of {ATTENDEES.length}</div>
-
-          {/* Attendee grid */}
+          <div style={{fontSize:11,color:C.muted,marginBottom:8}}>Showing {filtConns.length} of {ATTENDEES.length}</div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:16}}>
             {filtConns.map(p=>{
-              const met = !!conns[p.id];
-              const conn = conns[p.id];
+              const met = !!conns[p.id]; const conn = conns[p.id];
               const hasPoints = met&&(p.corporate||conn?.nominations?.length>0);
               const gc = GROUP_COLOR[p.group]||"#666";
               return(
@@ -1438,19 +1370,11 @@ export default function App() {
                   <div style={{position:"relative"}} onClick={e=>{e.stopPropagation();}}>
                     {photos[p.id]
                       ? <img src={photos[p.id]} alt={p.name} style={{width:42,height:42,borderRadius:"50%",objectFit:"cover",marginBottom:4,border:`2px solid ${avColor(p.id)}`}}/>
-                      : <div style={{width:42,height:42,borderRadius:"50%",background:avColor(p.id),
-                          display:"flex",alignItems:"center",justifyContent:"center",
-                          fontSize:11,fontWeight:700,color:"#fff",marginBottom:4}}>{ini(p.name)}</div>
+                      : <div style={{width:42,height:42,borderRadius:"50%",background:avColor(p.id),display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:"#fff",marginBottom:4}}>{ini(p.name)}</div>
                     }
-                    {met&&<div style={{position:"absolute",bottom:2,right:-3,background:"#00c853",
-                      color:"#fff",borderRadius:"50%",width:15,height:15,fontSize:8,
-                      display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700}}>✓</div>}
-                    <label style={{position:"absolute",top:-4,right:-6,background:"rgba(0,0,0,.6)",
-                      borderRadius:"50%",width:16,height:16,display:"flex",alignItems:"center",
-                      justifyContent:"center",cursor:"pointer",fontSize:9}} title="Add photo">
-                      📷
-                      <input type="file" accept="image/*" style={{display:"none"}}
-                        onChange={e=>handlePhotoUpload(p.id, e.target.files[0])}/>
+                    {met&&<div style={{position:"absolute",bottom:2,right:-3,background:"#00c853",color:"#fff",borderRadius:"50%",width:15,height:15,fontSize:8,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700}}>✓</div>}
+                    <label style={{position:"absolute",top:-4,right:-6,background:"rgba(0,0,0,.6)",borderRadius:"50%",width:16,height:16,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",fontSize:9}} title="Add photo">
+                      📷<input type="file" accept="image/*" style={{display:"none"}} onChange={e=>handlePhotoUpload(p.id, e.target.files[0])}/>
                     </label>
                   </div>
                   <div style={{fontSize:11,fontWeight:700,color:"#fff",textAlign:"center",lineHeight:1.3}}>{p.name}</div>
@@ -1472,8 +1396,6 @@ export default function App() {
         {tab==="gallery"&&<>
           <div className="stitle">📸 Summit Gallery</div>
           <div className="ssub">Share your favorite moments from the summit!</div>
-
-          {/* Upload section */}
           {galleryUploaded
             ? <div className="card" style={{textAlign:"center",padding:20,borderColor:"rgba(76,175,125,.4)",background:"rgba(76,175,125,.06)",marginBottom:12}}>
                 <div style={{fontSize:28,marginBottom:6}}>🎉</div>
@@ -1481,28 +1403,18 @@ export default function App() {
                 <div style={{fontSize:12,color:"rgba(255,255,255,.4)"}}>Your photo is being reviewed and will appear soon.</div>
               </div>
             : <div style={{marginBottom:12}}>
-                <input
-                  style={{width:"100%",padding:"10px 14px",borderRadius:10,border:"1px solid #2A2A40",
-                    background:"#1A1A28",color:"#E8E8F0",fontFamily:"'DM Sans',sans-serif",
-                    fontSize:13,outline:"none",marginBottom:8,boxSizing:"border-box"}}
-                  placeholder="Add a caption (optional)…"
-                  value={galleryCaption} onChange={e=>setGalleryCaption(e.target.value)}
-                />
+                <input style={{width:"100%",padding:"10px 14px",borderRadius:10,border:"1px solid #2A2A40",background:"#1A1A28",color:"#E8E8F0",fontFamily:"'DM Sans',sans-serif",fontSize:13,outline:"none",marginBottom:8,boxSizing:"border-box"}}
+                  placeholder="Add a caption (optional)…" value={galleryCaption} onChange={e=>setGalleryCaption(e.target.value)}/>
                 <label className="gallery-upload">
                   {galleryUploading
                     ? <><div style={{fontSize:28,marginBottom:6}}>⏳</div><div style={{fontSize:13,color:"rgba(255,215,0,.7)",fontWeight:600}}>Uploading…</div></>
                     : <><div style={{fontSize:32,marginBottom:6}}>📷</div>
                         <div style={{fontSize:14,fontWeight:700,color:"rgba(255,215,0,.8)"}}>Tap to Upload a Photo</div>
-                        <div style={{fontSize:11,color:"rgba(255,255,255,.3)",marginTop:4}}>Photos are reviewed before posting</div></>
-                  }
-                  <input type="file" accept="image/*" capture="environment" style={{display:"none"}}
-                    onChange={e=>uploadPhoto(e.target.files[0])} disabled={galleryUploading}/>
+                        <div style={{fontSize:11,color:"rgba(255,255,255,.3)",marginTop:4}}>Photos are reviewed before posting</div></>}
+                  <input type="file" accept="image/*" capture="environment" style={{display:"none"}} onChange={e=>uploadPhoto(e.target.files[0])} disabled={galleryUploading}/>
                 </label>
-              </div>
-          }
-
-          {/* Approved photos grid */}
-          {galleryPhotos.length === 0
+              </div>}
+          {galleryPhotos.length===0
             ? <div className="card" style={{textAlign:"center",padding:28}}>
                 <div style={{fontSize:36,marginBottom:10}}>🎬</div>
                 <div style={{fontFamily:"'Playfair Display',serif",fontSize:17,color:"#D4AF37",marginBottom:6}}>No Photos Yet!</div>
@@ -1512,16 +1424,13 @@ export default function App() {
                 {galleryPhotos.map(p=>(
                   <div key={p.id} className="gallery-item" onClick={()=>setLightbox(p)}>
                     <img src={p.url} alt={p.caption||"Summit photo"} loading="lazy"/>
-                    {(p.caption||p.uploaderName)&&(
-                      <div className="gallery-cap">
-                        {p.caption&&<div>{p.caption}</div>}
-                        {p.uploaderName&&<div className="gallery-who">📍 {p.uploaderName} · {p.uploaderLoc}</div>}
-                      </div>
-                    )}
+                    {(p.caption||p.uploaderName)&&(<div className="gallery-cap">
+                      {p.caption&&<div>{p.caption}</div>}
+                      {p.uploaderName&&<div className="gallery-who">📍 {p.uploaderName} · {p.uploaderLoc}</div>}
+                    </div>)}
                   </div>
                 ))}
-              </div>
-          }
+              </div>}
         </>}
 
         {/* ── LEADERBOARD ── */}
@@ -1544,9 +1453,7 @@ export default function App() {
                   <div style={{fontWeight:700,fontSize:15,color:C.gold}}>{uName}</div>
                   <div style={{fontSize:11,color:C.muted}}>{uLoc}</div>
                   <div style={{display:"flex",gap:5,marginTop:4}}>
-                    <span className="lb-t">🏪 {myEntry.v}</span>
-                    <span className="lb-t">🧠 {myEntry.q}</span>
-                    <span className="lb-t">🤝 {myEntry.c}</span>
+                    <span className="lb-t">🏪 {myEntry.v}</span><span className="lb-t">🧠 {myEntry.q}</span><span className="lb-t">🤝 {myEntry.c}</span>
                   </div>
                 </div>
                 <div><div className="lb-p">{totalPts}</div><div className="lb-pl">POINTS</div></div>
@@ -1558,24 +1465,19 @@ export default function App() {
             <div className="card" style={{textAlign:"center",padding:28,borderColor:`${C.gold}25`}}>
               <div style={{fontSize:36,marginBottom:10}}>🏆</div>
               <div style={{fontFamily:"'Playfair Display',serif",fontSize:18,color:C.gold,marginBottom:6}}>The Race Hasn't Started!</div>
-              <div style={{fontSize:13,color:C.muted,lineHeight:1.7}}>Check in at vendor booths, take quizzes, and connect with fellow managers to get on the board.<br/><br/><strong style={{color:C.text}}>First to score wins the top spot!</strong></div>
+              <div style={{fontSize:13,color:C.muted,lineHeight:1.7}}>Check in at vendor booths, take quizzes, and connect with fellow managers to get on the board.</div>
             </div>
           )}
           {lb.map((e,i)=>{
             const r=i+1, me=e.name?.includes("(You)");
             return(
-              <div className={`le${r===1?" g1":r===2?" g2":r===3?" g3":""}`} key={i}
-                style={me?{borderColor:C.gold,background:`${C.gold}12`}:{}}>
-                <div className={`rb${r===1?" r1":r===2?" r2":r===3?" r3":" ro"}`}>
-                  {r<=3?["🥇","🥈","🥉"][r-1]:r}
-                </div>
+              <div className={`le${r===1?" g1":r===2?" g2":r===3?" g3":""}`} key={i} style={me?{borderColor:C.gold,background:`${C.gold}12`}:{}}>
+                <div className={`rb${r===1?" r1":r===2?" r2":r===3?" r3":" ro"}`}>{r<=3?["🥇","🥈","🥉"][r-1]:r}</div>
                 <div style={{flex:1}}>
                   <div className="lb-n" style={me?{color:C.gold}:{}}>{e.name}</div>
                   <div className="lb-l">{e.loc}</div>
                   <div style={{display:"flex",gap:5,marginTop:3}}>
-                    <span className="lb-t">🏪 {e.v}</span>
-                    <span className="lb-t">🧠 {e.q}</span>
-                    <span className="lb-t">🤝 {e.c}</span>
+                    <span className="lb-t">🏪 {e.v}</span><span className="lb-t">🧠 {e.q}</span><span className="lb-t">🤝 {e.c}</span>
                   </div>
                 </div>
                 <div><div className="lb-p">{e.pts}</div><div className="lb-pl">POINTS</div></div>
@@ -1584,16 +1486,13 @@ export default function App() {
           })}
         </>}
 
-      </div>
+      </div>{/* end .wrap */}
 
       {/* TUTORIAL OVERLAY */}
       {showTutorial && uName && (
         <div className="tut-overlay" onClick={()=>{}}>
           <div className="tut-sheet">
-            <div className="tut-dots">
-              {[0,1,2].map(i=><div key={i} className={`tut-dot${tutSlide===i?" on":""}`}/>)}
-            </div>
-
+            <div className="tut-dots">{[0,1,2].map(i=><div key={i} className={`tut-dot${tutSlide===i?" on":""}`}/>)}</div>
             {tutSlide===0&&<>
               <span className="tut-icon">🤝</span>
               <div className="tut-title">Connect with Everyone</div>
@@ -1606,7 +1505,6 @@ export default function App() {
                 <div className="tut-tip-row"><span className="tut-tip-ico">⭐</span><span className="tut-tip-txt"><strong style={{color:"#D4AF37"}}>Earn 50 points</strong> for each meaningful connection!</span></div>
               </div>
             </>}
-
             {tutSlide===1&&<>
               <span className="tut-icon">🎯</span>
               <div className="tut-title">Vendor Quest</div>
@@ -1618,7 +1516,6 @@ export default function App() {
                 <div className="tut-tip-row"><span className="tut-tip-ico">📅</span><span className="tut-tip-txt">Vendor tables are open Tuesday & Wednesday in the lobby</span></div>
               </div>
             </>}
-
             {tutSlide===2&&<>
               <span className="tut-icon">🎬</span>
               <div className="tut-title">Your Summit HQ</div>
@@ -1630,13 +1527,11 @@ export default function App() {
                 <div className="tut-tip-row"><span className="tut-tip-ico">🏆</span><span className="tut-tip-txt"><strong style={{color:"#D4AF37"}}>Leaderboard</strong> — watch your points climb all week!</span></div>
               </div>
             </>}
-
             <div className="tut-nav">
               <button className="tut-skip" onClick={dismissTutorial}>Skip</button>
               {tutSlide < 2
                 ? <button className="tut-next" onClick={()=>setTutSlide(tutSlide+1)}>Next →</button>
-                : <button className="tut-next" onClick={dismissTutorial}>Let's Go! 🎬</button>
-              }
+                : <button className="tut-next" onClick={dismissTutorial}>Let's Go! 🎬</button>}
             </div>
           </div>
         </div>
@@ -1644,12 +1539,9 @@ export default function App() {
 
       {/* BOTTOM NAV */}
       <nav className="nav-bar">
-        {NAV.map(n=>(
-          <button key={n.id} className={`ni${tab===n.id?" on":""}`} onClick={()=>setTab(n.id)}>
-            <span className="ico">{n.ico}</span>
-            <span className="lbl">{n.lbl}</span>
-          </button>
-        ))}
+        {NAV.map(n=>(<button key={n.id} className={`ni${tab===n.id?" on":""}`} onClick={()=>setTab(n.id)}>
+          <span className="ico">{n.ico}</span><span className="lbl">{n.lbl}</span>
+        </button>))}
       </nav>
 
       {/* VENDOR QUIZ MODAL */}
@@ -1692,97 +1584,74 @@ export default function App() {
             <div className="csh-hdr" style={{background:avColor(modal.id)}}>
               {photos[modal.id]
                 ? <img src={photos[modal.id]} alt={modal.name} style={{width:64,height:64,borderRadius:"50%",objectFit:"cover",marginBottom:5,border:"3px solid rgba(255,255,255,.3)"}}/>
-                : <div className="csh-av">{ini(modal.name)}</div>
-              }
+                : <div className="csh-av">{ini(modal.name)}</div>}
               <div style={{fontSize:18,fontWeight:700,color:"#fff",textAlign:"center"}}>{modal.name}</div>
               <div style={{fontSize:12,color:"rgba(255,255,255,.58)",textAlign:"center"}}>{modal.role} · {modal.theatre}</div>
-              <div style={{fontSize:10,borderRadius:20,border:`1px solid ${GROUP_COLOR[modal.group]||"#666"}55`,
-                padding:"2px 12px",marginTop:3,letterSpacing:".05em",
-                background:`${GROUP_COLOR[modal.group]||"#666"}30`,color:GROUP_COLOR[modal.group]||"#ccc"}}>
-                {modal.group}
-              </div>
+              <div style={{fontSize:10,borderRadius:20,border:`1px solid ${GROUP_COLOR[modal.group]||"#666"}55`,padding:"2px 12px",marginTop:3,letterSpacing:".05em",background:`${GROUP_COLOR[modal.group]||"#666"}30`,color:GROUP_COLOR[modal.group]||"#ccc"}}>{modal.group}</div>
               {modal.corporate&&<div style={{fontSize:10,color:"rgba(255,215,0,.5)",marginTop:3,fontStyle:"italic"}}>Earns {CONNECT_PTS} pts · No nomination needed</div>}
               <button onClick={closeModal} style={{position:"absolute",top:12,right:12,background:"rgba(0,0,0,.28)",border:"none",color:"#fff",fontSize:14,borderRadius:"50%",width:28,height:28,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>✕</button>
             </div>
             <div className="csh-body">
-
-              {cStep===1&&(
-                <>
-                  <div className="step-lbl">{modal.corporate?`Log Your Conversation · +${CONNECT_PTS} pts`:"Step 1 of 2 · Prove You Met Them"}</div>
-                  <div className="q-box">
-                    <span style={{fontSize:20,flexShrink:0}}>🎬</span>
-                    <p className="q-text">{cQuestion}</p>
-                  </div>
-                  <textarea className="ctextarea" rows={3}
-                    placeholder="Your answer… (at least a few words)"
-                    value={cAnswer} onChange={e=>setCAnswer(e.target.value)}/>
-                  <div className="hint">{cAnswer.trim().length<5?`${5-cAnswer.trim().length} more characters to continue`:"✓ Looking good!"}</div>
-                  <div className="pts-note">
-                    {modal.corporate
-                      ? <>⭐ Meeting corporate staff automatically earns <strong>{CONNECT_PTS} points</strong></>
-                      : <>⭐ Nominate them in Step 2 to earn <strong>{CONNECT_PTS} points</strong></>
-                    }
-                  </div>
-                  <button className="prim-btn" disabled={cAnswer.trim().length<5} onClick={handleCNext}>
-                    {modal.corporate?`Save & Earn +${CONNECT_PTS} pts ✓`:"Next: Nominate Them →"}
+              {cStep===1&&(<>
+                <div className="step-lbl">{modal.corporate?`Log Your Conversation · +${CONNECT_PTS} pts`:"Step 1 of 2 · Prove You Met Them"}</div>
+                <div className="q-box"><span style={{fontSize:20,flexShrink:0}}>🎬</span><p className="q-text">{cQuestion}</p></div>
+                <textarea className="ctextarea" rows={3} placeholder="Your answer… (at least a few words)" value={cAnswer} onChange={e=>setCAnswer(e.target.value)}/>
+                <div className="hint">{cAnswer.trim().length<5?`${5-cAnswer.trim().length} more characters to continue`:"✓ Looking good!"}</div>
+                <div className="pts-note">
+                  {modal.corporate
+                    ? <>⭐ Meeting corporate staff automatically earns <strong>{CONNECT_PTS} points</strong></>
+                    : <>⭐ Nominate them in Step 2 to earn <strong>{CONNECT_PTS} points</strong></>}
+                </div>
+                <button className="prim-btn" disabled={cAnswer.trim().length<5} onClick={handleCNext}>
+                  {modal.corporate?`Save & Earn +${CONNECT_PTS} pts ✓`:"Next: Nominate Them →"}
+                </button>
+              </>)}
+              {cStep===2&&(<>
+                <div className="step-lbl">Step 2 of 2 · Spotlight & Values</div>
+                <p style={{fontSize:13,color:"rgba(240,230,211,.6)",lineHeight:1.6,marginBottom:14}}>
+                  Does {modal.name.split(" ")[0]} deserve any of these? <span style={{color:C.gold,fontWeight:700}}>⭐ {CONNECT_PTS} pts</span> with a nomination.
+                </p>
+                <div style={{fontSize:10,letterSpacing:".12em",textTransform:"uppercase",color:"rgba(240,230,211,.35)",marginBottom:7}}>✨ Spotlight Awards</div>
+                {SPOTLIGHT_AWARDS.map(a=><AwardRow key={a.id} award={a} selected={cNoms.includes(a.id)} onToggle={toggleNom}/>)}
+                <div style={{fontSize:10,letterSpacing:".12em",textTransform:"uppercase",color:"rgba(240,230,211,.35)",margin:"12px 0 7px"}}>🏠 Core Values</div>
+                {VALUE_AWARDS.map(a=><AwardRow key={a.id} award={a} selected={cNoms.includes(a.id)} onToggle={toggleNom}/>)}
+                {cNoms.length>0&&(<div style={{marginTop:12}}>
+                  <div style={{fontSize:11,color:"rgba(240,230,211,.4)",marginBottom:5}}>Why? (optional)</div>
+                  <textarea className="ctextarea" rows={2} placeholder="What made them stand out?" value={cNote} onChange={e=>setCNote(e.target.value)}/>
+                </div>)}
+                <div style={{display:"flex",gap:8,marginTop:8}}>
+                  <button className="ghost-btn" onClick={()=>setCStep(1)}>← Back</button>
+                  <button className="prim-btn" style={{flex:2,marginTop:0}} onClick={()=>commitConn(cNoms,cNote)}>
+                    {cNoms.length>0?`Save +${CONNECT_PTS} pts ✓`:"Save (skip nominations)"}
                   </button>
-                </>
-              )}
-
-              {cStep===2&&(
-                <>
-                  <div className="step-lbl">Step 2 of 2 · Spotlight & Values</div>
-                  <p style={{fontSize:13,color:"rgba(240,230,211,.6)",lineHeight:1.6,marginBottom:14}}>
-                    Does {modal.name.split(" ")[0]} deserve any of these?
-                    {" "}<span style={{color:C.gold,fontWeight:700}}>⭐ {CONNECT_PTS} pts</span> with a nomination.
-                  </p>
-                  <div style={{fontSize:10,letterSpacing:".12em",textTransform:"uppercase",color:"rgba(240,230,211,.35)",marginBottom:7}}>✨ Spotlight Awards</div>
-                  {SPOTLIGHT_AWARDS.map(a=><AwardRow key={a.id} award={a} selected={cNoms.includes(a.id)} onToggle={toggleNom}/>)}
-                  <div style={{fontSize:10,letterSpacing:".12em",textTransform:"uppercase",color:"rgba(240,230,211,.35)",margin:"12px 0 7px"}}>🏠 Core Values</div>
-                  {VALUE_AWARDS.map(a=><AwardRow key={a.id} award={a} selected={cNoms.includes(a.id)} onToggle={toggleNom}/>)}
-                  {cNoms.length>0&&(
-                    <div style={{marginTop:12}}>
-                      <div style={{fontSize:11,color:"rgba(240,230,211,.4)",marginBottom:5}}>Why? (optional)</div>
-                      <textarea className="ctextarea" rows={2} placeholder="What made them stand out?" value={cNote} onChange={e=>setCNote(e.target.value)}/>
+                </div>
+              </>)}
+              {cStep===3&&(<>
+                <div className="met-banner">
+                  <span style={{fontSize:24}}>🤝</span>
+                  <div style={{flex:1}}>
+                    <div style={{fontSize:14,fontWeight:700,color:"#00e676"}}>Connected!</div>
+                    <div style={{fontSize:11,color:"rgba(240,230,211,.35)",marginTop:2}}>
+                      {conns[modal.id]?.metAt ? new Date(conns[modal.id].metAt).toLocaleDateString("en-US",{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}) : ""}
                     </div>
-                  )}
-                  <div style={{display:"flex",gap:8,marginTop:8}}>
-                    <button className="ghost-btn" onClick={()=>setCStep(1)}>← Back</button>
-                    <button className="prim-btn" style={{flex:2,marginTop:0}} onClick={()=>commitConn(cNoms,cNote)}>
-                      {cNoms.length>0?`Save +${CONNECT_PTS} pts ✓`:"Save (skip nominations)"}
-                    </button>
                   </div>
-                </>
-              )}
-
-              {cStep===3&&(
-                <>
-                  <div className="met-banner">
-                    <span style={{fontSize:24}}>🤝</span>
-                    <div style={{flex:1}}>
-                      <div style={{fontSize:14,fontWeight:700,color:"#00e676"}}>Connected!</div>
-                      <div style={{fontSize:11,color:"rgba(240,230,211,.35)",marginTop:2}}>
-                        {conns[modal.id]?.metAt ? new Date(conns[modal.id].metAt).toLocaleDateString("en-US",{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}) : ""}
-                      </div>
-                    </div>
-                    {(modal.corporate||conns[modal.id]?.nominations?.length>0)&&
-                      <div style={{fontSize:12,fontWeight:700,color:C.gold,background:"rgba(255,215,0,.1)",border:"1px solid rgba(255,215,0,.2)",borderRadius:20,padding:"3px 10px"}}>+{CONNECT_PTS} pts</div>}
+                  {(modal.corporate||conns[modal.id]?.nominations?.length>0)&&
+                    <div style={{fontSize:12,fontWeight:700,color:C.gold,background:"rgba(255,215,0,.1)",border:"1px solid rgba(255,215,0,.2)",borderRadius:20,padding:"3px 10px"}}>+{CONNECT_PTS} pts</div>}
+                </div>
+                <div style={{background:"rgba(255,215,0,.05)",border:"1px solid rgba(255,215,0,.12)",borderRadius:10,padding:"11px 13px",marginBottom:13}}>
+                  <div style={{fontSize:10,letterSpacing:".1em",textTransform:"uppercase",color:"rgba(240,230,211,.35)",marginBottom:5}}>{cQuestion}</div>
+                  <div style={{fontSize:13,color:"rgba(240,230,211,.75)",fontStyle:"italic",lineHeight:1.6}}>"{conns[modal.id]?.answer}"</div>
+                </div>
+                {!modal.corporate&&conns[modal.id]?.nominations?.length>0&&(
+                  <div style={{marginBottom:13}}>
+                    <div style={{fontSize:10,letterSpacing:".1em",textTransform:"uppercase",color:"rgba(240,230,211,.35)",marginBottom:7}}>Nominations given:</div>
+                    {conns[modal.id].nominations.map(nid=>(
+                      <span key={nid} className="nom-chip">{ALL_AWARDS.find(a=>a.id===nid)?.emoji} {ALL_AWARDS.find(a=>a.id===nid)?.label}</span>
+                    ))}
                   </div>
-                  <div style={{background:"rgba(255,215,0,.05)",border:"1px solid rgba(255,215,0,.12)",borderRadius:10,padding:"11px 13px",marginBottom:13}}>
-                    <div style={{fontSize:10,letterSpacing:".1em",textTransform:"uppercase",color:"rgba(240,230,211,.35)",marginBottom:5}}>{cQuestion}</div>
-                    <div style={{fontSize:13,color:"rgba(240,230,211,.75)",fontStyle:"italic",lineHeight:1.6}}>"{conns[modal.id]?.answer}"</div>
-                  </div>
-                  {!modal.corporate&&conns[modal.id]?.nominations?.length>0&&(
-                    <div style={{marginBottom:13}}>
-                      <div style={{fontSize:10,letterSpacing:".1em",textTransform:"uppercase",color:"rgba(240,230,211,.35)",marginBottom:7}}>Nominations given:</div>
-                      {conns[modal.id].nominations.map(nid=>(
-                        <span key={nid} className="nom-chip">{ALL_AWARDS.find(a=>a.id===nid)?.emoji} {ALL_AWARDS.find(a=>a.id===nid)?.label}</span>
-                      ))}
-                    </div>
-                  )}
-                  <button className="prim-btn" onClick={closeModal}>Close</button>
-                </>
-              )}
+                )}
+                <button className="prim-btn" onClick={closeModal}>Close</button>
+              </>)}
             </div>
           </div>
         </div>
@@ -1797,18 +1666,11 @@ export default function App() {
           {lightbox.uploaderName&&<div className="lightbox-who">📍 {lightbox.uploaderName} · {lightbox.uploaderLoc}</div>}
           <div style={{display:"flex",gap:10,marginTop:16}} onClick={e=>e.stopPropagation()}>
             <button onClick={()=>downloadPhoto(lightbox.url, lightbox.caption, lightbox.uploaderName)}
-              style={{flex:1,padding:"11px 16px",borderRadius:12,border:"none",
-                background:"linear-gradient(135deg,#D4AF37,#F0D060)",
-                color:"#0A0A0F",fontSize:14,fontWeight:700,cursor:"pointer",
-                fontFamily:"'DM Sans',sans-serif",display:"flex",alignItems:"center",
-                justifyContent:"center",gap:7}}>
+              style={{flex:1,padding:"11px 16px",borderRadius:12,border:"none",background:"linear-gradient(135deg,#D4AF37,#F0D060)",color:"#0A0A0F",fontSize:14,fontWeight:700,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",display:"flex",alignItems:"center",justifyContent:"center",gap:7}}>
               ⬇️ Download
             </button>
             {navigator.share&&<button onClick={()=>navigator.share({title:"B&B Summit 2026",text:lightbox.caption||"Check out this summit moment!",url:lightbox.url})}
-              style={{padding:"11px 16px",borderRadius:12,border:"1px solid rgba(255,255,255,.2)",
-                background:"rgba(255,255,255,.08)",color:"#fff",fontSize:14,fontWeight:600,
-                cursor:"pointer",fontFamily:"'DM Sans',sans-serif",display:"flex",
-                alignItems:"center",gap:7}}>
+              style={{padding:"11px 16px",borderRadius:12,border:"1px solid rgba(255,255,255,.2)",background:"rgba(255,255,255,.08)",color:"#fff",fontSize:14,fontWeight:600,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",display:"flex",alignItems:"center",gap:7}}>
               📤 Share
             </button>}
           </div>
@@ -1816,13 +1678,7 @@ export default function App() {
       )}
 
       {/* TOAST */}
-      {toast&&(
-        <div className="toast">
-          🎉 {toast.msg}
-          {toast.pts&&<span style={{background:"rgba(255,255,255,.2)",borderRadius:20,padding:"2px 9px",fontSize:12}}>{toast.pts}</span>}
-        </div>
-      )}
-
+      {toast&&(<div className="toast">🎉 {toast.msg}{toast.pts&&<span style={{background:"rgba(255,255,255,.2)",borderRadius:20,padding:"2px 9px",fontSize:12}}>{toast.pts}</span>}</div>)}
       {/* FLOATING POINTS */}
       {popup&&<div className="pfloat">+{popup} pts 🎬</div>}
 
@@ -1837,7 +1693,7 @@ export default function App() {
             <button className="admin-close" onClick={()=>setShowAdmin(false)}>✕</button>
           </div>
 
-          {/* ── BANNER CONTROL ── */}
+          {/* BANNER CONTROL */}
           <div className="admin-section">
             <div className="admin-sh">📢 Send a Banner Alert</div>
             <div style={{background:"rgba(255,255,255,.04)",border:"1px solid rgba(255,255,255,.08)",borderRadius:12,padding:"14px"}}>
@@ -1851,69 +1707,38 @@ export default function App() {
                   </button>
                 ))}
               </div>
-              <textarea
-                value={bannerMsg} onChange={e=>setBannerMsg(e.target.value)}
+              <textarea value={bannerMsg} onChange={e=>setBannerMsg(e.target.value)}
                 placeholder="Type your message… e.g. 🚌 Buses leave in 10 minutes! Meet in the lobby NOW."
-                rows={3}
-                style={{width:"100%",background:"rgba(255,255,255,.06)",border:"1px solid rgba(255,255,255,.12)",
-                  borderRadius:9,color:"#E8E8F0",fontSize:13,padding:"10px 12px",
-                  resize:"vertical",outline:"none",fontFamily:"'DM Sans',sans-serif",
-                  lineHeight:1.6,marginBottom:10,boxSizing:"border-box"}}
-              />
+                rows={3} style={{width:"100%",background:"rgba(255,255,255,.06)",border:"1px solid rgba(255,255,255,.12)",borderRadius:9,color:"#E8E8F0",fontSize:13,padding:"10px 12px",resize:"vertical",outline:"none",fontFamily:"'DM Sans',sans-serif",lineHeight:1.6,marginBottom:10,boxSizing:"border-box"}}/>
               <div style={{display:"flex",gap:8}}>
                 <button onClick={()=>publishBanner(true)} disabled={!bannerMsg.trim()||bannerSaving}
-                  style={{flex:2,padding:"11px",borderRadius:10,border:"none",
-                    background:bannerSaved?"#4CAF7D":"linear-gradient(135deg,#D4AF37,#F0D060)",
-                    color:"#0A0A0F",fontSize:14,fontWeight:700,cursor:"pointer",
-                    fontFamily:"'DM Sans',sans-serif",opacity:(!bannerMsg.trim()||bannerSaving)?0.4:1,
-                    transition:"all .2s"}}>
+                  style={{flex:2,padding:"11px",borderRadius:10,border:"none",background:bannerSaved?"#4CAF7D":"linear-gradient(135deg,#D4AF37,#F0D060)",color:"#0A0A0F",fontSize:14,fontWeight:700,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",opacity:(!bannerMsg.trim()||bannerSaving)?0.4:1,transition:"all .2s"}}>
                   {bannerSaving?"Sending…":bannerSaved?"✅ Sent!":"📣 Send to Everyone"}
                 </button>
                 <button onClick={()=>publishBanner(false)} disabled={bannerSaving}
-                  style={{flex:1,padding:"11px",borderRadius:10,
-                    border:"1px solid rgba(255,255,255,.15)",background:"transparent",
-                    color:"rgba(255,255,255,.4)",fontSize:13,fontWeight:600,cursor:"pointer",
-                    fontFamily:"'DM Sans',sans-serif"}}>
+                  style={{flex:1,padding:"11px",borderRadius:10,border:"1px solid rgba(255,255,255,.15)",background:"transparent",color:"rgba(255,255,255,.4)",fontSize:13,fontWeight:600,cursor:"pointer",fontFamily:"'DM Sans',sans-serif"}}>
                   Clear Banner
                 </button>
               </div>
-              <div style={{fontSize:11,color:"rgba(255,255,255,.25)",marginTop:8,fontStyle:"italic"}}>
-                Banner appears instantly on every open phone. Updates live via Firebase.
-              </div>
+              <div style={{fontSize:11,color:"rgba(255,255,255,.25)",marginTop:8,fontStyle:"italic"}}>Banner appears instantly on every open phone. Updates live via Firebase.</div>
             </div>
           </div>
 
-          {/* ── PUSH NOTIFICATIONS ── */}
+          {/* PUSH NOTIFICATIONS */}
           <div className="admin-section">
             <div className="admin-sh">🔔 Push Notification</div>
             <div style={{background:"rgba(255,255,255,.04)",border:"1px solid rgba(255,255,255,.08)",borderRadius:12,padding:"14px"}}>
-              <div style={{fontSize:12,color:"rgba(255,255,255,.4)",marginBottom:10,lineHeight:1.6}}>
-                Sends a real device notification — appears even when the app is closed on Android & iPhones that added the app to their home screen.
-              </div>
-              <textarea
-                value={pushMsg} onChange={e=>setPushMsg(e.target.value)}
-                placeholder="e.g. 🚌 Buses leave in 5 minutes! Head to the lobby NOW."
-                rows={3}
-                style={{width:"100%",background:"rgba(255,255,255,.06)",border:"1px solid rgba(255,255,255,.12)",
-                  borderRadius:9,color:"#E8E8F0",fontSize:13,padding:"10px 12px",
-                  resize:"vertical",outline:"none",fontFamily:"'DM Sans',sans-serif",
-                  lineHeight:1.6,marginBottom:10,boxSizing:"border-box"}}
-              />
+              <div style={{fontSize:12,color:"rgba(255,255,255,.4)",marginBottom:10,lineHeight:1.6}}>Sends a real device notification — appears even when the app is closed.</div>
+              <textarea value={pushMsg} onChange={e=>setPushMsg(e.target.value)} placeholder="e.g. 🚌 Buses leave in 5 minutes!" rows={3}
+                style={{width:"100%",background:"rgba(255,255,255,.06)",border:"1px solid rgba(255,255,255,.12)",borderRadius:9,color:"#E8E8F0",fontSize:13,padding:"10px 12px",resize:"vertical",outline:"none",fontFamily:"'DM Sans',sans-serif",lineHeight:1.6,marginBottom:10,boxSizing:"border-box"}}/>
               <button onClick={sendPushNotification} disabled={!pushMsg.trim()||pushSending}
-                style={{width:"100%",padding:"11px",borderRadius:10,border:"none",
-                  background:pushSent?"#4CAF7D":"linear-gradient(135deg,#5B8FFF,#8BB0FF)",
-                  color:"#fff",fontSize:14,fontWeight:700,cursor:"pointer",
-                  fontFamily:"'DM Sans',sans-serif",
-                  opacity:(!pushMsg.trim()||pushSending)?0.4:1,transition:"all .2s"}}>
+                style={{width:"100%",padding:"11px",borderRadius:10,border:"none",background:pushSent?"#4CAF7D":"linear-gradient(135deg,#5B8FFF,#8BB0FF)",color:"#fff",fontSize:14,fontWeight:700,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",opacity:(!pushMsg.trim()||pushSending)?0.4:1,transition:"all .2s"}}>
                 {pushSending?"Sending…":pushSent?"✅ Notification Sent!":"🔔 Send Push Notification"}
               </button>
-              <div style={{fontSize:11,color:"rgba(255,255,255,.2)",marginTop:8,fontStyle:"italic"}}>
-                💡 Tip: Send the banner AND push together for maximum reach.
-              </div>
             </div>
           </div>
 
-          {/* ── PHOTO APPROVALS ── */}
+          {/* PHOTO APPROVALS */}
           <div className="admin-section">
             <div className="admin-sh">📸 Photo Approvals
               {pendingPhotos.length>0&&<span style={{marginLeft:8,background:"#E63946",color:"#fff",borderRadius:20,padding:"1px 8px",fontSize:10,fontWeight:700}}>{pendingPhotos.length} pending</span>}
@@ -1928,34 +1753,20 @@ export default function App() {
                       <div style={{fontSize:11,color:"rgba(255,215,0,.5)",marginBottom:4}}>{p.uploaderLoc}</div>
                       {p.caption&&<div style={{fontSize:11,color:"rgba(255,255,255,.45)",fontStyle:"italic",marginBottom:8}}>"{p.caption}"</div>}
                       <div style={{display:"flex",gap:6}}>
-                        <button onClick={()=>approvePhoto(p.id,true)}
-                          style={{flex:1,padding:"7px",borderRadius:8,
-                            background:"rgba(76,175,125,.2)",color:"#4CAF7D",
-                            fontSize:12,fontWeight:700,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",
-                            border:"1px solid rgba(76,175,125,.3)"}}>
-                          ✅ Approve
-                        </button>
-                        <button onClick={()=>approvePhoto(p.id,false)}
-                          style={{flex:1,padding:"7px",borderRadius:8,
-                            background:"rgba(230,57,70,.15)",color:"#E63946",
-                            fontSize:12,fontWeight:700,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",
-                            border:"1px solid rgba(230,57,70,.25)"}}>
-                          ❌ Reject
-                        </button>
+                        <button onClick={()=>approvePhoto(p.id,true)} style={{flex:1,padding:"7px",borderRadius:8,background:"rgba(76,175,125,.2)",color:"#4CAF7D",fontSize:12,fontWeight:700,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",border:"1px solid rgba(76,175,125,.3)"}}>✅ Approve</button>
+                        <button onClick={()=>approvePhoto(p.id,false)} style={{flex:1,padding:"7px",borderRadius:8,background:"rgba(230,57,70,.15)",color:"#E63946",fontSize:12,fontWeight:700,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",border:"1px solid rgba(230,57,70,.25)"}}>❌ Reject</button>
                       </div>
                     </div>
                   </div>
-                ))
-            }
+                ))}
           </div>
 
-          {/* ── AWARD TALLIES ── */}
+          {/* AWARD TALLIES */}
           <div className="admin-section">
             <div className="admin-sh">✨ Spotlight Awards — Vote Tallies</div>
             {!adminData
               ? <div style={{color:"rgba(255,255,255,.3)",fontSize:13,fontStyle:"italic"}}>Connecting to Firebase…</div>
               : (() => {
-                  // Tally votes per award per nominee
                   const tally = {};
                   ALL_AWARDS.forEach(a => { tally[a.id] = {}; });
                   Object.values(adminData).forEach(row => {
@@ -1992,11 +1803,10 @@ export default function App() {
                       </div>
                     );
                   });
-                })()
-            }
+                })()}
           </div>
 
-          {/* ── LIVE LEADERBOARD ── */}
+          {/* LIVE LEADERBOARD */}
           <div className="admin-section">
             <div className="admin-sh">🏆 Live Points Leaderboard</div>
             {!lbData
@@ -2010,18 +1820,15 @@ export default function App() {
                         <div style={{fontSize:13,fontWeight:600,color:i===0?"#D4AF37":"#E8E8F0"}}>{e.name}</div>
                         <div style={{fontSize:11,color:"rgba(255,255,255,.35)"}}>{e.location}</div>
                         <div style={{display:"flex",gap:5,marginTop:3}}>
-                          <span className="admin-badge">🏪 {e.booths}</span>
-                          <span className="admin-badge">🧠 {e.quizzes}</span>
-                          <span className="admin-badge">🤝 {e.connections}</span>
+                          <span className="admin-badge">🏪 {e.booths}</span><span className="admin-badge">🧠 {e.quizzes}</span><span className="admin-badge">🤝 {e.connections}</span>
                         </div>
                       </div>
                       <div style={{fontFamily:"'Playfair Display',serif",fontSize:22,color:i===0?"#D4AF37":"rgba(255,255,255,.7)",fontWeight:700}}>{e.pts}</div>
                     </div>
-                  ))
-            }
+                  ))}
           </div>
 
-          {/* ── NOMINATION DETAIL LOG ── */}
+          {/* NOMINATION NOTES */}
           <div className="admin-section">
             <div className="admin-sh">📋 All Nomination Notes</div>
             {!adminData||Object.values(adminData).length===0
@@ -2037,10 +1844,8 @@ export default function App() {
                       </div>
                       {r.note&&<div style={{fontSize:12,color:"rgba(255,255,255,.45)",fontStyle:"italic"}}>"{r.note}"</div>}
                     </div>
-                  ))
-            }
+                  ))}
           </div>
-
         </div>
       )}
     </>
@@ -2060,4 +1865,3 @@ function AwardRow({ award, selected, onToggle }) {
     </div>
   );
 }
-
