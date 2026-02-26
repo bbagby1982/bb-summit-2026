@@ -2,8 +2,6 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, setDoc, collection, onSnapshot, serverTimestamp }
   from "firebase/firestore";
-import { getMessaging, getToken, onMessage } from "firebase/messaging";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 // ── FIREBASE CONFIG ── Replace these values with your own from Firebase console
 const FB_CONFIG = {
@@ -15,15 +13,9 @@ const FB_CONFIG = {
   appId:             "1:251888268350:web:e90a8a0522b7a87ff08d6f",
 };
 let db = null;
-let messaging = null;
-let storage = null;
-// ⬇️ Paste your VAPID key here (Firebase Console → Project Settings → Cloud Messaging → Web Push certificates)
-const VAPID_KEY = "REPLACE_WITH_YOUR_VAPID_KEY";
 try {
   const fbApp = initializeApp(FB_CONFIG);
   db = getFirestore(fbApp);
-  messaging = getMessaging(fbApp);
-  storage = getStorage(fbApp);
 } catch(e) { console.warn("Firebase init failed — running offline", e); }
 
 // ─── THEME ────────────────────────────────────────────────────────────────────
@@ -827,13 +819,16 @@ export default function App() {
 
   // Register device for push notifications after onboarding
   useEffect(() => {
-    if (!uName || !uLoc || !db || !messaging) return;
+    if (!uName || !uLoc || !db) return;
+    // Push notifications disabled - requires FCM setup
+    return;
     async function registerPush() {
       try {
         const perm = await Notification.requestPermission();
         if (perm !== "granted") return;
         setPushGranted(true);
-        const token = await getToken(messaging, { vapidKey: VAPID_KEY });
+        // const token = await getToken(messaging, { vapidKey: VAPID_KEY });
+        const token = null;
         if (!token) return;
         const id = `${uName.replace(/[^a-zA-Z0-9]/g,"-")}_${uLoc.replace(/[^a-zA-Z0-9]/g,"-")}`;
         await setDoc(doc(db, "fcmTokens", id), {
@@ -844,8 +839,9 @@ export default function App() {
     }
     registerPush();
     // Foreground message handler — show as banner
-    if (messaging) {
-      onMessage(messaging, payload => {
+    if (false) { // messaging disabled
+      // onMessage placeholder
+      if (false) {
         const msg = payload.notification?.body || payload.data?.message || "";
         if (msg) setNotice({ active: true, message: msg, type: "info", updated: Date.now().toString() });
       });
@@ -879,13 +875,12 @@ export default function App() {
   }, []);
 
   async function uploadPhoto(file) {
-    if (!file || !db || !storage) return;
+    if (!file || !db) return;
     setGalleryUploading(true);
     try {
       const id = `${Date.now()}_${uName.replace(/[^a-zA-Z0-9]/g,"-")}`;
-      const storageRef = ref(storage, `gallery/${id}`);
-      await uploadBytes(storageRef, file);
-      const url = await getDownloadURL(storageRef);
+      // Storage upload disabled - requires Firebase Storage setup
+      const url = URL.createObjectURL(file);
       await setDoc(doc(db, "gallery", id), {
         url, caption: galleryCaption.trim(),
         uploaderName: uName, uploaderLoc: uLoc,
