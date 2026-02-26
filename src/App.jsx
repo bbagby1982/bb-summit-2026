@@ -1,4 +1,22 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, setDoc, collection, onSnapshot, serverTimestamp }
+  from "firebase/firestore";
+
+// ── FIREBASE CONFIG ── Replace these values with your own from Firebase console
+const FB_CONFIG = {
+  apiKey:            "REPLACE_WITH_YOUR_API_KEY",
+  authDomain:        "REPLACE_WITH_YOUR_AUTH_DOMAIN",
+  projectId:         "REPLACE_WITH_YOUR_PROJECT_ID",
+  storageBucket:     "REPLACE_WITH_YOUR_STORAGE_BUCKET",
+  messagingSenderId: "REPLACE_WITH_YOUR_MESSAGING_SENDER_ID",
+  appId:             "REPLACE_WITH_YOUR_APP_ID",
+};
+let db = null;
+try {
+  const fbApp = initializeApp(FB_CONFIG);
+  db = getFirestore(fbApp);
+} catch(e) { console.warn("Firebase init failed — running offline", e); }
 
 // ─── THEME ────────────────────────────────────────────────────────────────────
 const C = {
@@ -93,7 +111,7 @@ const ROTATIONS = {
     {time:"11:00–11:50 AM", session:"FUNdamentals",                       host:"Tyler Rice & Jacob Mellor",                    loc:"Auditorium 4",  emoji:"🎉"},
     {time:"12:00 PM",       session:"Lunch & Networking",                 host:"",                                              loc:"Johnnie's",     emoji:"🍽️", isLunch:true},
     {time:"1:00–1:50 PM",   session:"HR Behind the Handbook",                             host:"Pam Carr & James Warner",                      loc:"Auditorium 6",  emoji:"💼"},
-    {time:"2:00–2:30 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby Ford & Brett Zornes",                  loc:"Stockroom",     emoji:"⭐"},
+    {time:"2:00–2:30 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Stockroom",     emoji:"⭐"},
     {time:"2:30–3:00 PM",   session:"Lights Camera, Loyalty",host:"Paul Weiss",                                   loc:"TBD",           emoji:"🎟️"},
     {time:"3:00–3:50 PM",   session:"Driving the Magic with Metrics",               host:"Curtis Diehl, Michael Hagan & Kent Peterson",   loc:"Auditorium 7",  emoji:"💰"},
     {time:"4:00–4:50 PM",   session:"Stock Room Glow Up",                          host:"Jason Foster & Chad Christopher",              loc:"Auditorium 9",  emoji:"📦"},
@@ -129,7 +147,7 @@ const HOTEL_INFO = {
     notes:"Flyers & select corporate staff. Free hot breakfast daily. Check-in after 3 PM." },
   "Hampton Inn":{ emoji:"🏨", color:"#4CAF7D",
     address:"1571 Main St, Kansas City, MO 64108", phone:"(816) 255-3915",
-    notes:"Theatre managers & drivers. Free hot breakfast +. Check-in after 3 PM." },
+    notes:"Theatre managers & drivers. Free hot breakfast + on-site Starbucks. Check-in after 3 PM." },
 };
 
 // ─── VENDORS ─────────────────────────────────────────────────────────────────
@@ -275,61 +293,60 @@ const VENDORS = [
 // ─── SCHEDULE ────────────────────────────────────────────────────────────────
 const SCHEDULE = {
   "Monday, March 9":[
-    {time:"1:30 – 2:45 PM",  event:"📦 District Manager Stockroom Training",                loc:"Stockroom",                  venue:"🏪"},
-    {time:"2:30 – 3:00 PM",  event:"Registration for CEC's",                                       loc:"Main Lobby",                 venue:"🏛️"},
+    {time:"1:30 – 3:00 PM",  event:"District Manager Stockroom Training",                loc:"Stockroom",                  venue:"🏪"},
+    {time:"2:30 – 3:00 PM",  event:"Registration",                                       loc:"Main Lobby",                 venue:"🏛️"},
     {time:"3:00 – 6:00 PM",  event:"CEC Meeting",                                        loc:"Auditorium 12",              venue:"🎬"},
     {time:"6:00 PM+",        event:"🍽️ Dinner for out of town Attendees",                loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
     {time:"6:15 PM",         event:"RealD — Special Guest Dinner. Meet and Greet",       loc:"Johnnie's Jazz Bar & Grill", venue:"🎷"},
   ],
   "Tuesday, March 10":[
-    {time:"9:15 – 9:30 AM",  event:"☕ Breakfast — Coffee Provided at Theatre",          loc:"Hotel",                      venue:"🏨", food:true},
+    {time:"9:15 – 9:30 AM",  event:"☕️ Breakfast — Coffee Provided at Theatre",          loc:"Hotel",                      venue:"🏨", food:true},
     {time:"9:30 – 9:45 AM",  event:"🚌 Bus Pickup → Liberty Cinema 12",                  loc:"Hotel",                      venue:"🚌"},
-    {time:"10:00 – 11:00 AM",event:"🍽️F&B town Meeting (Food & Bar Towns)",                loc:"Auditorium 12",              venue:"🎬"},
-    {time:"11:15 – 11:45 AM",event:"✅Non-CEC Registration",                                loc:"Main Lobby",                 venue:"🏛️"},
-    {time:"11:45 AM",        event:"🍽️ Lunch — New Arrivals / ScreenX Preview",          loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"12:00 – 12:30 PM",event:"🍽️ Lunch — Morning Session Attendees",              loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"1:00 – 1:15 PM",  event:"✔️Vendor Meet and Greet Open - Be Sure check off in your app🎯",                      loc:"Main Lobby",                 venue:"🏛️"},
-    {time:"1:15 – 1:30 PM",  event:"📽️Screenvision Presentation",                           loc:"Auditorium 1",               venue:"🎬"},
-    {time:"1:30 – 2:00 PM",  event:"🪄All Company Gathering — Welcome & State of Company",  loc:"Auditorium 1",               venue:"🎬"},
-    {time:"2:15 – 3:00 PM",  event:"😊Respect. Safety. Belonging.Creating Community Within", loc:"Auditorium 1",               venue:"🎬"},
-    {time:"3:15 – 3:30 PM",  event:"Break",                                            loc:"Lobby",                      venue:"☕"},
-    {time:"3:30 – 4:15 PM",  event:"📦Stock Room Glow Up Session",                           loc:"Auditorium 1",               venue:"🎬"},
-    {time:"4:15 – 4:30 PM",  event:"📒Smart Scheduling",                      loc:"Auditorium 1",               venue:"🎬"},
-    {time:"4:45 – 5:00 PM",  event:"Break",                                            loc:"Lobby",                      venue:"☕"},
-    {time:"5:00 – 5:30 PM",  event:"👨‍🏫Training the Magic - Training & Development",                              loc:"Auditorium 1",               venue:"🎬"},
-    {time:"5:45 – 6:30 PM",  event:"🍕 Pizza Dinner",                                    loc:"Auditorium 1",               venue:"🍕", food:true},
-    {time:"6:15 – 6:30 PM",  event:"📽️ScreenX Presentation",                                loc:"Auditorium 1",               venue:"🎬"},
-    {time:"6:30 PM+",        event:"📽️Studio Screening",                         loc:"Auditorium 1",               venue:"🎬"},
-    {time:"8:45 PM+",        event:"🎉 After Party & Dessert",                            loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"9:45 PM",         event:"🚌 Bus Return to Hotel",                              loc:"Hotel",                      venue:"🚌"},
+    {time:"10:00 – 11:00 AM",event:"🍽️F&B Town Meeting (Food & Bar Managers)",          loc:"Auditorium 12",              venue:"🎬"},
+    {time:"11:15 – 11:45 AM",event:"✅ Non-CEC Registration",                                     loc:"Main Lobby",                 venue:"🏛️"},
+    {time:"11:45 AM",        event:"🍽️ Lunch — New Arrivals / ScreenX Preview",         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"12:00 – 12:30 PM",event:"🍽️ Lunch — Morning Session Attendees",         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"1:00 – 1:15 PM",  event:"✔️ Vendor Meet and Greet Open — Check in via your app 🎯",  loc:"Main Lobby",  venue:"🏛️"},
+    {time:"1:15 – 1:30 PM",  event:"📽️ Screenvision Presentation",                     loc:"Auditorium 1",               venue:"🎬"},
+    {time:"1:30 – 2:00 PM",  event:"🪄 All Company Gathering — Welcome & State of Company", loc:"Auditorium 1",            venue:"🎬"},
+    {time:"2:15 – 3:00 PM",  event:"😊 Respect. Safety. Belonging. Creating Community Within", loc:"Auditorium 1",             venue:"🎬"},
+    {time:"3:15 – 3:30 PM",  event:"Break",                                              loc:"Lobby",                      venue:"☕️"},
+    {time:"3:30 – 4:15 PM",  event:"📦 Stock Room Glow Up Session",                          loc:"Auditorium 1",               venue:"🎬"},
+    {time:"4:15 – 4:30 PM",  event:"📒 Smart Scheduling",                                    loc:"Auditorium 1",               venue:"🎬"},
+    {time:"4:45 – 5:00 PM",  event:"Break",                                              loc:"Lobby",                      venue:"☕️"},
+    {time:"5:00 – 5:30 PM",  event:"👨‍🏫 Training the Magic — Training & Development", loc:"Auditorium 1",  venue:"🎬"},
+    {time:"5:45 – 6:30 PM",  event:"🍕 Pizza Dinner",                                        loc:"Auditorium 1",               venue:"🍕", food:true},
+    {time:"6:15 – 6:30 PM",  event:"📽️ ScreenX Presentation",                          loc:"Auditorium 1",               venue:"🎬"},
+    {time:"6:30 PM+",        event:"📽️ Studio Screening",                                    loc:"Auditorium 1",               venue:"🎬"},
+    {time:"8:45 PM+",        event:"🎉 After Party & Dessert",                                     loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"9:45 PM",         event:"🚌 Bus Return to Hotel",                                       loc:"Hotel",                      venue:"🚌"},
   ],
   "Wednesday, March 11":[
-    {time:"9:30 – 9:45 AM",  event:"☕Arrival and Coffee at Johnnie's",                 loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"9:20 – 9:40 AM",  event:"🚌 Bus Pickup from hotels→ Liberty Cinema 12",                  loc:"Hotel",                      venue:"🚌"},
-    {time:"10:00 AM – 5:00", event:"🔄 Round Robin Sessions (see My Group tab!)",         loc:"Aud 4 / 6 / 7 / 8 / 9 / Stockroom", venue:"🎬"},
-    {time:"Staggered",       event:"🍽️ Lunch — see My Group for your time",             loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"5:00 – 5:30 PM",  event:"📽️Barco Presentation & Wrap Up",                    loc:"Auditorium 1",               venue:"🎬"},
-    {time:"5:30 – 6:00 PM",  event:"🚌 Buses → Main Event (Summit)",                     loc:"Liberty Cinema 12",          venue:"🚌"},
-    {time:"6:00 – 8:45 PM",  event:"🎳 Off-Site Activity & Dinner",                      loc:"Main Event",                 venue:"🎳", food:true},
-    {time:"8:45 – 9:15 PM",  event:"🚌 Return Trip to Hotel",                            loc:"Hotel",                      venue:"🚌"},
+    {time:"9:20 – 9:40 AM",  event:"🚌 Bus Pickup from Hotels → Liberty Cinema 12",     loc:"Hotel",                      venue:"🚌"},
+    {time:"9:30 – 9:45 AM",  event:"☕ Arrival and Coffee at Johnnie's",                         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"10:00 AM – 5:00", event:"🔄 Round Robin Sessions (see My Group tab!)",            loc:"Aud 4 / 6 / 7 / 8 / 9 / Stockroom", venue:"🎬"},
+    {time:"Staggered",       event:"🍽️ Lunch — see My Group for your time",            loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"5:00 – 5:30 PM",  event:"📽️ Barco Presentation & Wrap Up",                  loc:"Auditorium 1",               venue:"🎬"},
+    {time:"5:30 – 6:00 PM",  event:"🚌 Buses → Main Event (Summit)",                    loc:"Liberty Cinema 12",          venue:"🚌"},
+    {time:"6:00 – 8:45 PM",  event:"🎳 Off-Site Activity & Dinner",                          loc:"Main Event",                 venue:"🎳", food:true},
+    {time:"8:45 – 9:15 PM",  event:"🚌 Return Trip to Hotel",                                loc:"Hotel",                      venue:"🚌"},
   ],
   "Thursday, March 12":[
-    {time:"9:15 – 9:30 AM",  event:"☕ Coffee at Johnnie's",                 loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"9:20 – 9:35 AM",  event:"🚌 Bus Pickup → Liberty Cinema 12",                  loc:"Hotel",                      venue
-    {time:"9:45 – 9:50 AM",  event:"☕Arrival and Coffee at Johnnie's",                 loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true}
-    {time:"10:00 – 10:15 AM",event:"📽️Barco Presentation",                                     loc:"Auditorium 1",               venue:"🎬"},
-    {time:"10:15 – 10:30 AM",event:"💻Smart Systems, Seamless Experiences - IT Talks",                                    loc:"Auditorium 1",               venue:"🎬"},
-    {time:"10:45 – 11:00 AM",event:"📽️GDC Presentation",                                          loc:"Auditorium 1",               venue:"🎬"},
-    {time:"11:00 – 11:15 AM",event:"⭐ Paramount — Studio Presentation",                  loc:"Auditorium 1",               venue:"⭐"},
-    {time:"11:15 – 11:30 AM",event:"🎥 Sony — Studio Presentation",                      loc:"Auditorium 1",               venue:"🎥"},
-    {time:"11:30 AM – 12:15",event:"🔨Facilities Maintenance",                               loc:"Auditorium 1",               venue:"🎬"},
-    {time:"12:30 – 1:15 PM", event:"🍽️ Lunch",                                           loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"1:15 – 1:45 PM",  event:"🎉Cheers! — Paul Farnsworth & Toma Foster",         loc:"Auditorium 1",               venue:"🎬"},
-    {time:"1:45 – 2:15 PM",  event:"🎞️Programming — Chad Christopher & Ed Carl",            loc:"Auditorium 1",               venue:"🎬"},
-    {time:"2:15 – 2:30 PM",  event:"☕ Break",                                            loc:"Lobby",                      venue:"☕"},
-    {time:"2:30 – 3:00 PM",  event:"🎖️ Years of Service Recognition",                   loc:"Auditorium 1",               venue:"🏆"},
-    {time:"3:00 – 3:30 PM",  event:"🏆 Awards Ceremony",                                 loc:"Auditorium 1",               venue:"🏆"},
-    {time:"3:30 PM+",        event:"🎉 Wrap Up!",                          loc:"Auditorium 1",               venue:"🎉"},
+    {time:"9:20 – 9:35 AM",  event:"🚌 Bus Pickup → Liberty Cinema 12",                 loc:"Hotel",                      venue:"🚌"},
+    {time:"9:45 – 9:50 AM",  event:"☕ Arrival and Coffee at Johnnie's",                         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"10:00 – 10:15 AM",event:"📽️ Barco Presentation",                            loc:"Auditorium 1",               venue:"🎬"},
+    {time:"10:15 – 10:30 AM",event:"💻 Smart Systems, Seamless Experiences — IT Talks", loc:"Auditorium 1",               venue:"🎬"},
+    {time:"10:45 – 11:00 AM",event:"📽️ GDC Presentation",                              loc:"Auditorium 1",               venue:"🎬"},
+    {time:"11:00 – 11:15 AM",event:"⭐ Paramount — Studio Presentation",                    loc:"Auditorium 1",               venue:"⭐"},
+    {time:"11:15 – 11:30 AM",event:"🎥 Sony — Studio Presentation",                     loc:"Auditorium 1",               venue:"🎥"},
+    {time:"11:30 AM – 12:15",event:"🔨 Facilities Maintenance",                              loc:"Auditorium 1",               venue:"🎬"},
+    {time:"12:30 – 1:15 PM", event:"🍽️ Lunch",                                         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"1:15 – 1:45 PM",  event:"🎉 Cheers! — Paul Farnsworth & Toma Foster",       loc:"Auditorium 1",               venue:"🎬"},
+    {time:"1:45 – 2:15 PM",  event:"🎞️ Programming — Chad Christopher & Ed Carl", loc:"Auditorium 1",               venue:"🎬"},
+    {time:"2:15 – 2:30 PM",  event:"☕️ Break",                                             loc:"Lobby",                      venue:"☕️"},
+    {time:"2:30 – 3:00 PM",  event:"🎖️ Years of Service Recognition",                  loc:"Auditorium 1",               venue:"🏆"},
+    {time:"3:00 – 3:30 PM",  event:"🏆 Awards Ceremony",                                     loc:"Auditorium 1",               venue:"🏆"},
+    {time:"3:30 PM+",        event:"🎉 Wrap Up!",                                                  loc:"Auditorium 1",               venue:"🎉"},
   ],
 };
 const DAYS = ["Monday, March 9","Tuesday, March 10","Wednesday, March 11","Thursday, March 12"];
@@ -644,6 +661,46 @@ body{background:${C.bg};color:${C.text};font-family:'DM Sans',sans-serif}
 .check.sel{background:rgba(255,215,0,.18);border-color:rgba(255,215,0,.6)}
 .met-banner{display:flex;align-items:center;gap:12px;margin-bottom:14px;background:rgba(0,200,83,.07);border:1px solid rgba(0,200,83,.18);border-radius:12px;padding:12px 14px}
 .nom-chip{display:inline-block;background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.22);border-radius:20px;padding:4px 10px;font-size:11px;color:${C.gold};margin-right:5px;margin-bottom:5px}
+.admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:600;overflow-y:auto;padding:20px 16px 40px}
+.admin-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(255,215,0,.2)}
+.admin-title{font-family:"Playfair Display",serif;font-size:22px;font-weight:900;color:#D4AF37}
+.admin-close{background:rgba(255,255,255,.08);border:none;color:#fff;border-radius:50%;width:34px;height:34px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.admin-section{margin-bottom:22px}
+.admin-sh{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,215,0,.6);margin-bottom:10px;font-weight:700}
+.nom-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(255,255,255,.04);border-radius:10px;margin-bottom:5px}
+.nom-rank{font-family:"Playfair Display",serif;font-size:18px;color:#D4AF37;font-weight:900;min-width:28px}
+.nom-bar-wrap{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;margin:4px 0}
+.nom-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#D4AF37,#F0D060)}
+.score-row{display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(255,255,255,.04);border-radius:10px;margin-bottom:5px}
+.score-rank{font-size:16px;min-width:28px;text-align:center}
+.admin-badge{font-size:9px;padding:2px 7px;border-radius:10px;background:rgba(255,215,0,.12);color:#D4AF37;border:1px solid rgba(255,215,0,.2)}
+.notice-banner{position:fixed;top:0;left:0;right:0;z-index:400;display:flex;align-items:stretch;max-width:480px;margin:0 auto;animation:slideDown .35s ease-out}
+@keyframes slideDown{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+.notice-bar{flex:1;padding:12px 14px 12px 14px;display:flex;align-items:center;gap:10px}
+.notice-bar.warning{background:linear-gradient(135deg,#7a3a00,#5a2800);border-bottom:2px solid #FF8C00}
+.notice-bar.info{background:linear-gradient(135deg,#0a2a5a,#051830);border-bottom:2px solid #5B8FFF}
+.notice-bar.success{background:linear-gradient(135deg,#0a3a1a,#051810);border-bottom:2px solid #4CAF7D}
+.notice-bar.urgent{background:linear-gradient(135deg,#5a0a0a,#3a0505);border-bottom:2px solid #FF4444}
+.notice-ico{font-size:22px;flex-shrink:0}
+.notice-txt{font-size:13px;color:#fff;font-weight:600;line-height:1.4;flex:1}
+.notice-close{background:none;border:none;color:rgba(255,255,255,.5);font-size:18px;cursor:pointer;padding:0 4px;flex-shrink:0;font-family:sans-serif}
+.tut-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(6px)}
+.tut-sheet{background:linear-gradient(160deg,#1a0a2e 0%,#0d1b2e 60%,#0f1923 100%);border-radius:28px 28px 0 0;width:100%;max-width:480px;padding:32px 24px 40px;border-top:1px solid rgba(255,215,0,.2)}
+.tut-dots{display:flex;gap:6px;justify-content:center;margin-bottom:24px}
+.tut-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);transition:all .3s}
+.tut-dot.on{background:#D4AF37;width:24px;border-radius:4px}
+.tut-icon{font-size:52px;text-align:center;margin-bottom:12px;display:block}
+.tut-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:#fff;text-align:center;margin-bottom:8px;line-height:1.2}
+.tut-desc{font-size:14px;color:rgba(240,230,211,.6);text-align:center;line-height:1.7;margin-bottom:24px}
+.tut-tip{background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.18);border-radius:12px;padding:12px 16px;margin-bottom:24px}
+.tut-tip-row{display:flex;align-items:center;gap:10px;padding:5px 0}
+.tut-tip-ico{font-size:18px;width:24px;text-align:center;flex-shrink:0}
+.tut-tip-txt{font-size:13px;color:rgba(240,230,211,.75);line-height:1.4}
+.tut-nav{display:flex;gap:10px;align-items:center}
+.tut-skip{background:none;border:none;color:rgba(240,230,211,.3);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;padding:4px 8px;flex-shrink:0}
+.tut-next{flex:1;background:linear-gradient(135deg,#D4AF37,#F0D060);border:none;border-radius:14px;color:#0A0A0F;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;padding:15px;cursor:pointer;transition:opacity .2s}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.tut-sheet{animation:slideUp .4s ease-out}
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#00c853;color:#fff;padding:10px 20px;border-radius:30px;font-weight:700;font-size:14px;box-shadow:0 4px 20px rgba(0,200,83,.4);z-index:400;display:flex;gap:8px;align-items:center;white-space:nowrap}
 @keyframes fup{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-120%) scale(1.3)}}
 .pfloat{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,${C.gold},${C.goldBright});color:${C.bg};padding:10px 22px;border-radius:40px;font-family:'Playfair Display',serif;font-size:20px;font-weight:900;animation:fup 1.6s ease-out forwards;z-index:500;pointer-events:none}
@@ -668,8 +725,35 @@ export default function App() {
     reader.readAsDataURL(file);
   }
 
+  // Tutorial
+  const [showTutorial, setShowTutorial] = useState(() => !load("tutorialSeen", false));
+  const [tutSlide, setTutSlide] = useState(0);
+  function dismissTutorial() { save("tutorialSeen", true); setShowTutorial(false); }
+
+  // ── LIVE NOTICE BANNER ────────────────────────────────────────────────────
+  const [notice, setNotice] = useState(null);
+  const [noticeDismissed, setNoticeDismissed] = useState(() => load("noticeDismissed",""));
+  useEffect(() => {
+    if (!db) return;
+    // Subscribe to live banner updates from Firebase
+    const unsub = onSnapshot(doc(db, "config", "notice"), snap => {
+      if (snap.exists()) {
+        const data = snap.data();
+        setNotice(data.active && data.message ? data : null);
+        // Sync banner editor in admin panel
+        if (data.message) setBannerMsg(data.message);
+        if (data.type)    setBannerType(data.type);
+      } else {
+        setNotice(null);
+      }
+    }, () => {}); // silent fail if offline
+    return () => unsub();
+  }, []);
+  const noticeVisible = notice && noticeDismissed !== notice.updated;
+
   // Tabs / day
   const [tab, setTab] = useState("schedule");
+  const [expandedGroup, setExpandedGroup] = useState(null);
   const [day, setDay] = useState(0);
 
   // Vendor state
@@ -697,6 +781,73 @@ export default function App() {
 
   // Attendee search
   const [attSearch, setAttSearch] = useState("");
+
+  // ── FIREBASE / ADMIN ────────────────────────────────────────────────────────
+  const [adminTaps, setAdminTaps]   = useState(0);
+  const [showAdmin, setShowAdmin]   = useState(false);
+  const [adminData, setAdminData]   = useState(null);   // live nominations from Firebase
+  const [lbData,    setLbData]      = useState(null);   // live scores from Firebase
+  const adminTapTimer = useRef(null);
+
+  // Banner editor state
+  const [bannerMsg,  setBannerMsg]  = useState("");
+  const [bannerType, setBannerType] = useState("warning");
+  const [bannerSaving, setBannerSaving] = useState(false);
+  const [bannerSaved,  setBannerSaved]  = useState(false);
+
+  async function publishBanner(active) {
+    if (!db) return;
+    setBannerSaving(true);
+    try {
+      await setDoc(doc(db, "config", "notice"), {
+        active, message: bannerMsg.trim(),
+        type: bannerType,
+        updated: new Date().toISOString(),
+      });
+      setBannerSaved(true);
+      setTimeout(() => setBannerSaved(false), 2500);
+      if (!active) setBannerMsg("");
+    } catch(e) { alert("Firebase error: " + e.message); }
+    setBannerSaving(false);
+  }
+
+  // Push my score to Firebase whenever points change
+  useEffect(() => {
+    if (!db || !uName || !uLoc) return;
+    const id = `${uName.replace(/[^a-zA-Z0-9]/g,"-")}_${uLoc.replace(/[^a-zA-Z0-9]/g,"-")}`;
+    setDoc(doc(db, "scores", id), {
+      name: uName, location: uLoc, pts: totalPts,
+      booths: Object.keys(checkedIn).length,
+      quizzes: Object.values(quizDone).reduce((s,v)=>s+(v||0),0),
+      connections: metCount,
+      updatedAt: serverTimestamp(),
+    }, { merge: true }).catch(()=>{});
+  }, [totalPts, uName, uLoc]);
+
+  // Admin: subscribe to live Firebase data when panel opens
+  useEffect(() => {
+    if (!showAdmin || !db) return;
+    const unsubNoms = onSnapshot(collection(db, "nominations"), snap => {
+      const rows = {};
+      snap.forEach(d => { rows[d.id] = d.data(); });
+      setAdminData(rows);
+    });
+    const unsubScores = onSnapshot(collection(db, "scores"), snap => {
+      const rows = [];
+      snap.forEach(d => rows.push(d.data()));
+      rows.sort((a,b) => b.pts - a.pts);
+      setLbData(rows);
+    });
+    return () => { unsubNoms(); unsubScores(); };
+  }, [showAdmin]);
+
+  function handleLogoTap() {
+    const next = adminTaps + 1;
+    setAdminTaps(next);
+    clearTimeout(adminTapTimer.current);
+    if (next >= 5) { setShowAdmin(true); setAdminTaps(0); return; }
+    adminTapTimer.current = setTimeout(() => setAdminTaps(0), 2500);
+  }
 
   // ── Derived ────────────────────────────────────────────────────────────────
   const myGroup = uLoc ? LOCATION_GROUP[uLoc] || null : null;
@@ -767,6 +918,16 @@ export default function App() {
     const earned = modal.corporate || noms.length > 0;
     const updated = {...conns,[modal.id]:{answer:cAnswer,nominations:noms,nomNote:note,metAt:new Date().toISOString()}};
     setConns(updated); save("conns",updated);
+    // Write nominations to Firebase so admin panel can tally them
+    if (db && noms.length > 0) {
+      const docId = `${uName.replace(/[^a-zA-Z0-9]/g,"-")}_to_${modal.id}`;
+      setDoc(doc(db,"nominations",docId), {
+        nominatorName: uName, nominatorLoc: uLoc,
+        nomineeName: modal.name, nomineeId: modal.id,
+        nominations: noms, note: note,
+        submittedAt: serverTimestamp(),
+      }, { merge:true }).catch(()=>{});
+    }
     const label = modal.name;
     closeModal();
     if (earned) {
@@ -792,16 +953,7 @@ export default function App() {
 
   // ── Leaderboard (my score displayed, rest is sample) ─────────────────────
   const myEntry = uName ? {name:`${uName} (You)`,loc:uLoc,pts:totalPts,v:Object.keys(checkedIn).length,q:Object.values(quizDone).reduce((s,v)=>s+(v||0),0),c:metCount} : null;
-  const sampleLb = [
-    {name:"Sarah M.",  loc:"Northland 14",          pts:785,v:5,q:4,c:9},
-    {name:"James T.",  loc:"Tulsa",                  pts:710,v:5,q:3,c:8},
-    {name:"Carla H.",  loc:"Wesley Chapel",           pts:595,v:4,q:4,c:5},
-    {name:"Mike R.",   loc:"Shawnee",                 pts:450,v:3,q:3,c:4},
-    {name:"Dana P.",   loc:"Liberty 12",              pts:380,v:3,q:2,c:4},
-    {name:"Tyler W.",  loc:"Lee's Summit 16",         pts:310,v:3,q:2,c:2},
-    {name:"Priya S.",  loc:"Overland Park",           pts:240,v:2,q:2,c:1},
-    {name:"Ben C.",    loc:"Wylie",                   pts:160,v:2,q:1,c:0},
-  ];
+  const sampleLb = [];
   const lb = myEntry ? [myEntry,...sampleLb].sort((a,b)=>b.pts-a.pts) : sampleLb;
 
   // ─── ONBOARDING ────────────────────────────────────────────────────────────
@@ -834,6 +986,22 @@ export default function App() {
       <style>{css}</style>
       <div className="wrap">
 
+        {/* LIVE NOTICE BANNER */}
+        {noticeVisible && (
+          <div className="notice-banner">
+            <div className={`notice-bar ${notice.type||"info"}`}>
+              <span className="notice-ico">
+                {notice.type==="urgent"?"🚨":notice.type==="warning"?"🚌":notice.type==="success"?"✅":"📢"}
+              </span>
+              <span className="notice-txt">{notice.message}</span>
+              <button className="notice-close" onClick={()=>{
+                setNoticeDismissed(notice.updated);
+                save("noticeDismissed", notice.updated);
+              }}>✕</button>
+            </div>
+          </div>
+        )}
+
         {/* HEADER */}
         <div className="hdr">
           <div className="hdr-row">
@@ -846,7 +1014,7 @@ export default function App() {
                 <input type="file" accept="image/*" style={{display:"none"}} onChange={e=>handlePhotoUpload("me",e.target.files[0])}/>
               </label>
               <div>
-                <div className="logo">B&B Summit 2026</div>
+                <div className="logo" onClick={handleLogoTap} style={{cursor:"default",userSelect:"none"}}>B&B Summit 2026</div>
                 <div className="sub">👋 Hey, {uName}! · {uLoc}</div>
               </div>
             </div>
@@ -888,11 +1056,57 @@ export default function App() {
           <div className="stitle">My Group</div>
           <div className="ssub">Wednesday, March 11 · Round Robin Rotation</div>
           {!myGroup
-            ? <div className="card" style={{textAlign:"center",padding:24}}>
-                <div style={{fontSize:28,marginBottom:8}}>🏢</div>
-                <div style={{fontWeight:600,marginBottom:4}}>Corporate Staff</div>
-                <div style={{fontSize:13,color:C.muted,lineHeight:1.6}}>Corporate staff are not assigned to a round robin group. Check in with your team lead for your Wednesday schedule.</div>
-              </div>
+            ? <>
+                <div className="card" style={{borderColor:`${C.gold}30`,background:`${C.gold}08`,marginBottom:14}}>
+                  <div style={{display:"flex",alignItems:"center",gap:10}}>
+                    <span style={{fontSize:28}}>🏢</span>
+                    <div>
+                      <div style={{fontWeight:700,fontSize:15,color:C.gold}}>Corporate Staff View</div>
+                      <div style={{fontSize:12,color:C.muted,marginTop:2,lineHeight:1.5}}>All 6 group schedules — tap any group to expand</div>
+                    </div>
+                  </div>
+                </div>
+                {[1,2,3,4,5,6].map(gn=>{
+                  const gi = GROUP_INFO[gn];
+                  const open = expandedGroup === gn;
+                  return (
+                    <div key={gn} style={{marginBottom:8,borderRadius:14,overflow:"hidden",border:`1px solid ${open ? gi.color+"80" : C.border}`,transition:"border-color .2s"}}>
+                      <div onClick={()=>setExpandedGroup(open ? null : gn)}
+                        style={{display:"flex",alignItems:"center",gap:12,padding:"13px 16px",
+                          background:open?`${gi.color}15`:C.card,cursor:"pointer",userSelect:"none",transition:"background .2s"}}>
+                        <div style={{width:10,height:10,borderRadius:"50%",background:gi.color,flexShrink:0}}/>
+                        <div style={{flex:1}}>
+                          <div style={{fontWeight:700,fontSize:14,color:open?gi.color:C.text}}>{gi.label}</div>
+                          <div style={{fontSize:10,color:C.muted,marginTop:2,lineHeight:1.4}}>
+                            {gi.locations.slice(0,5).join(" · ")}{gi.locations.length>5?` +${gi.locations.length-5} more`:""}
+                          </div>
+                        </div>
+                        <div style={{fontSize:16,color:open?gi.color:C.muted,transition:"transform .2s",transform:open?"rotate(180deg)":"rotate(0deg)"}}>&#9660;</div>
+                      </div>
+                      {open && (
+                        <div style={{padding:"0 12px 14px",background:C.surface}}>
+                          <div style={{fontSize:10,color:C.muted,letterSpacing:".12em",textTransform:"uppercase",padding:"10px 0 8px",borderBottom:`1px solid ${C.border}`,marginBottom:8}}>
+                            All locations: {gi.locations.join(" · ")}
+                          </div>
+                          {ROTATIONS[gn].map((s,i)=>(
+                            <div key={i} className={`rs${s.isLunch?" lunch":""}`}
+                              style={{borderColor:s.isLunch?`${C.green}40`:SESSION_COLORS[s.session]?`${SESSION_COLORS[s.session]}25`:C.border,marginBottom:5}}>
+                              <div className="rs-time">{s.time}</div>
+                              <div style={{flex:1}}>
+                                <div className="rs-session" style={{color:s.isLunch?C.green:SESSION_COLORS[s.session]||C.text}}>
+                                  {s.emoji} {s.session}
+                                </div>
+                                {s.host&&<div style={{fontSize:10,color:C.muted,marginTop:2}}>&#128100; {s.host}</div>}
+                                {s.loc&&<div style={{fontSize:10,color:C.muted}}>&#128205; {s.loc}</div>}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </>
             : <>
                 <div className="gc" style={{background:`${GROUP_INFO[myGroup].color}15`,border:`1px solid ${GROUP_INFO[myGroup].color}50`}}>
                   <div style={{fontSize:32,marginBottom:4}}>🎬</div>
@@ -1138,7 +1352,14 @@ export default function App() {
               </div>
             </div>
           )}
-          <div style={{fontSize:11,color:C.muted,marginBottom:8,fontStyle:"italic"}}>* Leaderboard updates live on the day of the event</div>
+          <div style={{fontSize:11,color:C.muted,marginBottom:8,fontStyle:"italic"}}>* Live scores — updates as attendees check in & connect</div>
+          {lb.length===0&&(
+            <div className="card" style={{textAlign:"center",padding:28,borderColor:`${C.gold}25`}}>
+              <div style={{fontSize:36,marginBottom:10}}>🏆</div>
+              <div style={{fontFamily:"'Playfair Display',serif",fontSize:18,color:C.gold,marginBottom:6}}>The Race Hasn't Started!</div>
+              <div style={{fontSize:13,color:C.muted,lineHeight:1.7}}>Check in at vendor booths, take quizzes, and connect with fellow managers to get on the board.<br/><br/><strong style={{color:C.text}}>First to score wins the top spot!</strong></div>
+            </div>
+          )}
           {lb.map((e,i)=>{
             const r=i+1, me=e.name?.includes("(You)");
             return(
@@ -1163,6 +1384,62 @@ export default function App() {
         </>}
 
       </div>
+
+      {/* TUTORIAL OVERLAY */}
+      {showTutorial && uName && (
+        <div className="tut-overlay" onClick={()=>{}}>
+          <div className="tut-sheet">
+            <div className="tut-dots">
+              {[0,1,2].map(i=><div key={i} className={`tut-dot${tutSlide===i?" on":""}`}/>)}
+            </div>
+
+            {tutSlide===0&&<>
+              <span className="tut-icon">🤝</span>
+              <div className="tut-title">Connect with Everyone</div>
+              <div className="tut-desc">The Connect tab is your most important tool. Your goal — meet as many people as possible and build real community!</div>
+              <div className="tut-tip">
+                <div className="tut-tip-row"><span className="tut-tip-ico">1️⃣</span><span className="tut-tip-txt">Find someone, have a real conversation</span></div>
+                <div className="tut-tip-row"><span className="tut-tip-ico">2️⃣</span><span className="tut-tip-txt">Tap their card in the Connect tab</span></div>
+                <div className="tut-tip-row"><span className="tut-tip-ico">3️⃣</span><span className="tut-tip-txt">Answer a quick question to prove you met</span></div>
+                <div className="tut-tip-row"><span className="tut-tip-ico">4️⃣</span><span className="tut-tip-txt">Nominate them for a Spotlight or Values award</span></div>
+                <div className="tut-tip-row"><span className="tut-tip-ico">⭐</span><span className="tut-tip-txt"><strong style={{color:"#D4AF37"}}>Earn 50 points</strong> for each meaningful connection!</span></div>
+              </div>
+            </>}
+
+            {tutSlide===1&&<>
+              <span className="tut-icon">🎯</span>
+              <div className="tut-title">Vendor Quest</div>
+              <div className="tut-desc">Visit every vendor booth in the lobby — check in, take their quiz, and rack up points. Prizes go to the top scorers on Thursday!</div>
+              <div className="tut-tip">
+                <div className="tut-tip-row"><span className="tut-tip-ico">📍</span><span className="tut-tip-txt"><strong style={{color:"#D4AF37"}}>+30 points</strong> just for visiting a booth</span></div>
+                <div className="tut-tip-row"><span className="tut-tip-ico">🧠</span><span className="tut-tip-txt"><strong style={{color:"#D4AF37"}}>+25 points</strong> per correct quiz answer</span></div>
+                <div className="tut-tip-row"><span className="tut-tip-ico">🏆</span><span className="tut-tip-txt">Top 3 on the leaderboard win prizes at the Awards Ceremony!</span></div>
+                <div className="tut-tip-row"><span className="tut-tip-ico">📅</span><span className="tut-tip-txt">Vendor tables are open Tuesday & Wednesday in the lobby</span></div>
+              </div>
+            </>}
+
+            {tutSlide===2&&<>
+              <span className="tut-icon">🎬</span>
+              <div className="tut-title">Your Summit HQ</div>
+              <div className="tut-desc">Everything you need for the next 4 days is right here. No printed schedule needed — it's all in the app!</div>
+              <div className="tut-tip">
+                <div className="tut-tip-row"><span className="tut-tip-ico">📅</span><span className="tut-tip-txt"><strong style={{color:"#D4AF37"}}>Schedule</strong> — full 4-day agenda with locations</span></div>
+                <div className="tut-tip-row"><span className="tut-tip-ico">🔄</span><span className="tut-tip-txt"><strong style={{color:"#D4AF37"}}>My Group</strong> — your Wednesday rotation times & rooms</span></div>
+                <div className="tut-tip-row"><span className="tut-tip-ico">🏨</span><span className="tut-tip-txt"><strong style={{color:"#D4AF37"}}>Hotel</strong> — address, phone & bus schedule</span></div>
+                <div className="tut-tip-row"><span className="tut-tip-ico">🏆</span><span className="tut-tip-txt"><strong style={{color:"#D4AF37"}}>Leaderboard</strong> — watch your points climb all week!</span></div>
+              </div>
+            </>}
+
+            <div className="tut-nav">
+              <button className="tut-skip" onClick={dismissTutorial}>Skip</button>
+              {tutSlide < 2
+                ? <button className="tut-next" onClick={()=>setTutSlide(tutSlide+1)}>Next →</button>
+                : <button className="tut-next" onClick={dismissTutorial}>Let's Go! 🎬</button>
+              }
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* BOTTOM NAV */}
       <nav className="nav-bar">
@@ -1320,6 +1597,158 @@ export default function App() {
 
       {/* FLOATING POINTS */}
       {popup&&<div className="pfloat">+{popup} pts 🎬</div>}
+
+      {/* ── ADMIN PANEL ── */}
+      {showAdmin&&(
+        <div className="admin-overlay">
+          <div className="admin-hdr">
+            <div>
+              <div className="admin-title">🎬 Admin Panel</div>
+              <div style={{fontSize:11,color:"rgba(255,255,255,.3)",marginTop:2}}>B&B Summit 2026 · Live Results</div>
+            </div>
+            <button className="admin-close" onClick={()=>setShowAdmin(false)}>✕</button>
+          </div>
+
+          {/* ── BANNER CONTROL ── */}
+          <div className="admin-section">
+            <div className="admin-sh">📢 Send a Banner Alert</div>
+            <div style={{background:"rgba(255,255,255,.04)",border:"1px solid rgba(255,255,255,.08)",borderRadius:12,padding:"14px"}}>
+              <div style={{display:"flex",gap:6,marginBottom:10,flexWrap:"wrap"}}>
+                {[["warning","🚌 Bus","#FF8C00"],["urgent","🚨 Urgent","#FF4444"],["info","📢 Info","#5B8FFF"],["success","✅ Good News","#4CAF7D"]].map(([val,lbl,col])=>(
+                  <button key={val} onClick={()=>setBannerType(val)}
+                    style={{flex:1,minWidth:70,padding:"7px 6px",borderRadius:9,border:`1.5px solid ${bannerType===val?col:"rgba(255,255,255,.1)"}`,
+                      background:bannerType===val?`${col}22`:"transparent",color:bannerType===val?col:"rgba(255,255,255,.4)",
+                      fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",transition:"all .15s"}}>
+                    {lbl}
+                  </button>
+                ))}
+              </div>
+              <textarea
+                value={bannerMsg} onChange={e=>setBannerMsg(e.target.value)}
+                placeholder="Type your message… e.g. 🚌 Buses leave in 10 minutes! Meet in the lobby NOW."
+                rows={3}
+                style={{width:"100%",background:"rgba(255,255,255,.06)",border:"1px solid rgba(255,255,255,.12)",
+                  borderRadius:9,color:"#E8E8F0",fontSize:13,padding:"10px 12px",
+                  resize:"vertical",outline:"none",fontFamily:"'DM Sans',sans-serif",
+                  lineHeight:1.6,marginBottom:10,boxSizing:"border-box"}}
+              />
+              <div style={{display:"flex",gap:8}}>
+                <button onClick={()=>publishBanner(true)} disabled={!bannerMsg.trim()||bannerSaving}
+                  style={{flex:2,padding:"11px",borderRadius:10,border:"none",
+                    background:bannerSaved?"#4CAF7D":"linear-gradient(135deg,#D4AF37,#F0D060)",
+                    color:"#0A0A0F",fontSize:14,fontWeight:700,cursor:"pointer",
+                    fontFamily:"'DM Sans',sans-serif",opacity:(!bannerMsg.trim()||bannerSaving)?0.4:1,
+                    transition:"all .2s"}}>
+                  {bannerSaving?"Sending…":bannerSaved?"✅ Sent!":"📣 Send to Everyone"}
+                </button>
+                <button onClick={()=>publishBanner(false)} disabled={bannerSaving}
+                  style={{flex:1,padding:"11px",borderRadius:10,
+                    border:"1px solid rgba(255,255,255,.15)",background:"transparent",
+                    color:"rgba(255,255,255,.4)",fontSize:13,fontWeight:600,cursor:"pointer",
+                    fontFamily:"'DM Sans',sans-serif"}}>
+                  Clear Banner
+                </button>
+              </div>
+              <div style={{fontSize:11,color:"rgba(255,255,255,.25)",marginTop:8,fontStyle:"italic"}}>
+                Banner appears instantly on every open phone. Updates live via Firebase.
+              </div>
+            </div>
+          </div>
+
+          {/* ── AWARD TALLIES ── */}
+          <div className="admin-section">
+            <div className="admin-sh">✨ Spotlight Awards — Vote Tallies</div>
+            {!adminData
+              ? <div style={{color:"rgba(255,255,255,.3)",fontSize:13,fontStyle:"italic"}}>Connecting to Firebase…</div>
+              : (() => {
+                  // Tally votes per award per nominee
+                  const tally = {};
+                  ALL_AWARDS.forEach(a => { tally[a.id] = {}; });
+                  Object.values(adminData).forEach(row => {
+                    (row.nominations||[]).forEach(awardId => {
+                      if (!tally[awardId]) tally[awardId] = {};
+                      const key = row.nomineeName;
+                      tally[awardId][key] = (tally[awardId][key]||0) + 1;
+                    });
+                  });
+                  return ALL_AWARDS.map(award => {
+                    const votes = tally[award.id]||{};
+                    const sorted = Object.entries(votes).sort((a,b)=>b[1]-a[1]);
+                    const max = sorted[0]?.[1]||1;
+                    return (
+                      <div key={award.id} style={{background:"rgba(255,255,255,.03)",border:"1px solid rgba(255,255,255,.07)",borderRadius:12,padding:"12px 14px",marginBottom:10}}>
+                        <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:sorted.length?10:0}}>
+                          <span style={{fontSize:18}}>{award.emoji}</span>
+                          <div style={{flex:1}}>
+                            <div style={{fontSize:13,fontWeight:700,color:"#fff"}}>{award.label}</div>
+                            {sorted.length===0&&<div style={{fontSize:11,color:"rgba(255,255,255,.25)",fontStyle:"italic",marginTop:2}}>No votes yet</div>}
+                          </div>
+                          {sorted[0]&&<div style={{fontSize:10,background:"rgba(255,215,0,.12)",color:"#D4AF37",border:"1px solid rgba(255,215,0,.2)",borderRadius:20,padding:"2px 9px"}}>{sorted.reduce((s,[,v])=>s+v,0)} votes</div>}
+                        </div>
+                        {sorted.slice(0,5).map(([name,count],i) => (
+                          <div className="nom-row" key={name} style={i===0?{background:"rgba(255,215,0,.07)",border:"1px solid rgba(255,215,0,.15)"}:{}}>
+                            <div className="nom-rank">{i===0?"🥇":i===1?"🥈":i===2?"🥉":`#${i+1}`}</div>
+                            <div style={{flex:1}}>
+                              <div style={{fontSize:13,fontWeight:600,color:i===0?"#D4AF37":"#E8E8F0"}}>{name}</div>
+                              <div className="nom-bar-wrap"><div className="nom-bar-fill" style={{width:`${(count/max)*100}%`}}/></div>
+                            </div>
+                            <div style={{fontSize:15,fontWeight:700,color:i===0?"#D4AF37":"rgba(255,255,255,.5)",minWidth:20,textAlign:"right"}}>{count}</div>
+                          </div>
+                        ))}
+                      </div>
+                    );
+                  });
+                })()
+            }
+          </div>
+
+          {/* ── LIVE LEADERBOARD ── */}
+          <div className="admin-section">
+            <div className="admin-sh">🏆 Live Points Leaderboard</div>
+            {!lbData
+              ? <div style={{color:"rgba(255,255,255,.3)",fontSize:13,fontStyle:"italic"}}>Loading scores…</div>
+              : lbData.length===0
+                ? <div style={{color:"rgba(255,255,255,.3)",fontSize:13,fontStyle:"italic"}}>No scores yet</div>
+                : lbData.map((e,i) => (
+                    <div className="score-row" key={i} style={i<3?{border:`1px solid ${["rgba(255,215,0,.3)","rgba(192,192,192,.2)","rgba(205,127,50,.2)"][i]}`}:{}}>
+                      <div className="score-rank">{i===0?"🥇":i===1?"🥈":i===2?"🥉":`${i+1}`}</div>
+                      <div style={{flex:1}}>
+                        <div style={{fontSize:13,fontWeight:600,color:i===0?"#D4AF37":"#E8E8F0"}}>{e.name}</div>
+                        <div style={{fontSize:11,color:"rgba(255,255,255,.35)"}}>{e.location}</div>
+                        <div style={{display:"flex",gap:5,marginTop:3}}>
+                          <span className="admin-badge">🏪 {e.booths}</span>
+                          <span className="admin-badge">🧠 {e.quizzes}</span>
+                          <span className="admin-badge">🤝 {e.connections}</span>
+                        </div>
+                      </div>
+                      <div style={{fontFamily:"'Playfair Display',serif",fontSize:22,color:i===0?"#D4AF37":"rgba(255,255,255,.7)",fontWeight:700}}>{e.pts}</div>
+                    </div>
+                  ))
+            }
+          </div>
+
+          {/* ── NOMINATION DETAIL LOG ── */}
+          <div className="admin-section">
+            <div className="admin-sh">📋 All Nomination Notes</div>
+            {!adminData||Object.values(adminData).length===0
+              ? <div style={{color:"rgba(255,255,255,.3)",fontSize:13,fontStyle:"italic"}}>No nominations submitted yet</div>
+              : Object.values(adminData)
+                  .filter(r=>r.nominations?.length>0&&r.note)
+                  .sort((a,b)=>(b.submittedAt?.seconds||0)-(a.submittedAt?.seconds||0))
+                  .map((r,i)=>(
+                    <div key={i} style={{background:"rgba(255,255,255,.03)",border:"1px solid rgba(255,255,255,.06)",borderRadius:10,padding:"10px 12px",marginBottom:6}}>
+                      <div style={{display:"flex",justifyContent:"space-between",marginBottom:4}}>
+                        <div style={{fontSize:12,fontWeight:600,color:"#E8E8F0"}}>{r.nominatorName} → <span style={{color:"#D4AF37"}}>{r.nomineeName}</span></div>
+                        <div style={{fontSize:10,color:"rgba(255,255,255,.25)"}}>{r.nominations?.map(id=>ALL_AWARDS.find(a=>a.id===id)?.emoji).join(" ")}</div>
+                      </div>
+                      {r.note&&<div style={{fontSize:12,color:"rgba(255,255,255,.45)",fontStyle:"italic"}}>"{r.note}"</div>}
+                    </div>
+                  ))
+            }
+          </div>
+
+        </div>
+      )}
     </>
   );
 }
