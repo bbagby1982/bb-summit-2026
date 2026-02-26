@@ -990,8 +990,8 @@ export default function App() {
     const next = adminTaps + 1;
     setAdminTaps(next);
     clearTimeout(adminTapTimer.current);
-    if (next >= 5) { setShowAdmin(true); setAdminTaps(0); return; }
-    adminTapTimer.current = setTimeout(() => setAdminTaps(0), 2500);
+    if (next >= 3) { setShowAdmin(true); setAdminTaps(0); return; }
+    adminTapTimer.current = setTimeout(() => setAdminTaps(0), 4000);
   }
 
   // ── Derived ────────────────────────────────────────────────────────────────
@@ -1108,7 +1108,11 @@ export default function App() {
       <>
         <style>{css}</style>
         <div className="ws">
-          <div className="wlogo">B&B</div>
+          <img src="/CreatingCommunity_logo.png" alt="B&B Creating Community"
+            style={{height:120,width:"auto",objectFit:"contain",marginBottom:8,filter:"drop-shadow(0 0 20px rgba(100,180,220,.3))"}}
+            onError={e=>{e.target.style.display="none";}}
+          />
+          <div className="wlogo" style={{marginTop:4}}>B&B</div>
           <div style={{fontFamily:"'Playfair Display',serif",fontSize:17,color:C.gold,marginBottom:4}}>Manager's Summit 2026</div>
           <div className="wsub">March 9–12 · Liberty Cinema 12<br/>Welcome to your summit companion!</div>
           <input className="wi" placeholder="Your preferred name" value={nameIn} onChange={e=>setNameIn(e.target.value)}/>
@@ -1158,9 +1162,17 @@ export default function App() {
                 }
                 <input type="file" accept="image/*" style={{display:"none"}} onChange={e=>handlePhotoUpload("me",e.target.files[0])}/>
               </label>
-              <div>
-                <div className="logo" onClick={handleLogoTap} style={{cursor:"default",userSelect:"none"}}>B&B Summit 2026</div>
-                <div className="sub">👋 Hey, {uName}! · {uLoc}</div>
+              <div onClick={handleLogoTap} style={{cursor:"default",userSelect:"none"}}>
+                <div style={{display:"flex",alignItems:"center",gap:10}}>
+                  <img src="/CreatingCommunity_logo.png" alt="B&B Creating Community"
+                    style={{height:40,width:"auto",objectFit:"contain"}}
+                    onError={e=>{e.target.style.display="none";}}
+                  />
+                  <div>
+                    <div className="logo">B&B Summit 2026</div>
+                    <div className="sub">👋 Hey, {uName}! · {uLoc}</div>
+                  </div>
+                </div>
               </div>
             </div>
             <div className={`pts-badge`} style={ptsAnim?{transform:"scale(1.1)",transition:"transform .15s"}:{transition:"transform .15s"}} onClick={()=>setTab("leaderboard")}>
@@ -1929,14 +1941,14 @@ export default function App() {
                       {p.caption&&<div style={{fontSize:11,color:"rgba(255,255,255,.45)",fontStyle:"italic",marginBottom:8}}>"{p.caption}"</div>}
                       <div style={{display:"flex",gap:6}}>
                         <button onClick={()=>approvePhoto(p.id,true)}
-                          style={{flex:1,padding:"7px",borderRadius:8,border:"none",
+                          style={{flex:1,padding:"7px",borderRadius:8,
                             background:"rgba(76,175,125,.2)",color:"#4CAF7D",
                             fontSize:12,fontWeight:700,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",
                             border:"1px solid rgba(76,175,125,.3)"}}>
                           ✅ Approve
                         </button>
                         <button onClick={()=>approvePhoto(p.id,false)}
-                          style={{flex:1,padding:"7px",borderRadius:8,border:"none",
+                          style={{flex:1,padding:"7px",borderRadius:8,
                             background:"rgba(230,57,70,.15)",color:"#E63946",
                             fontSize:12,fontWeight:700,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",
                             border:"1px solid rgba(230,57,70,.25)"}}>
