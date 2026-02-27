@@ -64,7 +64,7 @@ const ROTATIONS = {
     {time:"2:00–2:50 PM",   session:"HR Behind the Handbook",                             host:"Pam Carr & James Warner",                      loc:"Auditorium 6",  emoji:"💼"},
     {time:"3:00–3:30 PM",   session:"Lights Camera, Loyalty",host:"Paul Weiss",                                   loc:"TBD",           emoji:"🎟️"},
     {time:"3:30–4:00 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Stockroom",     emoji:"⭐"},
-    {time:"4:00–4:50 PM",   session:"Leaders Set the Tone",        host:"Steven Ramskill",                              loc:"Auditorium 8",  emoji:"🎬"},
+    {time:"4:00–4:50 PM",   session:"Leaders Set the Tone",        host:"Steven Ramskill & Jeff Horton",                              loc:"Auditorium 8",  emoji:"🎬"},
   ],
   2:[
     {time:"10:00–10:50 AM", session:"FUNdamentals",                       host:"Tyler Rice & Jacob Mellor",                    loc:"Auditorium 4",  emoji:"🎉"},
@@ -74,11 +74,11 @@ const ROTATIONS = {
     {time:"2:00–2:30 PM",   session:"Lights Camera, Loyalty",host:"Paul Weiss",                                   loc:"TBD",           emoji:"🎟️"},
     {time:"2:30–3:00 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Stockroom",     emoji:"⭐"},
     {time:"3:00–3:50 PM",   session:"HR Behind the Handbook",                             host:"Pam Carr & James Warner",                      loc:"Auditorium 6",  emoji:"💼"},
-    {time:"4:00–4:50 PM",   session:"Leaders Set the Tone",        host:"Steven Ramskill",                              loc:"Auditorium 8",  emoji:"🎬"},
+    {time:"4:00–4:50 PM",   session:"Leaders Set the Tone",        host:"Steven Ramskill & Jeff Horton",                              loc:"Auditorium 8",  emoji:"🎬"},
   ],
   3:[
     {time:"10:00–10:50 AM", session:"HR Behind the Handbook",                             host:"Pam Carr & James Warner",                      loc:"Auditorium 6",  emoji:"💼"},
-    {time:"11:00–11:50 AM", session:"Leaders Set the Tone",        host:"Steven Ramskill",                              loc:"Auditorium 8",  emoji:"🎬"},
+    {time:"11:00–11:50 AM", session:"Leaders Set the Tone",        host:"Steven Ramskill & Jeff Horton",                              loc:"Auditorium 8",  emoji:"🎬"},
     {time:"12:00 PM",       session:"Lunch & Networking",                 host:"",                                              loc:"Johnnie's",     emoji:"🍽️", isLunch:true},
     {time:"1:00–1:50 PM",   session:"Stock Room Glow Up",                          host:"Jason Foster & Chad Christopher",              loc:"Auditorium 9",  emoji:"📦"},
     {time:"2:00–2:50 PM",   session:"Driving the Magic with Metrics",               host:"Curtis Diehl, Michael Hagan & Kent Peterson",   loc:"Auditorium 7",  emoji:"💰"},
@@ -94,12 +94,12 @@ const ROTATIONS = {
     {time:"1:15–1:45 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Stockroom",     emoji:"⭐"},
     {time:"2:00–2:50 PM",   session:"Stock Room Glow Up",                          host:"Jason Foster & Chad Christopher",              loc:"Auditorium 9",  emoji:"📦"},
     {time:"3:00–3:50 PM",   session:"FUNdamentals",                       host:"Tyler Rice & Jacob Mellor",                    loc:"Auditorium 4",  emoji:"🎉"},
-    {time:"4:00–4:50 PM",   session:"Leaders Set the Tone",        host:"Steven Ramskill",                              loc:"Auditorium 8",  emoji:"🎬"},
+    {time:"4:00–4:50 PM",   session:"Leaders Set the Tone",        host:"Steven Ramskill & Jeff Horton",                              loc:"Auditorium 8",  emoji:"🎬"},
   ],
   5:[
     {time:"10:00–10:50 AM", session:"Driving the Magic with Metrics",               host:"Curtis Diehl, Michael Hagan & Kent Peterson",   loc:"Auditorium 7",  emoji:"💰"},
     {time:"11:00–11:50 AM", session:"HR Behind the Handbook",                             host:"Pam Carr & James Warner",                      loc:"Auditorium 6",  emoji:"💼"},
-    {time:"12:00–12:50 PM", session:"Leaders Set the Tone",        host:"Steven Ramskill",                              loc:"Auditorium 8",  emoji:"🎬"},
+    {time:"12:00–12:50 PM", session:"Leaders Set the Tone",        host:"Steven Ramskill & Jeff Horton",                              loc:"Auditorium 8",  emoji:"🎬"},
     {time:"1:00 PM",        session:"Lunch & Networking",                 host:"",                                              loc:"Johnnie's",     emoji:"🍽️", isLunch:true},
     {time:"2:00–2:30 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Stockroom",     emoji:"⭐"},
     {time:"2:30–3:00 PM",   session:"Lights Camera, Loyalty",host:"Paul Weiss",                                   loc:"TBD",           emoji:"🎟️"},
@@ -107,7 +107,7 @@ const ROTATIONS = {
     {time:"4:00–4:50 PM",   session:"FUNdamentals",                       host:"Tyler Rice & Jacob Mellor",                    loc:"Auditorium 4",  emoji:"🎉"},
   ],
   6:[
-    {time:"10:00–10:50 AM", session:"Leaders Set the Tone",        host:"Steven Ramskill",                              loc:"Auditorium 8",  emoji:"🎬"},
+    {time:"10:00–10:50 AM", session:"Leaders Set the Tone",        host:"Steven Ramskill & Jeff Horton",                              loc:"Auditorium 8",  emoji:"🎬"},
     {time:"11:00–11:50 AM", session:"FUNdamentals",                       host:"Tyler Rice & Jacob Mellor",                    loc:"Auditorium 4",  emoji:"🎉"},
     {time:"12:00 PM",       session:"Lunch & Networking",                 host:"",                                              loc:"Johnnie's",     emoji:"🍽️", isLunch:true},
     {time:"1:00–1:50 PM",   session:"HR Behind the Handbook",                             host:"Pam Carr & James Warner",                      loc:"Auditorium 6",  emoji:"💼"},
@@ -152,31 +152,7 @@ const HOTEL_INFO = {
 
 // ─── VENDORS ─────────────────────────────────────────────────────────────────
 const VENDORS = [
-  { id:"v_screenvision", name:"Screenvision Media",     logo:"📽️", color:"#E63946",
-    booth:"Lobby Booth A", contact:"Jessica Benson", days:"Mon–Wed",
-    description:"National cinema advertising network powering pre-show entertainment and advertising for hundreds of theatre circuits across the country.",
-    quiz:[
-      {q:"What does Screenvision primarily provide to theatres?",options:["Projection equipment","Pre-show advertising & entertainment","Concession software","Point-of-sale systems"],answer:1},
-      {q:"Which event kicks off Tuesday with a Screenvision presentation?",options:["Thursday Awards","The All Company Gathering","Wednesday Round Robin","Monday Dinner"],answer:1},
-      {q:"Where is the Screenvision booth located?",options:["Auditorium 1","Lobby Booth B","Lobby Booth A","Stockroom"],answer:2},
-    ]},
-  { id:"v_screenx", name:"ScreenX / 4DX",               logo:"🎥", color:"#0D47A1",
-    booth:"Auditorium 1 — Presentation", contact:"Duncan McDonald", days:"Mon–Thu",
-    description:"The ultimate premium large-format experience. ScreenX wraps the audience in 270° immersive cinema and 4DX moves you into the story. Presenting Tuesday evening!",
-    quiz:[
-      {q:"ScreenX wraps the audience in how many degrees of screen?",options:["180°","360°","270°","90°"],answer:2},
-      {q:"ScreenX / 4DX is a sponsor at what sponsorship level?",options:["$2,500","$5,000","$7,500","$10,000"],answer:3},
-      {q:"When is the ScreenX presentation at the summit?",options:["Monday dinner","Tuesday evening","Wednesday wrap-up","Thursday morning"],answer:1},
-    ]},
-  { id:"v_vivian", name:"Vivian",                        logo:"💼", color:"#7B1FA2",
-    booth:"Lobby", contact:"Matt Kopp", days:"Mon–Wed",
-    description:"Innovative solutions partner helping B&B theatres grow. Vivian brings tools and expertise to elevate the guest experience across B&B locations.",
-    quiz:[
-      {q:"Vivian's rep at the summit is?",options:["Jessica Benson","Matt Kopp","Holly Shoaf","Tony Adamson"],answer:1},
-      {q:"Vivian is present at the summit which days?",options:["Tue–Thu","Mon–Wed","Wed–Thu","Mon only"],answer:1},
-      {q:"What is Vivian's sponsorship level?",options:["$5,000","$10,000","$7,500","$2,500"],answer:3},
-    ]},
-  { id:"v_amazonmgm", name:"Amazon MGM Studios",         logo:"🎬", color:"#FF9900",
+    { id:"v_amazonmgm", name:"Amazon MGM Studios",         logo:"🎬", color:"#FF9900",
     booth:"Studio Row — Lobby", contact:"Branden Miller", days:"Mon–Wed",
     description:"One of Hollywood's biggest studios — Amazon MGM brings an exciting film slate to B&B screens. They're bringing phone ring lights for the welcome bags!",
     quiz:[
@@ -184,39 +160,7 @@ const VENDORS = [
       {q:"What welcome bag item is Amazon MGM providing?",options:["Hats","Phone ring lights","Water bottles","Tote bags"],answer:1},
       {q:"Amazon MGM's B&B contact is?",options:["Paul Weiss","Brock Bagby","Chris Tickner","Bobbie Bagby"],answer:2},
     ]},
-  { id:"v_drpepper", name:"Dr Pepper",                   logo:"🥤", color:"#8B0000",
-    booth:"Lobby", contact:"Mike Riffle", days:"Tuesday",
-    description:"B&B's beverage partner keeping guests refreshed in every theatre. Dr Pepper is bringing their famous traveling mugs for the welcome bags!",
-    quiz:[
-      {q:"What welcome bag item is Dr Pepper providing?",options:["Koozies","Tumblers","Dr Pepper Traveling Mugs","Hats"],answer:2},
-      {q:"Dr Pepper is part of which company?",options:["PepsiCo","The Coca-Cola Company","Keurig Dr Pepper","Nestlé"],answer:2},
-      {q:"When is Dr Pepper's rep at the summit?",options:["Mon–Wed","Wed–Thu","Tuesday","Thu only"],answer:2},
-    ]},
-  { id:"v_fandango", name:"Fandango",                    logo:"🎟️", color:"#FF6B35",
-    booth:"Lobby", contact:"Brittany Rials", days:"Tue–Fri",
-    description:"The nation's leading digital ticketing platform connecting millions of moviegoers to B&B shows — integrates with the Backstage Pass loyalty program.",
-    quiz:[
-      {q:"What is Fandango's primary function?",options:["Film distribution","Online movie ticketing","Concession management","Theatre staffing"],answer:1},
-      {q:"Fandango connects with B&B's loyalty program — what's it called?",options:["B&B Rewards","Movie Club","Backstage Pass","CinemaPoints"],answer:2},
-      {q:"How do most customers use Fandango?",options:["In-person kiosks only","Mobile app and website","Phone calls","None of the above"],answer:1},
-    ]},
-  { id:"v_redemption", name:"Redemption Plus",            logo:"🎮", color:"#2E7D32",
-    booth:"Lobby", contact:"Holly Shoaf", days:"Tue–Thu",
-    description:"The leader in redemption and entertainment solutions for cinema entertainment centers. Redemption Plus helps B&B's CEC locations drive revenue and guest delight.",
-    quiz:[
-      {q:"Redemption Plus specializes in which type of solutions?",options:["Food & beverage","Redemption & entertainment","Projection systems","Ticketing"],answer:1},
-      {q:"Redemption Plus is particularly relevant for which B&B locations?",options:["All locations","Drive-ins only","CEC entertainment centers","Corporate offices"],answer:2},
-      {q:"Redemption Plus's B&B contact is?",options:["Tyler Rice","Brock Bagby","Paul Weiss","Chris Tickner"],answer:1},
-    ]},
-  { id:"v_gdc", name:"GDC Technology",                   logo:"🖥️", color:"#1565C0",
-    booth:"Auditorium 1 — Presentation", contact:"Tony Adamson", days:"Tue–Thu",
-    description:"Leading provider of digital cinema solutions including servers, media storage, and automation systems. GDC is presenting Thursday morning at the summit.",
-    quiz:[
-      {q:"GDC is best known for which cinema product?",options:["Seating systems","Digital cinema servers & automation","Concession equipment","Loyalty software"],answer:1},
-      {q:"GDC's sponsorship level is?",options:["$2,500","$5,000","$10,000","$7,500"],answer:3},
-      {q:"When does GDC present at the summit?",options:["Tuesday afternoon","Wednesday morning","Thursday morning","Monday dinner"],answer:2},
-    ]},
-  { id:"v_apple", name:"Apple Industries",               logo:"🍎", color:"#FF3B30",
+    { id:"v_apple", name:"Apple Industries",               logo:"🍎", color:"#FF3B30",
     booth:"Lobby", contact:"Heather Blair & Julie K", days:"Tue–Thu",
     description:"Innovative photo booth and entertainment solutions for cinema lobbies. Apple Industries brings fun, revenue-generating experiences to B&B guests.",
     quiz:[
@@ -224,7 +168,7 @@ const VENDORS = [
       {q:"Apple Industries' B&B contact is?",options:["Brock Bagby","Bobbie Bagby","Chris Tickner","Tyler Rice"],answer:1},
       {q:"How many contacts does Apple Industries have at the summit?",options:["One","Two","Three","Four"],answer:1},
     ]},
-  { id:"v_barco", name:"Barco",                          logo:"🔦", color:"#4CAF7D",
+    { id:"v_barco", name:"Barco",                          logo:"🔦", color:"#4CAF7D",
     booth:"Auditorium 1", contact:"Casey Collins", days:"Tue–Thu",
     description:"Global leader in cinema projection technology — the projectors powering B&B screens. Presenting Wednesday wrap-up AND opening Thursday morning.",
     quiz:[
@@ -232,7 +176,7 @@ const VENDORS = [
       {q:"When does Barco present?",options:["Tuesday only","Wednesday wrap-up AND Thursday opening","Monday dinner","Friday"],answer:1},
       {q:"What is Barco's sponsorship level?",options:["$5,000","$7,500","$2,500","$10,000"],answer:3},
     ]},
-  { id:"v_cretors", name:"Cretors",                      logo:"🍿", color:"#FFA000",
+    { id:"v_cretors", name:"Cretors",                      logo:"🍿", color:"#FFA000",
     booth:"Lobby", contact:"Shelly Olson & Brett Torgler", days:"Tue–Thu",
     description:"The original popcorn machine company — Cretors has been making theatres smell amazing since 1885. A cornerstone of the cinema concession experience.",
     quiz:[
@@ -240,39 +184,31 @@ const VENDORS = [
       {q:"Cretors has been in business since approximately what year?",options:["1950","1920","1885","1965"],answer:2},
       {q:"How many Cretors reps are attending the summit?",options:["One","Two","Three","Four"],answer:1},
     ]},
-  { id:"v_popcorn", name:"Preferred Popcorn",            logo:"🌽", color:"#F9A825",
-    booth:"Lobby", contact:"Jayne Davis", days:"Tue–Wed",
-    description:"Premium popcorn supplier bringing the best kernels to B&B screens. Preferred Popcorn provides welcome bag gifts including bags and pens!",
+    { id:"v_drpepper", name:"Dr Pepper",                   logo:"🥤", color:"#8B0000",
+    booth:"Lobby", contact:"Mike Riffle", days:"Tuesday",
+    description:"B&B's beverage partner keeping guests refreshed in every theatre. Dr Pepper is bringing their famous traveling mugs for the welcome bags!",
     quiz:[
-      {q:"What welcome bag items is Preferred Popcorn providing?",options:["T-shirts","Bags & pens","Hats","Phone cases"],answer:1},
-      {q:"Preferred Popcorn's B&B contact is?",options:["Brock Bagby","Bobbie Bagby","Chris Tickner","Paul Weiss"],answer:2},
-      {q:"Preferred Popcorn is present at the summit which days?",options:["Mon–Thu","Wed–Thu","Tue–Wed","Fri only"],answer:2},
+      {q:"What welcome bag item is Dr Pepper providing?",options:["Koozies","Tumblers","Dr Pepper Traveling Mugs","Hats"],answer:2},
+      {q:"Dr Pepper is part of which company?",options:["PepsiCo","The Coca-Cola Company","Keurig Dr Pepper","Nestlé"],answer:2},
+      {q:"When is Dr Pepper's rep at the summit?",options:["Mon–Wed","Wed–Thu","Tuesday","Thu only"],answer:2},
     ]},
-  { id:"v_sony", name:"Sony Pictures",                   logo:"🎥", color:"#A78BFA",
-    booth:"Studio Row — Aud 1", contact:"Wesley Ratliffe", days:"Wed–Thu",
-    description:"Columbia Pictures, Screen Gems, and more — Sony brings a powerful film slate to B&B screens every year. Presenting their 2026 lineup on Thursday. Items in welcome bags after presentation!",
+    { id:"v_fandango", name:"Fandango",                    logo:"🎟️", color:"#FF6B35",
+    booth:"Lobby", contact:"Brittany Rials", days:"Tue–Fri",
+    description:"The nation's leading digital ticketing platform connecting millions of moviegoers to B&B shows — integrates with the Backstage Pass loyalty program.",
     quiz:[
-      {q:"Which logo is Sony Pictures known for?",options:["A golden star","The Torch Lady","A film reel","A castle"],answer:1},
-      {q:"When does Sony present?",options:["10:15 AM","11:15 AM","1:15 PM","2:30 PM"],answer:1},
-      {q:"Sony Pictures is part of which parent company?",options:["Disney","Warner Bros","Sony Group Corporation","Comcast"],answer:2},
+      {q:"What is Fandango's primary function?",options:["Film distribution","Online movie ticketing","Concession management","Theatre staffing"],answer:1},
+      {q:"Fandango connects with B&B's loyalty program — what's it called?",options:["B&B Rewards","Movie Club","Backstage Pass","CinemaPoints"],answer:2},
+      {q:"How do most customers use Fandango?",options:["In-person kiosks only","Mobile app and website","Phone calls","None of the above"],answer:1},
     ]},
-  { id:"v_paramount", name:"Paramount Pictures",         logo:"⭐", color:"#FFD700",
-    booth:"Studio Row — Aud 1", contact:"Tritia Nakamura", days:"Thu",
-    description:"One of Hollywood's most iconic studios presenting their exciting 2026 slate. Paramount is bringing SWEATSHIRTS for attendees — presenting Thursday morning. 🧥",
+    { id:"v_gdc", name:"GDC Technology",                   logo:"🖥️", color:"#1565C0",
+    booth:"Auditorium 1 — Presentation", contact:"Tony Adamson", days:"Tue–Thu",
+    description:"Leading provider of digital cinema solutions including servers, media storage, and automation systems. GDC is presenting Thursday morning at the summit.",
     quiz:[
-      {q:"What welcome bag / gift is Paramount bringing?",options:["Hats","Phone cases","Sweatshirts","Tote bags"],answer:2},
-      {q:"When does Paramount present?",options:["Tuesday","Wednesday","Thursday","Monday"],answer:2},
-      {q:"Studio Row presentations are in which location?",options:["Stockroom","Johnnie's","Auditorium 1","Lobby"],answer:2},
+      {q:"GDC is best known for which cinema product?",options:["Seating systems","Digital cinema servers & automation","Concession equipment","Loyalty software"],answer:1},
+      {q:"GDC's sponsorship level is?",options:["$2,500","$5,000","$10,000","$7,500"],answer:3},
+      {q:"When does GDC present at the summit?",options:["Tuesday afternoon","Wednesday morning","Thursday morning","Monday dinner"],answer:2},
     ]},
-  { id:"v_lionsgate", name:"Lionsgate",                  logo:"🦁", color:"#FF5722",
-    booth:"Studio Row — Aud 1", contact:"Ryan Garcia", days:"Summit",
-    description:"The studio behind John Wick, The Hunger Games, and countless hits. Lionsgate is attending the summit with items at their booth!",
-    quiz:[
-      {q:"What franchise is Lionsgate famous for?",options:["Fast & Furious","John Wick / Hunger Games","Mission Impossible","Transformers"],answer:1},
-      {q:"Lionsgate's B&B contact is?",options:["Brock Bagby","Paul Weiss","Chris Tickner","Bobbie Bagby"],answer:2},
-      {q:"Lionsgate will have what at their summit presence?",options:["Nothing","Items at booth","A 30-min presentation","A dinner event"],answer:1},
-    ]},
-  { id:"v_ims", name:"Integrated Media Systems",         logo:"📡", color:"#546E7A",
+    { id:"v_ims", name:"Integrated Media Systems",         logo:"📡", color:"#546E7A",
     booth:"Lobby", contact:"Mohammad Ahmadi", days:"Summit",
     description:"AV integration experts providing cinema-grade audio, video, and control systems. IMS helps B&B deliver the best possible on-screen experience.",
     quiz:[
@@ -280,13 +216,77 @@ const VENDORS = [
       {q:"What did IMS's payment status show in the summit records?",options:["Not paid","Invoice sent","Paid - confirmed","TBD"],answer:2},
       {q:"IMS's sponsorship level is?",options:["$5,000","$7,500","$2,500","$10,000"],answer:2},
     ]},
-  { id:"v_vistar", name:"Vistar Media",                  logo:"📊", color:"#00ACC1",
+    { id:"v_lionsgate", name:"Lionsgate",                  logo:"🦁", color:"#FF5722",
+    booth:"Studio Row — Aud 1", contact:"Ryan Garcia", days:"Summit",
+    description:"The studio behind John Wick, The Hunger Games, and countless hits. Lionsgate is attending the summit with items at their booth!",
+    quiz:[
+      {q:"What franchise is Lionsgate famous for?",options:["Fast & Furious","John Wick / Hunger Games","Mission Impossible","Transformers"],answer:1},
+      {q:"Lionsgate's B&B contact is?",options:["Brock Bagby","Paul Weiss","Chris Tickner","Bobbie Bagby"],answer:2},
+      {q:"Lionsgate will have what at their summit presence?",options:["Nothing","Items at booth","A 30-min presentation","A dinner event"],answer:1},
+    ]},
+    { id:"v_paramount", name:"Paramount Pictures",         logo:"⭐", color:"#FFD700",
+    booth:"Studio Row — Aud 1", contact:"Tritia Nakamura", days:"Thu",
+    description:"One of Hollywood's most iconic studios presenting their exciting 2026 slate. Paramount is bringing SWEATSHIRTS for attendees — presenting Thursday morning. 🧥",
+    quiz:[
+      {q:"What welcome bag / gift is Paramount bringing?",options:["Hats","Phone cases","Sweatshirts","Tote bags"],answer:2},
+      {q:"When does Paramount present?",options:["Tuesday","Wednesday","Thursday","Monday"],answer:2},
+      {q:"Studio Row presentations are in which location?",options:["Stockroom","Johnnie's","Auditorium 1","Lobby"],answer:2},
+    ]},
+    { id:"v_popcorn", name:"Preferred Popcorn",            logo:"🌽", color:"#F9A825",
+    booth:"Lobby", contact:"Jayne Davis", days:"Tue–Wed",
+    description:"Premium popcorn supplier bringing the best kernels to B&B screens. Preferred Popcorn provides welcome bag gifts including bags and pens!",
+    quiz:[
+      {q:"What welcome bag items is Preferred Popcorn providing?",options:["T-shirts","Bags & pens","Hats","Phone cases"],answer:1},
+      {q:"Preferred Popcorn's B&B contact is?",options:["Brock Bagby","Bobbie Bagby","Chris Tickner","Paul Weiss"],answer:2},
+      {q:"Preferred Popcorn is present at the summit which days?",options:["Mon–Thu","Wed–Thu","Tue–Wed","Fri only"],answer:2},
+    ]},
+    { id:"v_redemption", name:"Redemption Plus",            logo:"🎮", color:"#2E7D32",
+    booth:"Lobby", contact:"Holly Shoaf", days:"Tue–Thu",
+    description:"The leader in redemption and entertainment solutions for cinema entertainment centers. Redemption Plus helps B&B's CEC locations drive revenue and guest delight.",
+    quiz:[
+      {q:"Redemption Plus specializes in which type of solutions?",options:["Food & beverage","Redemption & entertainment","Projection systems","Ticketing"],answer:1},
+      {q:"Redemption Plus is particularly relevant for which B&B locations?",options:["All locations","Drive-ins only","CEC entertainment centers","Corporate offices"],answer:2},
+      {q:"Redemption Plus's B&B contact is?",options:["Tyler Rice","Brock Bagby","Paul Weiss","Chris Tickner"],answer:1},
+    ]},
+    { id:"v_screenvision", name:"Screenvision Media",     logo:"📽️", color:"#E63946",
+    booth:"Lobby Booth A", contact:"Jessica Benson", days:"Mon–Wed",
+    description:"National cinema advertising network powering pre-show entertainment and advertising for hundreds of theatre circuits across the country.",
+    quiz:[
+      {q:"What does Screenvision primarily provide to theatres?",options:["Projection equipment","Pre-show advertising & entertainment","Concession software","Point-of-sale systems"],answer:1},
+      {q:"Which event kicks off Tuesday with a Screenvision presentation?",options:["Thursday Awards","The All Company Gathering","Wednesday Round Robin","Monday Dinner"],answer:1},
+      {q:"Where is the Screenvision booth located?",options:["Auditorium 1","Lobby Booth B","Lobby Booth A","Stockroom"],answer:2},
+    ]},
+    { id:"v_screenx", name:"ScreenX / 4DX",               logo:"🎥", color:"#0D47A1",
+    booth:"Auditorium 1 — Presentation", contact:"Duncan McDonald", days:"Mon–Thu",
+    description:"The ultimate premium large-format experience. ScreenX wraps the audience in 270° immersive cinema and 4DX moves you into the story. Presenting Tuesday evening!",
+    quiz:[
+      {q:"ScreenX wraps the audience in how many degrees of screen?",options:["180°","360°","270°","90°"],answer:2},
+      {q:"ScreenX / 4DX is a sponsor at what sponsorship level?",options:["$2,500","$5,000","$7,500","$10,000"],answer:3},
+      {q:"When is the ScreenX presentation at the summit?",options:["Monday dinner","Tuesday evening","Wednesday wrap-up","Thursday morning"],answer:1},
+    ]},
+    { id:"v_sony", name:"Sony Pictures",                   logo:"🎥", color:"#A78BFA",
+    booth:"Studio Row — Aud 1", contact:"Wesley Ratliffe", days:"Wed–Thu",
+    description:"Columbia Pictures, Screen Gems, and more — Sony brings a powerful film slate to B&B screens every year. Presenting their 2026 lineup on Thursday. Items in welcome bags after presentation!",
+    quiz:[
+      {q:"Which logo is Sony Pictures known for?",options:["A golden star","The Torch Lady","A film reel","A castle"],answer:1},
+      {q:"When does Sony present?",options:["10:15 AM","11:15 AM","1:15 PM","2:30 PM"],answer:1},
+      {q:"Sony Pictures is part of which parent company?",options:["Disney","Warner Bros","Sony Group Corporation","Comcast"],answer:2},
+    ]},
+    { id:"v_vistar", name:"Vistar Media",                  logo:"📊", color:"#00ACC1",
     booth:"Lobby", contact:"Dave Relling", days:"Summit",
     description:"Programmatic digital out-of-home (DOOH) advertising platform. Vistar connects brands with B&B audiences through data-driven digital screen advertising.",
     quiz:[
       {q:"Vistar Media specializes in which type of advertising?",options:["Social media","Digital out-of-home (DOOH)","Radio","Print"],answer:1},
       {q:"Vistar's B&B contact is?",options:["Brittanie Bagby","Brock Bagby","Bobbie Bagby","Chris Tickner"],answer:0},
       {q:"Vistar's sponsorship level is?",options:["$2,500","$7,500","$5,000","$10,000"],answer:2},
+    ]},
+    { id:"v_vivian", name:"Vivian",                        logo:"💼", color:"#7B1FA2",
+    booth:"Lobby", contact:"Matt Kopp", days:"Mon–Wed",
+    description:"Innovative solutions partner helping B&B theatres grow. Vivian brings tools and expertise to elevate the guest experience across B&B locations.",
+    quiz:[
+      {q:"Vivian's rep at the summit is?",options:["Jessica Benson","Matt Kopp","Holly Shoaf","Tony Adamson"],answer:1},
+      {q:"Vivian is present at the summit which days?",options:["Tue–Thu","Mon–Wed","Wed–Thu","Mon only"],answer:1},
+      {q:"What is Vivian's sponsorship level?",options:["$5,000","$10,000","$7,500","$2,500"],answer:3},
     ]},
 ];
 
@@ -300,53 +300,59 @@ const SCHEDULE = {
     {time:"6:15 PM",         event:"RealD — Special Guest Dinner. Meet and Greet",       loc:"Johnnie's Jazz Bar & Grill", venue:"🎷"},
   ],
   "Tuesday, March 10":[
-    {time:"9:15 – 9:30 AM",  event:"☕️ Breakfast — Coffee Provided at Theatre",          loc:"Hotel",                      venue:"🏨", food:true},
-    {time:"9:30 – 9:45 AM",  event:"🚌 Bus Pickup → Liberty Cinema 12",                  loc:"Hotel",                      venue:"🚌"},
+    {time:"Breakfast",        event:"🍳 Breakfast at Home or Hotel",                     loc:"Home / Hotel",               venue:"🏨", food:true},
+    {time:"9:30 – 10:00 AM", event:"☕️ Coffee Provided at the Theatre",                 loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"9:30 – 9:45 AM",  event:"🚌 Hotel Guests Bus Pickup → Liberty Cinema 12",    loc:"Hotel",                      venue:"🚌"},
+    {time:"9:45 AM",         event:"🎬 Non-Driver Arrival at Liberty Cinema 12",         loc:"Liberty Cinema 12",          venue:"🏛️"},
     {time:"10:00 – 11:00 AM",event:"🍽️F&B Town Meeting (Food & Bar Managers)",          loc:"Auditorium 12",              venue:"🎬"},
-    {time:"11:15 – 11:45 AM",event:"✅ Non-CEC Registration",                                     loc:"Main Lobby",                 venue:"🏛️"},
-    {time:"11:45 AM",        event:"🍽️ Lunch — New Arrivals / ScreenX Preview",         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"12:00 – 12:30 PM",event:"🍽️ Lunch — Morning Session Attendees",         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"1:00 – 1:15 PM",  event:"✔️ Vendor Meet and Greet Open — Check in via your app 🎯",  loc:"Main Lobby",  venue:"🏛️"},
+    {time:"11:15 – 11:45 AM",event:"✅ Non-CEC Registration",                            loc:"Main Lobby",                 venue:"🏛️"},
+    {time:"11:45 AM",        event:"📽️ ScreenX Presentation",                           loc:"Auditorium 1",               venue:"🎬"},
+    {time:"12:00 – 1:00 PM", event:"🍽️ Lunch",                                         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"1:00 – 1:15 PM",  event:"✔️ Vendor Meet and Greet Tables Open — Check in and earn points via the app 🎯",  loc:"Main Lobby",  venue:"🏛️"},
     {time:"1:15 – 1:30 PM",  event:"📽️ Screenvision Presentation",                     loc:"Auditorium 1",               venue:"🎬"},
     {time:"1:30 – 2:00 PM",  event:"🪄 All Company Gathering — Welcome & State of Company", loc:"Auditorium 1",            venue:"🎬"},
-    {time:"2:15 – 3:00 PM",  event:"😊 Respect. Safety. Belonging. Creating Community Within", loc:"Auditorium 1",             venue:"🎬"},
+    {time:"2:15 – 3:00 PM",  event:"😊 Respect. Safety. Belonging. Creating Community Within — HR", loc:"Auditorium 1",    venue:"🎬"},
     {time:"3:15 – 3:30 PM",  event:"Break",                                              loc:"Lobby",                      venue:"☕️"},
-    {time:"3:30 – 4:15 PM",  event:"📦 Stock Room Glow Up Session",                          loc:"Auditorium 1",               venue:"🎬"},
-    {time:"4:15 – 4:30 PM",  event:"📒 Smart Scheduling",                                    loc:"Auditorium 1",               venue:"🎬"},
+    {time:"3:30 – 4:15 PM",  event:"📦 The Inventory Standard",                          loc:"Auditorium 1",               venue:"🎬"},
+    {time:"4:15 – 4:30 PM",  event:"📒 Smart Scheduling",                                loc:"Auditorium 1",               venue:"🎬"},
     {time:"4:45 – 5:00 PM",  event:"Break",                                              loc:"Lobby",                      venue:"☕️"},
     {time:"5:00 – 5:30 PM",  event:"👨‍🏫 Training the Magic — Training & Development", loc:"Auditorium 1",  venue:"🎬"},
-    {time:"5:45 – 6:30 PM",  event:"🍕 Pizza Dinner",                                        loc:"Auditorium 1",               venue:"🍕", food:true},
+    {time:"5:45 – 6:30 PM",  event:"🍕 Pizza Dinner",                                   loc:"Auditorium 1",               venue:"🍕", food:true},
     {time:"6:15 – 6:30 PM",  event:"📽️ ScreenX Presentation",                          loc:"Auditorium 1",               venue:"🎬"},
-    {time:"6:30 PM+",        event:"📽️ Studio Screening",                                    loc:"Auditorium 1",               venue:"🎬"},
-    {time:"8:45 PM+",        event:"🎉 After Party & Dessert",                                     loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"9:45 PM",         event:"🚌 Bus Return to Hotel",                                       loc:"Hotel",                      venue:"🚌"},
+    {time:"6:30 PM+",        event:"📽️ Studio Screening",                               loc:"Auditorium 1",               venue:"🎬"},
+    {time:"9:00 – 10:15 PM", event:"🎉 After Party & Dessert",                          loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"10:15 PM",        event:"🚌 Bus Returns to Hotels",                           loc:"Hotel",                      venue:"🚌"},
   ],
   "Wednesday, March 11":[
-    {time:"9:20 – 9:40 AM",  event:"🚌 Bus Pickup from Hotels → Liberty Cinema 12",     loc:"Hotel",                      venue:"🚌"},
-    {time:"9:30 – 9:45 AM",  event:"☕ Arrival and Coffee at Johnnie's",                         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"10:00 AM – 5:00", event:"🔄 Round Robin Sessions (see My Group tab!)",            loc:"Aud 4 / 6 / 7 / 8 / 9 / Stockroom", venue:"🎬"},
-    {time:"Staggered",       event:"🍽️ Lunch — see My Group for your time",            loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"Breakfast",        event:"🍳 Breakfast at Home or Hotel",                     loc:"Home / Hotel",               venue:"🏨", food:true},
+    {time:"9:30 – 10:00 AM", event:"☕ Coffee Provided at the Theatre",                  loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"9:20 – 9:40 AM",  event:"🚌 Hotel Guests Bus Pickup → Liberty Cinema 12",    loc:"Hotel",                      venue:"🚌"},
+    {time:"9:45 AM",         event:"🎬 Non-Driver Arrival at Liberty Cinema 12",         loc:"Liberty Cinema 12",          venue:"🏛️"},
+    {time:"10:00 AM – 5:00", event:"🔄 Round Robin Sessions (see My Group tab!)",        loc:"Aud 4 / 6 / 7 / 8 / 9 / Stockroom", venue:"🎬"},
+    {time:"Staggered",       event:"🍽️ Lunch — see My Group Tab for your time",         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
     {time:"5:00 – 5:30 PM",  event:"📽️ Barco Presentation & Wrap Up",                  loc:"Auditorium 1",               venue:"🎬"},
     {time:"5:30 – 6:00 PM",  event:"🚌 Buses → Main Event (Summit)",                    loc:"Liberty Cinema 12",          venue:"🚌"},
-    {time:"6:00 – 8:45 PM",  event:"🎳 Off-Site Activity & Dinner",                          loc:"Main Event",                 venue:"🎳", food:true},
-    {time:"8:45 – 9:15 PM",  event:"🚌 Return Trip to Hotel",                                loc:"Hotel",                      venue:"🚌"},
+    {time:"6:00 – 8:45 PM",  event:"🎳 Off-Site Activity & Dinner at Main Event — Corporate employees who live in KC Metro should drive themselves to Main Event. 8081 NW Roanridge Rd., Kansas City, MO 64151", loc:"Main Event", venue:"🎳", food:true},
+    {time:"8:45 – 9:15 PM",  event:"🚌 Return Trip to Hotel and Theatre",               loc:"Hotel",                      venue:"🚌"},
   ],
   "Thursday, March 12":[
-    {time:"9:20 – 9:35 AM",  event:"🚌 Bus Pickup → Liberty Cinema 12",                 loc:"Hotel",                      venue:"🚌"},
-    {time:"9:45 – 9:50 AM",  event:"☕ Arrival and Coffee at Johnnie's",                         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"Breakfast",        event:"🍳 Breakfast at Home or Hotel",                     loc:"Home / Hotel",               venue:"🏨", food:true},
+    {time:"9:30 – 10:00 AM", event:"☕ Coffee Provided at the Theatre",                  loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"9:20 – 9:35 AM",  event:"🚌 Hotel Guests Bus Pickup → Liberty Cinema 12",    loc:"Hotel",                      venue:"🚌"},
+    {time:"9:45 AM",         event:"🎬 Non-Driver Arrival at Liberty Cinema 12",         loc:"Liberty Cinema 12",          venue:"🏛️"},
     {time:"10:00 – 10:15 AM",event:"📽️ Barco Presentation",                            loc:"Auditorium 1",               venue:"🎬"},
     {time:"10:15 – 10:30 AM",event:"💻 Smart Systems, Seamless Experiences — IT Talks", loc:"Auditorium 1",               venue:"🎬"},
+    {time:"10:30 – 10:45 AM",event:"☕️ Break",                                          loc:"Lobby",                      venue:"☕️"},
     {time:"10:45 – 11:00 AM",event:"📽️ GDC Presentation",                              loc:"Auditorium 1",               venue:"🎬"},
-    {time:"11:00 – 11:15 AM",event:"⭐ Paramount — Studio Presentation",                    loc:"Auditorium 1",               venue:"⭐"},
+    {time:"11:00 – 11:15 AM",event:"⭐ Paramount — Studio Presentation",                loc:"Auditorium 1",               venue:"⭐"},
     {time:"11:15 – 11:30 AM",event:"🎥 Sony — Studio Presentation",                     loc:"Auditorium 1",               venue:"🎥"},
-    {time:"11:30 AM – 12:15",event:"🔨 Facilities Maintenance",                              loc:"Auditorium 1",               venue:"🎬"},
-    {time:"12:30 – 1:15 PM", event:"🍽️ Lunch",                                         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"11:30 AM – 12:15",event:"🔨 Facilities Maintenance",                         loc:"Auditorium 1",               venue:"🎬"},
+    {time:"12:15 – 1:15 PM", event:"🍽️ Lunch",                                         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
     {time:"1:15 – 1:45 PM",  event:"🎉 Cheers! — Paul Farnsworth & Toma Foster",       loc:"Auditorium 1",               venue:"🎬"},
     {time:"1:45 – 2:15 PM",  event:"🎞️ Programming — Chad Christopher & Ed Carl", loc:"Auditorium 1",               venue:"🎬"},
-    {time:"2:15 – 2:30 PM",  event:"☕️ Break",                                             loc:"Lobby",                      venue:"☕️"},
+    {time:"2:15 – 2:30 PM",  event:"☕️ Break",                                          loc:"Lobby",                      venue:"☕️"},
     {time:"2:30 – 3:00 PM",  event:"🎖️ Years of Service Recognition",                  loc:"Auditorium 1",               venue:"🏆"},
-    {time:"3:00 – 3:30 PM",  event:"🏆 Awards Ceremony",                                     loc:"Auditorium 1",               venue:"🏆"},
-    {time:"3:30 PM+",        event:"🎉 Wrap Up!",                                                  loc:"Auditorium 1",               venue:"🎉"},
+    {time:"3:00 – 4:00 PM",  event:"🏆 Awards Ceremony",                                loc:"Auditorium 1",               venue:"🏆"},
   ],
 };
 const DAYS = ["Monday, March 9","Tuesday, March 10","Wednesday, March 11","Thursday, March 12"];
@@ -551,8 +557,8 @@ const NAV = [
 const css = `
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#0A0A0F;color:#E8E8F0;font-family:'DM Sans',sans-serif}
-.wrap{max-width:480px;margin:0 auto;padding:14px 14px 90px}
+body{background:#0A0A0F;color:#E8E8F0;font-family:'DM Sans',sans-serif;display:flex;justify-content:center;min-height:100vh}
+.wrap{max-width:480px;width:100%;margin:0 auto;padding:14px 14px 90px}
 .hdr{margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #2A2A40}
 .hdr-row{display:flex;justify-content:space-between;align-items:flex-start}
 .logo{font-family:'Playfair Display',serif;font-size:21px;font-weight:900;background:linear-gradient(135deg,#D4AF37,#F0D060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -677,7 +683,7 @@ body{background:#0A0A0F;color:#E8E8F0;font-family:'DM Sans',sans-serif}
 @keyframes slideDown{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
 .notice-bar{flex:1;padding:12px 14px 12px 14px;display:flex;align-items:center;gap:10px}
 .notice-bar.warning{background:linear-gradient(135deg,#7a3a00,#5a2800);border-bottom:2px solid #FF8C00}
-.notice-bar.info{background:linear-gradient(135deg,#0a2a5a,#051830);border-bottom:2px solid #5B8FFF}
+.notice-bar.info{background:linear-gradient(135deg,#0a3a3a,#051a2a);border-bottom:2px solid #2DD4BF}
 .notice-bar.success{background:linear-gradient(135deg,#0a3a1a,#051810);border-bottom:2px solid #4CAF7D}
 .notice-bar.urgent{background:linear-gradient(135deg,#5a0a0a,#3a0505);border-bottom:2px solid #FF4444}
 .notice-ico{font-size:22px;flex-shrink:0}
@@ -1513,7 +1519,7 @@ export default function App() {
                 <div className="tut-tip-row"><span className="tut-tip-ico">📍</span><span className="tut-tip-txt"><strong style={{color:"#D4AF37"}}>+30 points</strong> just for visiting a booth</span></div>
                 <div className="tut-tip-row"><span className="tut-tip-ico">🧠</span><span className="tut-tip-txt"><strong style={{color:"#D4AF37"}}>+25 points</strong> per correct quiz answer</span></div>
                 <div className="tut-tip-row"><span className="tut-tip-ico">🏆</span><span className="tut-tip-txt">Top 3 on the leaderboard win prizes at the Awards Ceremony!</span></div>
-                <div className="tut-tip-row"><span className="tut-tip-ico">📅</span><span className="tut-tip-txt">Vendor tables are open Tuesday & Wednesday in the lobby</span></div>
+                <div className="tut-tip-row"><span className="tut-tip-ico">📅</span><span className="tut-tip-txt">Vendor tables are open Tuesday in the lobby. Vendors will also join us at Main Event on Wednesday!</span></div>
               </div>
             </>}
             {tutSlide===2&&<>
