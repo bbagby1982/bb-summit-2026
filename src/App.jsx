@@ -57,22 +57,22 @@ const SESSION_COLORS = {
 };
 const ROTATIONS = {
   1:[
-    {time:"10:00–10:50 AM", session:"Stock Room Glow Up",                          host:"Jason Foster & Chad Christopher",              loc:"Auditorium 9",  emoji:"📦"},
+    {time:"10:00–10:50 AM", session:"Stock Room Glow Up",                          host:"Jason Foster & Kirby",              loc:"Auditorium 9",  emoji:"📦"},
     {time:"11:00–11:50 AM", session:"Driving the Magic with Metrics",               host:"Curtis Diehl, Michael Hagan & Kent Peterson",   loc:"Auditorium 7",  emoji:"💰"},
     {time:"12:00 PM",       session:"Lunch & Networking",                 host:"",                                              loc:"Johnnie's",     emoji:"🍽️", isLunch:true},
     {time:"1:00–1:50 PM",   session:"FUNdamentals",                       host:"Tyler Rice & Jacob Mellor",                    loc:"Auditorium 4",  emoji:"🎉"},
     {time:"2:00–2:50 PM",   session:"HR Behind the Handbook",                             host:"Pam Carr & James Warner",                      loc:"Auditorium 6",  emoji:"💼"},
     {time:"3:00–3:30 PM",   session:"Lights Camera, Loyalty",host:"Paul Weiss",                                   loc:"TBD",           emoji:"🎟️"},
-    {time:"3:30–4:00 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Stockroom",     emoji:"⭐"},
+    {time:"3:30–4:00 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Auditorium 12",     emoji:"⭐"},
     {time:"4:00–4:50 PM",   session:"Leaders Set the Tone",        host:"Steven Ramskill & Jeff Horton",                              loc:"Auditorium 8",  emoji:"🎬"},
   ],
   2:[
     {time:"10:00–10:50 AM", session:"FUNdamentals",                       host:"Tyler Rice & Jacob Mellor",                    loc:"Auditorium 4",  emoji:"🎉"},
-    {time:"11:00–11:50 AM", session:"Stock Room Glow Up",                          host:"Jason Foster & Chad Christopher",              loc:"Auditorium 9",  emoji:"📦"},
+    {time:"11:00–11:50 AM", session:"Stock Room Glow Up",                          host:"Jason Foster & Kirby",              loc:"Auditorium 9",  emoji:"📦"},
     {time:"12:00–12:50 PM", session:"Driving the Magic with Metrics",               host:"Curtis Diehl, Michael Hagan & Kent Peterson",   loc:"Auditorium 7",  emoji:"💰"},
     {time:"12:50 PM",       session:"Lunch & Networking",                 host:"",                                              loc:"Johnnie's",     emoji:"🍽️", isLunch:true},
     {time:"2:00–2:30 PM",   session:"Lights Camera, Loyalty",host:"Paul Weiss",                                   loc:"TBD",           emoji:"🎟️"},
-    {time:"2:30–3:00 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Stockroom",     emoji:"⭐"},
+    {time:"2:30–3:00 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Auditorium 12",     emoji:"⭐"},
     {time:"3:00–3:50 PM",   session:"HR Behind the Handbook",                             host:"Pam Carr & James Warner",                      loc:"Auditorium 6",  emoji:"💼"},
     {time:"4:00–4:50 PM",   session:"Leaders Set the Tone",        host:"Steven Ramskill & Jeff Horton",                              loc:"Auditorium 8",  emoji:"🎬"},
   ],
@@ -80,30 +80,30 @@ const ROTATIONS = {
     {time:"10:00–10:50 AM", session:"HR Behind the Handbook",                             host:"Pam Carr & James Warner",                      loc:"Auditorium 6",  emoji:"💼"},
     {time:"11:00–11:50 AM", session:"Leaders Set the Tone",        host:"Steven Ramskill & Jeff Horton",                              loc:"Auditorium 8",  emoji:"🎬"},
     {time:"12:00 PM",       session:"Lunch & Networking",                 host:"",                                              loc:"Johnnie's",     emoji:"🍽️", isLunch:true},
-    {time:"1:00–1:50 PM",   session:"Stock Room Glow Up",                          host:"Jason Foster & Chad Christopher",              loc:"Auditorium 9",  emoji:"📦"},
+    {time:"1:00–1:50 PM",   session:"Stock Room Glow Up",                          host:"Jason Foster & Kirby",              loc:"Auditorium 9",  emoji:"📦"},
     {time:"2:00–2:50 PM",   session:"Driving the Magic with Metrics",               host:"Curtis Diehl, Michael Hagan & Kent Peterson",   loc:"Auditorium 7",  emoji:"💰"},
     {time:"3:00–3:50 PM",   session:"FUNdamentals",                       host:"Tyler Rice & Jacob Mellor",                    loc:"Auditorium 4",  emoji:"🎉"},
     {time:"4:00–4:30 PM",   session:"Lights Camera, Loyalty",host:"Paul Weiss",                                   loc:"TBD",           emoji:"🎟️"},
-    {time:"4:30–5:00 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Stockroom",     emoji:"⭐"},
+    {time:"4:30–5:00 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Auditorium 12",     emoji:"⭐"},
   ],
   4:[
     {time:"10:00–10:50 AM", session:"Driving the Magic with Metrics",               host:"Curtis Diehl, Michael Hagan & Kent Peterson",   loc:"Auditorium 7",  emoji:"💰"},
     {time:"11:00–11:45 AM", session:"HR Behind the Handbook",                             host:"Pam Carr & James Warner",                      loc:"Auditorium 6",  emoji:"💼"},
     {time:"11:45 AM–12:15", session:"Lights Camera, Loyalty",host:"Paul Weiss",                                   loc:"TBD",           emoji:"🎟️"},
     {time:"12:15 PM",       session:"Lunch & Networking",                 host:"",                                              loc:"Johnnie's",     emoji:"🍽️", isLunch:true},
-    {time:"1:15–1:45 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Stockroom",     emoji:"⭐"},
-    {time:"2:00–2:50 PM",   session:"Stock Room Glow Up",                          host:"Jason Foster & Chad Christopher",              loc:"Auditorium 9",  emoji:"📦"},
-    {time:"3:00–3:50 PM",   session:"FUNdamentals",                       host:"Tyler Rice & Jacob Mellor",                    loc:"Auditorium 4",  emoji:"🎉"},
-    {time:"4:00–4:50 PM",   session:"Leaders Set the Tone",        host:"Steven Ramskill & Jeff Horton",                              loc:"Auditorium 8",  emoji:"🎬"},
+    {time:"1:15–1:45 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Auditorium 12",     emoji:"⭐"},
+    {time:"2:00–2:50 PM",   session:"Stock Room Glow Up",                          host:"Jason Foster & Kirby",              loc:"Auditorium 9",  emoji:"📦"},
+    {time:"3:00–3:50 PM",   session:"Leaders Set the Tone",        host:"Steven Ramskill & Jeff Horton",                              loc:"Auditorium 8",  emoji:"🎬"},
+    {time:"4:00–4:50 PM",   session:"FUNdamentals",                       host:"Tyler Rice & Jacob Mellor",                    loc:"Auditorium 4",  emoji:"🎉"},
   ],
   5:[
     {time:"10:00–10:50 AM", session:"Driving the Magic with Metrics",               host:"Curtis Diehl, Michael Hagan & Kent Peterson",   loc:"Auditorium 7",  emoji:"💰"},
     {time:"11:00–11:50 AM", session:"HR Behind the Handbook",                             host:"Pam Carr & James Warner",                      loc:"Auditorium 6",  emoji:"💼"},
     {time:"12:00–12:50 PM", session:"Leaders Set the Tone",        host:"Steven Ramskill & Jeff Horton",                              loc:"Auditorium 8",  emoji:"🎬"},
     {time:"1:00 PM",        session:"Lunch & Networking",                 host:"",                                              loc:"Johnnie's",     emoji:"🍽️", isLunch:true},
-    {time:"2:00–2:30 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Stockroom",     emoji:"⭐"},
+    {time:"2:00–2:30 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Auditorium 12",     emoji:"⭐"},
     {time:"2:30–3:00 PM",   session:"Lights Camera, Loyalty",host:"Paul Weiss",                                   loc:"TBD",           emoji:"🎟️"},
-    {time:"3:00–3:50 PM",   session:"Stock Room Glow Up",                          host:"Jason Foster & Chad Christopher",              loc:"Auditorium 9",  emoji:"📦"},
+    {time:"3:00–3:50 PM",   session:"Stock Room Glow Up",                          host:"Jason Foster & Kirby",              loc:"Auditorium 9",  emoji:"📦"},
     {time:"4:00–4:50 PM",   session:"FUNdamentals",                       host:"Tyler Rice & Jacob Mellor",                    loc:"Auditorium 4",  emoji:"🎉"},
   ],
   6:[
@@ -111,10 +111,10 @@ const ROTATIONS = {
     {time:"11:00–11:50 AM", session:"FUNdamentals",                       host:"Tyler Rice & Jacob Mellor",                    loc:"Auditorium 4",  emoji:"🎉"},
     {time:"12:00 PM",       session:"Lunch & Networking",                 host:"",                                              loc:"Johnnie's",     emoji:"🍽️", isLunch:true},
     {time:"1:00–1:50 PM",   session:"HR Behind the Handbook",                             host:"Pam Carr & James Warner",                      loc:"Auditorium 6",  emoji:"💼"},
-    {time:"2:00–2:30 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Stockroom",     emoji:"⭐"},
+    {time:"2:00–2:30 PM",   session:"Making Guests Fans",             host:"Bobbie Bagby & Brett Zornes",                  loc:"Auditorium 12",     emoji:"⭐"},
     {time:"2:30–3:00 PM",   session:"Lights Camera, Loyalty",host:"Paul Weiss",                                   loc:"TBD",           emoji:"🎟️"},
     {time:"3:00–3:50 PM",   session:"Driving the Magic with Metrics",               host:"Curtis Diehl, Michael Hagan & Kent Peterson",   loc:"Auditorium 7",  emoji:"💰"},
-    {time:"4:00–4:50 PM",   session:"Stock Room Glow Up",                          host:"Jason Foster & Chad Christopher",              loc:"Auditorium 9",  emoji:"📦"},
+    {time:"4:00–4:50 PM",   session:"Stock Room Glow Up",                          host:"Jason Foster & Kirby",              loc:"Auditorium 9",  emoji:"📦"},
   ],
 };
 
@@ -144,13 +144,31 @@ const LOCATION_HOTEL = {
 const HOTEL_INFO = {
   "TownePlace Suites":{ emoji:"🏨", color:"#5B8FFF",
     address:"130 S Stewart Rd, Liberty, MO 64068", phone:"(816) 415-9200",
-    notes:"Flyers & select corporate staff. Free hot breakfast daily. Check-in after 3 PM." },
+    notes:"Flyers & select corporate staff. Enjoy breakfast every morning at the hotel! Coffee only will be available at the theatre. Check-in after 3 PM." },
   "Hampton Inn":{ emoji:"🏨", color:"#4CAF7D",
-    address:"1571 Main St, Kansas City, MO 64108", phone:"(816) 255-3915",
-    notes:"Theatre managers & drivers. Free hot breakfast + on-site Starbucks. Check-in after 3 PM." },
+    address:"8551 Church Rd, Kansas City, MO 64117", phone:"(816) 415-9600",
+    notes:"Theatre managers & drivers. Enjoy breakfast every morning at the hotel! Coffee only will be available at the theatre. Check-in after 3 PM." },
 };
 
-// ─── VENDORS ─────────────────────────────────────────────────────────────────
+// ─── FLIGHTS ─────────────────────────────────────────────────────────────────
+const FLIGHTS = [
+  { name:"Jake Anderson",       loc:"Airway Heights",       airline:"Southwest",        conf:"AEJG9Z",  arrival:"Sun 1:10 PM",   departure:"Thu 7:10 PM",  notes:"" },
+  { name:"Terika Rucker",       loc:"Athens",               airline:"Southwest",        conf:"AFIIAE",  arrival:"Sun 2:40 PM",   departure:"Thu 6:33 PM",  notes:"" },
+  { name:"Patrick Doherty",     loc:"Blacksburg",           airline:"American Airlines",conf:"GZYJUV",  arrival:"",              departure:"",             notes:"Made own flight arrangements" },
+  { name:"Kirstin Bradel",      loc:"Bloomington",          airline:"Delta",            conf:"F6CT50",  arrival:"Sun 3:04 PM",   departure:"Thu 6:55 PM",  notes:"" },
+  { name:"Jeff Horton",         loc:"Corporate",            airline:"Southwest",        conf:"CFC8IE",  arrival:"Sun 11:00 PM",  departure:"Thu 7:55 PM",  notes:"Made own flight arrangements" },
+  { name:"Meagan Faulk",        loc:"North Richland Hills", airline:"Southwest",        conf:"AEYREP",  arrival:"Sun 5:00 PM",   departure:"Thu 6:50 PM",  notes:"" },
+  { name:"John Bernard",        loc:"Port Arthur",          airline:"United",           conf:"DR9PKF",  arrival:"Sun 4:52 PM",   departure:"Thu 6:13 PM",  notes:"" },
+  { name:"Jonathan Turner",     loc:"Portland",             airline:"Southwest",        conf:"ADT92F",  arrival:"Sun 4:35 PM",   departure:"Thu 6:13 PM",  notes:"" },
+  { name:"CB Williams",         loc:"Red Oak",              airline:"Southwest",        conf:"AFCF38",  arrival:"",              departure:"",             notes:"" },
+  { name:"Charles Pate",        loc:"Ridgeland",            airline:"Southwest",        conf:"ADWIYS",  arrival:"Sun 10:15 AM",  departure:"Thu 6:13 PM",  notes:"" },
+  { name:"Yasemin Henningsen",  loc:"Wesley Chapel",        airline:"Southwest",        conf:"AFFGV6",  arrival:"Sun 12:35 PM",  departure:"Thu 6:55 PM",  notes:"" },
+  { name:"Alyssa Valenti",      loc:"Wesley Chapel",        airline:"Southwest",        conf:"AFKCPZ",  arrival:"Sun 12:35 PM",  departure:"Thu 6:55 PM",  notes:"" },
+  { name:"Christy Hinkley",     loc:"Wylie",                airline:"Southwest",        conf:"AFKQ93",  arrival:"Sun 2:30 PM",   departure:"Thu 6:50 PM",  notes:"" },
+  { name:"Jaughn Cyr",          loc:"Wylie",                airline:"Southwest",        conf:"AFPNUR",  arrival:"Sun 2:30 PM",   departure:"Thu 6:50 PM",  notes:"" },
+  { name:"Kevin Cowden",        loc:"Liberty Township",     airline:"Southwest",        conf:"AFRSSV",  arrival:"Sun 11:40 AM",  departure:"Thu 6:00 PM",  notes:"" },
+  { name:"Steve Ramskill",      loc:"Corporate",            airline:"Delta",            conf:"GCU6VC",  arrival:"Sun 2:54 PM",   departure:"Thu 5:31 PM",  notes:"Made own flight arrangements. Rental car: Hertz #L47741042B0" },
+];
 const VENDORS = [
     { id:"v_amazonmgm", name:"Amazon MGM Studios",         logo:"🎬", color:"#FF9900",
     booth:"Studio Row — Lobby", contact:"Branden Miller", days:"Mon–Wed",
@@ -169,7 +187,7 @@ const VENDORS = [
       {q:"How many contacts does Apple Industries have at the summit?",options:["One","Two","Three","Four"],answer:1},
     ]},
     { id:"v_barco", name:"Barco",                          logo:"🔦", color:"#4CAF7D",
-    booth:"Auditorium 1", contact:"Casey Collins", days:"Tue–Thu",
+    booth:"Lobby", contact:"Casey Collins", days:"Tue–Thu",
     description:"Global leader in cinema projection technology — the projectors powering B&B screens. Presenting Wednesday wrap-up AND opening Thursday morning.",
     quiz:[
       {q:"What product category is Barco known for in cinema?",options:["Sound systems","Cinema projectors","Ticketing software","Concession equipment"],answer:1},
@@ -208,6 +226,14 @@ const VENDORS = [
       {q:"GDC's sponsorship level is?",options:["$2,500","$5,000","$10,000","$7,500"],answer:3},
       {q:"When does GDC present at the summit?",options:["Tuesday afternoon","Wednesday morning","Thursday morning","Monday dinner"],answer:2},
     ]},
+    { id:"v_haleigh", name:"Haleigh — Influencer/Ambassador", logo:"📱", color:"#E91E9C",
+    booth:"Sponsor Table — Lobby", contact:"Haleigh", days:"Tuesday",
+    description:"B&B's influencer and brand ambassador bringing social media savvy and community engagement to the summit. Stop by the sponsor table to connect!",
+    quiz:[
+      {q:"What is Haleigh's role at the summit?",options:["Vendor rep","Influencer & Brand Ambassador","Corporate staff","Presenter"],answer:1},
+      {q:"Where is Haleigh's sponsor table?",options:["Auditorium 1","Stockroom","Lobby","Johnnie's"],answer:2},
+      {q:"Social media influencers help B&B with what?",options:["Projection setup","Community engagement & brand awareness","Concession supply","Scheduling"],answer:1},
+    ]},
     { id:"v_ims", name:"Integrated Media Systems",         logo:"📡", color:"#546E7A",
     booth:"Lobby", contact:"Mohammad Ahmadi", days:"Summit",
     description:"AV integration experts providing cinema-grade audio, video, and control systems. IMS helps B&B deliver the best possible on-screen experience.",
@@ -217,7 +243,7 @@ const VENDORS = [
       {q:"IMS's sponsorship level is?",options:["$5,000","$7,500","$2,500","$10,000"],answer:2},
     ]},
     { id:"v_lionsgate", name:"Lionsgate",                  logo:"🦁", color:"#FF5722",
-    booth:"Studio Row — Aud 1", contact:"Ryan Garcia", days:"Summit",
+    booth:"Studio Row — Aud 1", contact:"Ryan Garcia & Clara Madenwald", days:"Summit",
     description:"The studio behind John Wick, The Hunger Games, and countless hits. Lionsgate is attending the summit with items at their booth!",
     quiz:[
       {q:"What franchise is Lionsgate famous for?",options:["Fast & Furious","John Wick / Hunger Games","Mission Impossible","Transformers"],answer:1},
@@ -272,14 +298,6 @@ const VENDORS = [
       {q:"When does Sony present?",options:["10:15 AM","11:15 AM","1:15 PM","2:30 PM"],answer:1},
       {q:"Sony Pictures is part of which parent company?",options:["Disney","Warner Bros","Sony Group Corporation","Comcast"],answer:2},
     ]},
-    { id:"v_vistar", name:"Vistar Media",                  logo:"📊", color:"#00ACC1",
-    booth:"Lobby", contact:"Dave Relling", days:"Summit",
-    description:"Programmatic digital out-of-home (DOOH) advertising platform. Vistar connects brands with B&B audiences through data-driven digital screen advertising.",
-    quiz:[
-      {q:"Vistar Media specializes in which type of advertising?",options:["Social media","Digital out-of-home (DOOH)","Radio","Print"],answer:1},
-      {q:"Vistar's B&B contact is?",options:["Brittanie Bagby","Brock Bagby","Bobbie Bagby","Chris Tickner"],answer:0},
-      {q:"Vistar's sponsorship level is?",options:["$2,500","$7,500","$5,000","$10,000"],answer:2},
-    ]},
     { id:"v_vivian", name:"Vivian",                        logo:"💼", color:"#7B1FA2",
     booth:"Lobby", contact:"Matt Kopp", days:"Mon–Wed",
     description:"Innovative solutions partner helping B&B theatres grow. Vivian brings tools and expertise to elevate the guest experience across B&B locations.",
@@ -298,58 +316,58 @@ const SCHEDULE = {
     {time:"3:00 – 6:00 PM",  event:"CEC Meeting",                                        loc:"Auditorium 12",              venue:"🎬"},
     {time:"6:00 PM+",        event:"🍽️ Dinner for out of town Attendees",                loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
     {time:"6:15 PM",         event:"RealD — Special Guest Dinner. Meet and Greet",       loc:"Johnnie's Jazz Bar & Grill", venue:"🎷"},
+    {time:"7:00 – 8:30 PM",  event:"🚌 Transport from Theatre to Hotel",                 loc:"Hotel",                      venue:"🚌"},
   ],
   "Tuesday, March 10":[
-    {time:"Breakfast",        event:"🍳 Breakfast at Home or Hotel",                     loc:"Home / Hotel",               venue:"🏨", food:true},
-    {time:"9:30 – 10:00 AM", event:"☕️ Coffee Provided at the Theatre",                 loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"9:30 – 9:45 AM",  event:"🚌 Hotel Guests Bus Pickup → Liberty Cinema 12",    loc:"Hotel",                      venue:"🚌"},
-    {time:"9:45 AM",         event:"🎬 Non-Driver Arrival at Liberty Cinema 12",         loc:"Liberty Cinema 12",          venue:"🏛️"},
-    {time:"10:00 – 11:00 AM",event:"🍽️F&B Town Meeting (Food & Bar Managers)",          loc:"Auditorium 12",              venue:"🎬"},
-    {time:"11:15 – 11:45 AM",event:"✅ Non-CEC Registration",                            loc:"Main Lobby",                 venue:"🏛️"},
-    {time:"11:45 AM",        event:"📽️ ScreenX Presentation",                           loc:"Auditorium 1",               venue:"🎬"},
-    {time:"12:00 – 1:00 PM", event:"🍽️ Lunch",                                         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"1:00 – 1:15 PM",  event:"✔️ Vendor Meet and Greet Tables Open — Check in and earn points via the app 🎯",  loc:"Main Lobby",  venue:"🏛️"},
-    {time:"1:15 – 1:30 PM",  event:"📽️ Screenvision Presentation",                     loc:"Auditorium 1",               venue:"🎬"},
-    {time:"1:30 – 2:00 PM",  event:"🪄 All Company Gathering — Welcome & State of Company", loc:"Auditorium 1",            venue:"🎬"},
-    {time:"2:15 – 3:00 PM",  event:"😊 Respect. Safety. Belonging. Creating Community Within — HR", loc:"Auditorium 1",    venue:"🎬"},
-    {time:"3:15 – 3:30 PM",  event:"Break",                                              loc:"Lobby",                      venue:"☕️"},
-    {time:"3:30 – 4:15 PM",  event:"📦 The Inventory Standard",                          loc:"Auditorium 1",               venue:"🎬"},
-    {time:"4:15 – 4:30 PM",  event:"📒 Smart Scheduling",                                loc:"Auditorium 1",               venue:"🎬"},
-    {time:"4:45 – 5:00 PM",  event:"Break",                                              loc:"Lobby",                      venue:"☕️"},
-    {time:"5:00 – 5:30 PM",  event:"👨‍🏫 Training the Magic — Training & Development", loc:"Auditorium 1",  venue:"🎬"},
-    {time:"5:45 – 6:30 PM",  event:"🍕 Pizza Dinner",                                   loc:"Auditorium 1",               venue:"🍕", food:true},
-    {time:"6:15 – 6:30 PM",  event:"📽️ ScreenX Presentation",                          loc:"Auditorium 1",               venue:"🎬"},
-    {time:"6:30 PM+",        event:"📽️ Studio Screening",                               loc:"Auditorium 1",               venue:"🎬"},
-    {time:"9:00 – 10:15 PM", event:"🎉 After Party & Dessert",                          loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"10:15 PM",        event:"🚌 Bus Returns to Hotels",                           loc:"Hotel",                      venue:"🚌"},
+    {time:"Breakfast",          event:"🍳 Breakfast at Home or Hotel",                     loc:"Home / Hotel",               venue:"🏨", food:true},
+    {time:"9:30 – 10:00 AM",   event:"☕️ Coffee Provided at the Theatre",                 loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"9:30 – 9:45 AM",    event:"🚌 Hotel Guests Bus Pickup (Flyers Only) → Liberty Cinema 12", loc:"TownePlace Suites", venue:"🚌"},
+    {time:"9:45 AM",           event:"🎬 Non-Driver Arrival at Liberty Cinema 12",         loc:"Liberty Cinema 12",          venue:"🏛️"},
+    {time:"10:00 – 11:30 AM",  event:"🍽️ F&B Town Meeting (Food & Bar Managers)",         loc:"Auditorium 12",              venue:"🎬"},
+    {time:"11:15 – 11:45 AM",  event:"✅ Non-CEC Registration",                            loc:"Main Lobby",                 venue:"🏛️"},
+    {time:"11:30 AM – 12:00 PM",event:"📽️ ScreenX Presentation (Towns Only)",             loc:"Auditorium 1",               venue:"🎬"},
+    {time:"11:30 – 1:15 PM",   event:"🍽️ Lunch & ✔️ Vendor Meet & Greet Tables Open — Check in and earn points via the app 🎯", loc:"Johnnie's & Main Lobby", venue:"🎷", food:true},
+    {time:"1:15 – 1:30 PM",    event:"📽️ Screenvision Presentation",                     loc:"Auditorium 1",               venue:"🎬"},
+    {time:"1:30 – 2:15 PM",    event:"🪄 All Company Gathering — Welcome & State of Company", loc:"Auditorium 1",            venue:"🎬"},
+    {time:"2:15 – 3:15 PM",    event:"😊 Respect. Safety. Belonging. Creating Community Within — HR", loc:"Auditorium 1",    venue:"🎬"},
+    {time:"3:15 – 3:30 PM",    event:"Break",                                              loc:"Lobby",                      venue:"☕️"},
+    {time:"3:30 – 4:15 PM",    event:"📦 The Inventory Standard",                          loc:"Auditorium 1",               venue:"🎬"},
+    {time:"4:15 – 4:45 PM",    event:"📒 Smart Scheduling — Amanda",                       loc:"Auditorium 1",               venue:"🎬"},
+    {time:"4:45 – 5:00 PM",    event:"Break",                                              loc:"Lobby",                      venue:"☕️"},
+    {time:"5:00 – 5:45 PM",    event:"👨‍🏫 Training the Magic — Training & Development", loc:"Auditorium 1",  venue:"🎬"},
+    {time:"5:45 – 6:15 PM",    event:"🍕 Pizza Dinner",                                   loc:"Auditorium 1",               venue:"🍕", food:true},
+    {time:"6:15 – 6:30 PM",    event:"📽️ ScreenX Presentation",                          loc:"Auditorium 1",               venue:"🎬"},
+    {time:"6:30 PM+",          event:"📽️ Studio Screening",                               loc:"Auditorium 1",               venue:"🎬"},
+    {time:"9:00 – 10:15 PM",   event:"🎉 After Party & Dessert",                          loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"10:15 PM",          event:"🚌 Bus Returns to Hotels",                           loc:"Hotel",                      venue:"🚌"},
   ],
   "Wednesday, March 11":[
     {time:"Breakfast",        event:"🍳 Breakfast at Home or Hotel",                     loc:"Home / Hotel",               venue:"🏨", food:true},
     {time:"9:30 – 10:00 AM", event:"☕ Coffee Provided at the Theatre",                  loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"9:20 – 9:40 AM",  event:"🚌 Hotel Guests Bus Pickup → Liberty Cinema 12",    loc:"Hotel",                      venue:"🚌"},
+    {time:"9:30 – 9:45 AM",  event:"🚌 Hotel Guests Bus Pickup (Flyers Only) → Liberty Cinema 12", loc:"TownePlace Suites", venue:"🚌"},
     {time:"9:45 AM",         event:"🎬 Non-Driver Arrival at Liberty Cinema 12",         loc:"Liberty Cinema 12",          venue:"🏛️"},
-    {time:"10:00 AM – 5:00", event:"🔄 Round Robin Sessions (see My Group tab!)",        loc:"Aud 4 / 6 / 7 / 8 / 9 / Stockroom", venue:"🎬"},
+    {time:"10:00 AM – 5:00", event:"🔄 Round Robin Sessions (see My Group tab!)",        loc:"Aud 1 / 4 / 6 / 7 / 8 / 9 / 12", venue:"🎬"},
     {time:"Staggered",       event:"🍽️ Lunch — see My Group Tab for your time",         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"5:00 – 5:30 PM",  event:"📽️ Barco Presentation & Wrap Up",                  loc:"Auditorium 1",               venue:"🎬"},
-    {time:"5:30 – 6:00 PM",  event:"🚌 Buses → Main Event (Summit)",                    loc:"Liberty Cinema 12",          venue:"🚌"},
+    {time:"5:00 – 5:30 PM",  event:"📽️ Barco Presentation & Wrap Up (time may change)", loc:"Auditorium 1",               venue:"🎬"},
+    {time:"5:30 – 6:00 PM",  event:"🚌 Buses → Main Event (Managers Only — Corp drive yourself)", loc:"Liberty Cinema 12", venue:"🚌"},
     {time:"6:00 – 8:45 PM",  event:"🎳 Off-Site Activity & Dinner at Main Event — Corporate employees who live in KC Metro should drive themselves to Main Event. 8081 NW Roanridge Rd., Kansas City, MO 64151", loc:"Main Event", venue:"🎳", food:true},
-    {time:"8:45 – 9:15 PM",  event:"🚌 Return Trip to Hotel and Theatre",               loc:"Hotel",                      venue:"🚌"},
+    {time:"9:15 – 9:30 PM",  event:"🚌 Return Trip to Hotel and Theatre",               loc:"Hotel / Theatre",            venue:"🚌"},
   ],
   "Thursday, March 12":[
     {time:"Breakfast",        event:"🍳 Breakfast at Home or Hotel",                     loc:"Home / Hotel",               venue:"🏨", food:true},
     {time:"9:30 – 10:00 AM", event:"☕ Coffee Provided at the Theatre",                  loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"9:20 – 9:35 AM",  event:"🚌 Hotel Guests Bus Pickup → Liberty Cinema 12",    loc:"Hotel",                      venue:"🚌"},
+    {time:"9:30 – 9:45 AM",  event:"🚌 Hotel Guests Bus Pickup (Flyers Only) → Liberty Cinema 12", loc:"TownePlace Suites", venue:"🚌"},
     {time:"9:45 AM",         event:"🎬 Non-Driver Arrival at Liberty Cinema 12",         loc:"Liberty Cinema 12",          venue:"🏛️"},
-    {time:"10:00 – 10:15 AM",event:"📽️ Barco Presentation",                            loc:"Auditorium 1",               venue:"🎬"},
-    {time:"10:15 – 10:30 AM",event:"💻 Smart Systems, Seamless Experiences — IT Talks", loc:"Auditorium 1",               venue:"🎬"},
-    {time:"10:30 – 10:45 AM",event:"☕️ Break",                                          loc:"Lobby",                      venue:"☕️"},
+    {time:"10:00 – 10:15 AM",event:"📽️ Barco Presentation (TBD — may move from Wed)", loc:"Auditorium 1",               venue:"🎬"},
+    {time:"10:15 – 10:45 AM",event:"🎞️ Programming — Chad Christopher & Ed Carl",      loc:"Auditorium 1",               venue:"🎬"},
     {time:"10:45 – 11:00 AM",event:"📽️ GDC Presentation",                              loc:"Auditorium 1",               venue:"🎬"},
     {time:"11:00 – 11:15 AM",event:"⭐ Paramount — Studio Presentation",                loc:"Auditorium 1",               venue:"⭐"},
     {time:"11:15 – 11:30 AM",event:"🎥 Sony — Studio Presentation",                     loc:"Auditorium 1",               venue:"🎥"},
-    {time:"11:30 AM – 12:15",event:"🔨 Facilities Maintenance",                         loc:"Auditorium 1",               venue:"🎬"},
+    {time:"11:30 AM – 12:00",event:"🔨 Facilities Maintenance",                         loc:"Auditorium 1",               venue:"🎬"},
+    {time:"12:00 – 12:15 PM",event:"🦁 Lionsgate Presentation",                         loc:"Auditorium 1",               venue:"🎬"},
     {time:"12:15 – 1:15 PM", event:"🍽️ Lunch",                                         loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
     {time:"1:15 – 1:45 PM",  event:"🎉 Cheers! — Paul Farnsworth & Toma Foster",       loc:"Auditorium 1",               venue:"🎬"},
-    {time:"1:45 – 2:15 PM",  event:"🎞️ Programming — Chad Christopher & Ed Carl", loc:"Auditorium 1",               venue:"🎬"},
+    {time:"1:45 – 2:15 PM",  event:"💻 Smart Systems, Seamless Experiences — IT Talks", loc:"Auditorium 1",               venue:"🎬"},
     {time:"2:15 – 2:30 PM",  event:"☕️ Break",                                          loc:"Lobby",                      venue:"☕️"},
     {time:"2:30 – 3:00 PM",  event:"🎖️ Years of Service Recognition",                  loc:"Auditorium 1",               venue:"🏆"},
     {time:"3:00 – 4:00 PM",  event:"🏆 Awards Ceremony",                                loc:"Auditorium 1",               venue:"🏆"},
@@ -364,6 +382,7 @@ const SPOTLIGHT_AWARDS = [
   { id:"charisma",   emoji:"✨", label:"Peak Charisma Award",               desc:"You made connection look effortless." },
   { id:"gravity",    emoji:"🪐", label:"Social Gravity Award",              desc:"People just kept orbiting you." },
   { id:"moviequote", emoji:"🎥", label:"Most Likely to Use a Movie Quote",  desc:"And somehow it was perfectly timed." },
+  { id:"nametag",   emoji:"🏷️", label:"Best Designed Name Tag",             desc:"Creativity on full display." },
 ];
 const VALUE_AWARDS = [
   { id:"family",    emoji:"🏠", label:"Made Me Feel Like Family",  desc:"You turned a stranger into someone who belonged." },
@@ -546,7 +565,7 @@ function vpClass(v) {
 const NAV = [
   { id:"schedule",    ico:"📅", lbl:"Schedule"  },
   { id:"mygroup",     ico:"🔄", lbl:"My Group"  },
-  { id:"hotel",       ico:"🏨", lbl:"Hotel"     },
+  { id:"hotel",       ico:"🏨", lbl:"Travel"    },
   { id:"vendors",     ico:"🎯", lbl:"Vendors"   },
   { id:"connect",     ico:"🤝", lbl:"Connect"   },
   { id:"leaderboard", ico:"🏆", lbl:"Leaders"   },
@@ -846,6 +865,16 @@ export default function App() {
   const myGroup = uLoc ? LOCATION_GROUP[uLoc] || null : null;
   const myHotel = uLoc ? (LOCATION_HOTEL[uLoc] || null) : null;
   const hotelInfo = myHotel ? HOTEL_INFO[myHotel] : null;
+
+  // Flight lookup — match by location, then refine by name if multiple
+  const myFlights = useMemo(() => {
+    if (!uLoc) return [];
+    const locMatch = FLIGHTS.filter(f => f.loc === uLoc || (uLoc === "Corporate Staff" && f.loc === "Corporate"));
+    if (locMatch.length <= 1) return locMatch;
+    // Multiple flyers at same location — try to match by name
+    const nameMatch = locMatch.filter(f => uName && f.name.toLowerCase().includes(uName.split(" ")[0].toLowerCase()));
+    return nameMatch.length > 0 ? nameMatch : locMatch;
+  }, [uName, uLoc]);
 
   const vendorPts = Object.keys(checkedIn).length * BOOTH_PTS +
     Object.values(quizDone).reduce((s,v) => s + (v||0)*QUIZ_PTS, 0);
@@ -1234,8 +1263,46 @@ export default function App() {
 
         {/* ── HOTEL ── */}
         {tab==="hotel"&&<>
-          <div className="stitle">My Hotel</div>
-          <div className="ssub">Your lodging for the summit</div>
+          <div className="stitle">Hotel & Flights</div>
+          <div className="ssub">Your travel info for the summit</div>
+
+          {/* ── FLIGHT INFO ── */}
+          {myFlights.length > 0 && (
+            <div style={{marginBottom:14}}>
+              {myFlights.map((fl,fi) => (
+                <div key={fi} className="card" style={{borderColor:"#5B8FFF50",background:"#5B8FFF08",marginBottom:10}}>
+                  <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
+                    <div style={{width:44,height:44,borderRadius:12,background:"#5B8FFF20",display:"flex",alignItems:"center",justifyContent:"center",fontSize:22,flexShrink:0}}>✈️</div>
+                    <div style={{flex:1}}>
+                      <div style={{fontFamily:"'Playfair Display',serif",fontSize:17,fontWeight:900,color:"#5B8FFF"}}>Your Flight</div>
+                      <div style={{fontSize:11,color:C.muted,marginTop:1}}>{fl.airline} · Conf: <strong style={{color:C.text,letterSpacing:.5}}>{fl.conf}</strong></div>
+                    </div>
+                  </div>
+                  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:fl.notes?10:0}}>
+                    {fl.arrival && (
+                      <div style={{background:"rgba(75,175,125,.08)",border:"1px solid rgba(75,175,125,.2)",borderRadius:10,padding:"10px 12px"}}>
+                        <div style={{fontSize:9,textTransform:"uppercase",letterSpacing:".12em",color:"rgba(75,175,125,.6)",marginBottom:4}}>✈️ Arrival</div>
+                        <div style={{fontSize:15,fontWeight:700,color:"#4CAF7D"}}>{fl.arrival}</div>
+                      </div>
+                    )}
+                    {fl.departure && (
+                      <div style={{background:"rgba(230,57,70,.08)",border:"1px solid rgba(230,57,70,.2)",borderRadius:10,padding:"10px 12px"}}>
+                        <div style={{fontSize:9,textTransform:"uppercase",letterSpacing:".12em",color:"rgba(230,57,70,.6)",marginBottom:4}}>🛫 Departure</div>
+                        <div style={{fontSize:15,fontWeight:700,color:"#E63946"}}>{fl.departure}</div>
+                      </div>
+                    )}
+                  </div>
+                  {fl.notes && (
+                    <div style={{fontSize:12,color:C.muted,lineHeight:1.6,background:"rgba(255,255,255,.04)",borderRadius:8,padding:"8px 10px",marginTop:4}}>
+                      📝 {fl.notes}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* ── HOTEL INFO ── */}
           {!myHotel
             ? <div className="card" style={{textAlign:"center",padding:24}}>
                 <div style={{fontSize:32,marginBottom:8}}>🏢</div>
@@ -1254,9 +1321,9 @@ export default function App() {
                 <div className="card" style={{borderColor:`${C.gold}30`,background:`${C.gold}08`}}>
                   <div style={{fontSize:12,color:C.gold,fontWeight:600,marginBottom:4}}>🚌 Bus Schedule</div>
                   <div style={{fontSize:12,color:C.muted,lineHeight:1.7}}>
-                    Buses depart from your hotel at <strong style={{color:C.text}}>9:30 AM</strong> on Tue, Wed & Thu.<br/>
+                    <strong style={{color:C.text}}>Morning pickups are for flyers only</strong> — bus departs TownePlace Suites at <strong style={{color:C.text}}>9:30 AM</strong> on Tue, Wed & Thu.<br/>
                     Return buses depart Liberty Cinema 12 after evening events.<br/>
-                    Wednesday: buses leave at <strong style={{color:C.text}}>5:30 PM</strong> for Main Event.
+                    <strong style={{color:C.text}}>Wednesday Main Event buses:</strong> Managers only. Corporate employees who live in KC Metro — please drive yourself to Main Event.
                   </div>
                 </div>
                 <div className="card">
