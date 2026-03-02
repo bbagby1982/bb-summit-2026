@@ -354,7 +354,6 @@ const SCHEDULE = {
   "Tuesday, March 10":[
     {time:"Breakfast",          event:"🍳 Breakfast at Home or Hotel",                     loc:"Home / Hotel",               venue:"🏨", food:true},
     {time:"9:30 AM",   event:"☕️ Coffee & Juice Provided at the Theatre",          loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"9:30 AM",    event:"🚌 Hotel Guests Bus Pickup (Flyers Only) → Liberty Cinema 12", loc:"TownePlace Suites", venue:"🚌"},
     {time:"10:00 AM",  event:"🍽️ F&B Town Meeting (Food & Bar Managers)",         loc:"Auditorium 12",              venue:"🎬"},
     {time:"11:15 AM",  event:"✅ Non-CEC Registration",                            loc:"Main Lobby",                 venue:"🏛️"},
     {time:"11:30 AM",event:"📽️ ScreenX Presentation — If you have a ScreenX in your location, please attend this presentation prior to attending lunch.", loc:"Auditorium 1", venue:"🎬"},
@@ -377,7 +376,6 @@ const SCHEDULE = {
   "Wednesday, March 11":[
     {time:"Breakfast",        event:"🍳 Breakfast at Home or Hotel",                     loc:"Home / Hotel",               venue:"🏨", food:true},
     {time:"9:30 AM", event:"☕ Coffee & Juice Provided at the Theatre — grab a cup and get ready for Round Robin day!", loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"9:30 AM",  event:"🚌 Hotel Guests Bus Pickup (Flyers Only) → Liberty Cinema 12", loc:"TownePlace Suites", venue:"🚌"},
     {time:"10:00 AM", event:"🔄 Round Robin Sessions (see My Group tab!)",        loc:"Aud 1 / 4 / 6 / 7 / 8 / 9 / 12", venue:"🎬"},
     {time:"Staggered",       event:"🍽️ Lunch — Brancato's Catering. Slow-smoked Beef Brisket with au jus and Grilled Chicken, garlic whipped mashed potatoes with pan gravy, green beans, pasta salad, garden salad, warm rolls, and fudge brownies. See My Group Tab for your time!", loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
     {time:"5:00 PM",  event:"🚌 Buses → Main Event (Managers Only — Corp drive yourself)", loc:"Liberty Cinema 12", venue:"🚌"},
@@ -387,7 +385,6 @@ const SCHEDULE = {
   "Thursday, March 12":[
     {time:"Breakfast",        event:"🍳 Breakfast at Home or Hotel",                     loc:"Home / Hotel",               venue:"🏨", food:true},
     {time:"9:30 AM", event:"🍩 Donuts, Coffee & Juice at the Theatre — the sweetest way to start the final day!", loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"9:30 AM",  event:"🚌 Hotel Guests Bus Pickup (Flyers Only) → Liberty Cinema 12", loc:"TownePlace Suites", venue:"🚌"},
     {time:"10:00 AM",event:"🎥 Sony — Studio Presentation",                     loc:"Auditorium 1",               venue:"🎥"},
     {time:"10:15 AM",event:"🎞️ Programming — Chad Christopher & Ed Carl",      loc:"Auditorium 1",               venue:"🎬"},
     {time:"10:45 AM",event:"📽️ GDC Presentation",                              loc:"Auditorium 1",               venue:"🎬"},
@@ -777,6 +774,29 @@ body{background:${C.bg};color:${C.text};font-family:'Plus Jakarta Sans',sans-ser
 .pfloat{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,${C.teal},${C.gold});color:#fff;padding:10px 22px;border-radius:40px;font-size:20px;font-weight:800;animation:fup 1.6s ease-out forwards;z-index:500;pointer-events:none}
 .theme-toggle{display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;background:${C.tealBg};border:1px solid ${C.tealBorder};cursor:pointer;font-size:11px;font-weight:600;color:${C.teal};transition:all .2s}
 .theme-toggle:hover{background:${C.teal}15}
+.preview-banner{background:${C.tealBg};border:1px solid ${C.tealBorder};border-radius:12px;padding:12px 14px;margin-bottom:12px;display:flex;align-items:center;gap:10px;font-size:12px;color:${C.teal};line-height:1.5}
+.settings-overlay{position:fixed;inset:0;z-index:250;display:flex;align-items:flex-end;justify-content:center}
+.settings-bg{position:absolute;inset:0;background:${C.overlayBg}}
+.settings-sheet{position:relative;z-index:1;background:${C.surface};border-radius:22px 22px 0 0;width:100%;max-width:480px;max-height:80vh;overflow-y:auto;padding:24px 20px env(safe-area-inset-bottom,20px)}
+.settings-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.settings-title{font-size:18px;font-weight:800;color:${C.text}}
+.settings-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid ${C.border}}
+.settings-label{font-size:14px;font-weight:600;color:${C.text}}
+.settings-sub{font-size:11px;color:${C.muted};margin-top:2px}
+.countdown-bar{background:linear-gradient(135deg,${C.teal}15,${C.gold}10);border:1px solid ${C.tealBorder};border-radius:12px;padding:10px 14px;margin-bottom:12px;text-align:center}
+.current-event{background:${C.tealBg};border:1px solid ${C.tealBorder};border-radius:10px;padding:8px 12px;margin-bottom:10px;font-size:12px;color:${C.teal}}
+.poll-card{background:${C.card};border:1px solid ${C.border};border-radius:14px;padding:14px;margin-bottom:12px}
+.poll-opt{padding:10px 12px;border:1.5px solid ${C.border};border-radius:10px;margin-bottom:6px;cursor:pointer;font-size:13px;color:${C.text};transition:all .2s;display:flex;align-items:center;gap:10px}
+.poll-opt:hover{border-color:${C.teal}}
+.poll-opt.voted{border-color:${C.teal};background:${C.tealBg}}
+.poll-bar{height:6px;border-radius:3px;background:${C.border};overflow:hidden;flex:1}
+.poll-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,${C.teal},${C.gold});transition:width .6s ease}
+.findme-card{background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:12px 14px;margin-bottom:12px}
+.findme-input{width:100%;padding:8px 12px;border-radius:8px;border:1px solid ${C.border};background:${C.inputBg};color:${C.text};font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;outline:none}
+.thankyou-wrap{text-align:center;padding:30px 10px}
+.group-members{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.gm-chip{display:flex;align-items:center;gap:5px;background:${C.tealBg};border:1px solid ${C.tealBorder};border-radius:20px;padding:3px 10px 3px 3px;font-size:11px;color:${C.text}}
+.gm-av{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:#fff}
 `;
 
 // ─── MAIN APP ─────────────────────────────────────────────────────────────────
@@ -909,6 +929,41 @@ export default function App() {
   const [galleryUploaded, setGalleryUploaded] = useState(false);
   const [lightbox, setLightbox] = useState(null);
 
+  // Settings panel
+  const [showSettings, setShowSettings] = useState(false);
+
+  // Corporate schedule accordion
+  const [corpExpDay, setCorpExpDay] = useState(null);
+
+  // Find me at status
+  const [findMeAt, setFindMeAt] = useState(() => load("findMeAt",""));
+  const [findMeEdit, setFindMeEdit] = useState(false);
+  const [allStatuses, setAllStatuses] = useState({});
+
+  // Daily poll
+  const [pollVote, setPollVote] = useState(() => load("pollVote",{}));
+  const [pollResults, setPollResults] = useState({});
+
+  // Nomination count (live from Firebase)
+  const [nomCount, setNomCount] = useState(0);
+
+  // Auto-reset: wipe all user data on Sunday March 8 midnight so summit starts fresh
+  useEffect(() => {
+    const now = new Date();
+    const resetDate = new Date(2026, 2, 8); // March 8, 2026
+    const alreadyReset = load("summitReset2026", false);
+    if (now >= resetDate && !alreadyReset) {
+      // Wipe all progress data
+      save("ci", {});     save("qd", {});
+      save("conns", {});  save("pollVote", {});
+      save("findMeAt", "");
+      save("summitReset2026", true);
+      // Reset in-memory state
+      setCI({}); setQD({}); setConns({});
+      setPollVote({}); setFindMeAt("");
+    }
+  }, []);
+
   useEffect(() => {
     if (!db) return;
     const unsub = onSnapshot(collection(db, "gallery"), snap => {
@@ -922,6 +977,37 @@ export default function App() {
       pending.sort((a,b) => (a.uploadedAt?.seconds||0) - (b.uploadedAt?.seconds||0));
       setGalleryPhotos(approved);
       setPendingPhotos(pending);
+    });
+    return () => unsub();
+  }, []);
+
+  // Subscribe to daily poll results
+  useEffect(() => {
+    if (!db) return;
+    const unsub = onSnapshot(collection(db, "polls"), snap => {
+      const results = {};
+      snap.forEach(d => { results[d.id] = d.data(); });
+      setPollResults(results);
+    });
+    return () => unsub();
+  }, []);
+
+  // Subscribe to nomination count for teaser
+  useEffect(() => {
+    if (!db) return;
+    const unsub = onSnapshot(collection(db, "nominations"), snap => {
+      setNomCount(snap.size);
+    });
+    return () => unsub();
+  }, []);
+
+  // Subscribe to "find me at" statuses
+  useEffect(() => {
+    if (!db) return;
+    const unsub = onSnapshot(collection(db, "statuses"), snap => {
+      const s = {};
+      snap.forEach(d => { s[d.id] = d.data(); });
+      setAllStatuses(s);
     });
     return () => unsub();
   }, []);
@@ -1088,6 +1174,92 @@ export default function App() {
     setBannerSaving(false);
   }
 
+  // ─── DAILY POLLS ────────────────────────────────────────────────────────────
+  const DAILY_POLLS = {
+    "Tuesday":   { q:"🍿 What's your go-to concession order?", opts:["Popcorn & Soda","Nachos","Candy","I sneak in snacks 😅"] },
+    "Wednesday": { q:"🎬 Best movie of the last year?",        opts:["Inside Out 2","Dune: Part Two","Deadpool & Wolverine","Other — tell us in Connect!"] },
+    "Thursday":  { q:"🏠 What's one thing you're taking home from this Summit?", opts:["New friendships","Fresh ideas for my theatre","Motivation to lead","All of the above!"] },
+  };
+  const now = new Date();
+  const summitDayName = now.getFullYear()===2026 && now.getMonth()===2
+    ? {10:"Tuesday",11:"Wednesday",12:"Thursday"}[now.getDate()] || null : null;
+  const todayPoll = summitDayName ? DAILY_POLLS[summitDayName] : DAILY_POLLS["Tuesday"]; // show Tue poll as preview
+  const todayPollKey = summitDayName || "Tuesday";
+
+  async function votePoll(optIdx) {
+    const updated = {...pollVote, [todayPollKey]: optIdx};
+    setPollVote(updated); save("pollVote", updated);
+    if (!db) return;
+    const pollDocId = `poll_${todayPollKey}`;
+    try {
+      const fieldKey = `opt${optIdx}`;
+      // Increment vote count — read, increment, write
+      const current = pollResults[pollDocId] || {};
+      await setDoc(doc(db, "polls", pollDocId), {
+        ...current, [fieldKey]: (current[fieldKey]||0) + 1, totalVotes: (current.totalVotes||0) + 1,
+      }, { merge: true });
+    } catch(e) { console.warn("Poll vote error:", e); }
+  }
+
+  // ─── FIND ME AT ─────────────────────────────────────────────────────────────
+  async function saveFindMeAt(status) {
+    setFindMeAt(status); save("findMeAt", status);
+    if (!db || !uName) return;
+    const id = `${uName.replace(/[^a-zA-Z0-9]/g,"-")}_${uLoc.replace(/[^a-zA-Z0-9]/g,"-")}`;
+    try {
+      await setDoc(doc(db, "statuses", id), {
+        name: uName, loc: uLoc, status, updatedAt: serverTimestamp(),
+      }, { merge: true });
+    } catch(e) { console.warn("Status save error:", e); }
+  }
+
+  // ─── COUNTDOWN & CURRENT/NEXT EVENT ─────────────────────────────────────────
+  const summitInfo = useMemo(() => {
+    const now = new Date();
+    const summitStart = new Date(2026, 2, 9, 13, 30); // Mon March 9 1:30 PM
+    const summitEnd = new Date(2026, 2, 12, 16, 0);   // Thu March 12 4:00 PM
+
+    if (now < summitStart) {
+      // Countdown mode
+      const diff = summitStart - now;
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      return { mode:"countdown", days, hours };
+    }
+    if (now > summitEnd) {
+      return { mode:"ended" };
+    }
+    // During summit — find current & next event
+    const dayMap = {9:"Monday, March 9",10:"Tuesday, March 10",11:"Wednesday, March 11",12:"Thursday, March 12"};
+    const dayKey = dayMap[now.getDate()];
+    if (!dayKey || !SCHEDULE[dayKey]) return { mode:"during", current:null, next:null };
+
+    function parseT(t) {
+      const m = t.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+      if (!m) return null;
+      let h = parseInt(m[1]); const min = parseInt(m[2]); const p = m[3].toUpperCase();
+      if (p==='PM' && h!==12) h+=12; if (p==='AM' && h===12) h=0;
+      return h*60+min;
+    }
+    const nowMin = now.getHours()*60+now.getMinutes();
+    const events = SCHEDULE[dayKey];
+    let current = null, next = null;
+    for (let i=0; i<events.length; i++) {
+      const start = parseT(events[i].time);
+      if (start===null) continue;
+      const end = i<events.length-1 ? (parseT(events[i+1].time)||start+45) : start+60;
+      if (nowMin>=start && nowMin<end) current = events[i];
+      if (nowMin<start && !next) next = events[i];
+    }
+    return { mode:"during", current, next };
+  }, [Math.floor(Date.now()/60000)]); // update every minute
+
+  // Is summit over? (for thank-you screen)
+  const summitOver = summitInfo.mode === "ended";
+
+  // Preview mode — before March 9
+  const isPreview = new Date() < new Date(2026, 2, 9);
+
   // Vendor quiz handlers
   function checkIn(id) {
     const updated = {...checkedIn,[id]:true};
@@ -1235,17 +1407,100 @@ export default function App() {
                 </div>
               </div>
             </div>
-            <div className="pts-badge" style={ptsAnim?{transform:"scale(1.1)",transition:"transform .15s"}:{transition:"transform .15s"}} onClick={()=>setTab("leaderboard")}>
-              <div className="pts-n">{totalPts.toLocaleString()}</div>
-              <div className="pts-l">pts · tap for lb</div>
+            <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:6}}>
+              <div className="pts-badge" style={ptsAnim?{transform:"scale(1.1)",transition:"transform .15s"}:{transition:"transform .15s"}} onClick={()=>setTab("leaderboard")}>
+                <div className="pts-n">{totalPts.toLocaleString()}</div>
+                <div className="pts-l">pts · tap for lb</div>
+              </div>
+              <button onClick={()=>setShowSettings(true)} style={{background:"none",border:"none",fontSize:18,cursor:"pointer",padding:2,color:C.muted}} title="Settings">⚙️</button>
             </div>
           </div>
         </div>
+
+        {/* COUNTDOWN / CURRENT EVENT */}
+        {summitInfo.mode==="countdown"&&(
+          <div className="countdown-bar">
+            <div style={{fontSize:11,letterSpacing:".15em",textTransform:"uppercase",color:C.teal,fontWeight:700,marginBottom:4}}>🎬 Summit Starts In</div>
+            <div style={{fontSize:28,fontWeight:900,color:C.gold,lineHeight:1}}>
+              {summitInfo.days>0?`${summitInfo.days}d `:""}
+              {summitInfo.hours}h
+            </div>
+            <div style={{fontSize:11,color:C.muted,marginTop:4}}>March 9–12 · Liberty Cinema 12</div>
+          </div>
+        )}
+        {summitInfo.mode==="during"&&(summitInfo.current||summitInfo.next)&&(
+          <div className="current-event">
+            {summitInfo.current&&<div style={{marginBottom:summitInfo.next?6:0}}>
+              <span style={{fontWeight:700}}>🔴 Now:</span> {summitInfo.current.event.substring(0,80)}{summitInfo.current.event.length>80?"…":""}
+            </div>}
+            {summitInfo.next&&<div style={{opacity:.7}}>
+              <span style={{fontWeight:600}}>⏭️ Next:</span> {summitInfo.next.time} — {summitInfo.next.event.substring(0,60)}{summitInfo.next.event.length>60?"…":""}
+            </div>}
+          </div>
+        )}
+
         <div style={{display:"flex",justifyContent:"flex-end",marginBottom:10}}>
           <button className="theme-toggle" onClick={toggleDark}>
             {darkMode ? "☀️ Light" : "🌙 Dark"}
           </button>
         </div>
+        {/* THANK YOU / RECAP SCREEN — after Thursday 4 PM */}
+        {summitOver ? <>
+          <div className="thankyou-wrap">
+            <div style={{fontSize:60,marginBottom:16}}>🎬</div>
+            <div style={{fontWeight:900,fontSize:28,color:C.gold,marginBottom:8}}>That's a Wrap!</div>
+            <div style={{fontSize:15,color:C.text,lineHeight:1.7,marginBottom:20}}>
+              Thank you for being part of B&B Summit 2026.<br/>
+              This circle? That's what Creating Community looks like.
+            </div>
+            <div className="card" style={{borderColor:`${C.gold}40`,textAlign:"left",marginBottom:16}}>
+              <div style={{fontSize:11,letterSpacing:".12em",textTransform:"uppercase",color:C.muted,marginBottom:8}}>Your Summit Stats</div>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12,textAlign:"center"}}>
+                <div>
+                  <div style={{fontSize:24,fontWeight:900,color:C.gold}}>{totalPts}</div>
+                  <div style={{fontSize:10,color:C.muted}}>Total Points</div>
+                </div>
+                <div>
+                  <div style={{fontSize:24,fontWeight:900,color:C.teal}}>{metCount}</div>
+                  <div style={{fontSize:10,color:C.muted}}>Connections</div>
+                </div>
+                <div>
+                  <div style={{fontSize:24,fontWeight:900,color:C.green}}>{Object.keys(checkedIn).length}</div>
+                  <div style={{fontSize:10,color:C.muted}}>Vendors Visited</div>
+                </div>
+              </div>
+            </div>
+            <div style={{fontSize:14,color:C.muted,lineHeight:1.7,marginBottom:20}}>
+              The connections you made this week don't end here. Keep building, keep growing, keep Creating Community.
+            </div>
+            <div style={{marginBottom:12}}>
+              <div style={{fontSize:11,color:C.muted,marginBottom:6}}>Have feedback? We'd love to hear from you.</div>
+              <a href="https://forms.office.com" target="_blank" rel="noopener noreferrer"
+                style={{display:"inline-block",background:`linear-gradient(135deg,${C.teal},${C.gold})`,color:"#fff",
+                  padding:"12px 28px",borderRadius:30,fontWeight:700,fontSize:14,textDecoration:"none"}}>
+                📝 Share Your Feedback
+              </a>
+            </div>
+            <div style={{fontSize:12,color:C.muted,marginTop:20}}>
+              With ❤️ from B&B Theatres · Since 1924
+            </div>
+          </div>
+          <div style={{marginTop:20}}>
+            <div style={{fontSize:11,color:C.muted,textAlign:"center",marginBottom:8}}>You can still browse the app:</div>
+            <div style={{display:"flex",gap:6,justifyContent:"center",flexWrap:"wrap"}}>
+              {["schedule","leaderboard","gallery"].map(t=>(
+                <button key={t} className={`tab${tab===t?" on":""}`} onClick={()=>setTab(t)} style={{fontSize:11}}>{t==="schedule"?"📅 Schedule":t==="leaderboard"?"🏆 Leaderboard":"📸 Gallery"}</button>
+              ))}
+            </div>
+          </div>
+          {tab==="schedule"&&<div style={{marginTop:12}}>
+            <div className="stitle">Summit Schedule</div>
+            <div className="tabs">{DAYS.map((d,i)=>(<button key={d} className={`tab${day===i?" on":""}`} onClick={()=>setDay(i)}>{["Mon","Tue","Wed","Thu"][i]} {d.split(" ")[2]}</button>))}</div>
+            <div style={{fontSize:13,fontWeight:700,color:C.teal,marginBottom:9}}>{DAYS[day]}</div>
+            {SCHEDULE[DAYS[day]].map((s,i)=>{const evts=SCHEDULE[DAYS[day]];return(<div className="si" key={i}><div className="si-time">{s.time}</div><div><div className="si-ev">{s.event}</div><div className="si-meta"><span className={`vpill ${vpClass(s.venue)}`}>{s.venue} {s.loc}</span>{s.food&&<span className="vpill vp-m">🍽️ Meal</span>}</div></div></div>);})}
+          </div>}
+        </> : <>
+        {/* ════════════════ NORMAL APP CONTENT ════════════════ */}
         {tab==="schedule"&&<>
           <div className="stitle">Summit Schedule</div>
           <div className="ssub">March 9–12, 2026 · Liberty Cinema 12</div>
@@ -1281,33 +1536,52 @@ export default function App() {
           <div className="ssub">{myGroup ? "Wednesday, March 11 · Round Robin Rotation" : "Your Corporate Summit Schedule"}</div>
           {!myGroup
             ? <>
-                {/* ── CORPORATE SCHEDULE ── */}
-                {Object.keys(CORPORATE_SCHEDULE).map(dayKey=>(
-                  <div key={dayKey} style={{marginBottom:16}}>
-                    <div style={{fontSize:13,fontWeight:700,color:C.teal,marginBottom:8,letterSpacing:.3}}>{dayKey}</div>
-                    {CORPORATE_SCHEDULE[dayKey].map((s,i)=>(
-                      <div key={i} className="card" style={{marginBottom:8,borderLeft:`3px solid ${s.note?.includes("Required")?C.teal:C.gold}`,padding:"12px 14px"}}>
-                        <div style={{display:"flex",alignItems:"flex-start",gap:10}}>
-                          <div style={{fontSize:20,flexShrink:0,marginTop:2}}>{s.emoji}</div>
-                          <div style={{flex:1}}>
-                            <div style={{fontSize:11,fontWeight:700,color:C.teal,marginBottom:3}}>{s.time}</div>
-                            <div style={{fontSize:14,fontWeight:700,color:C.text,lineHeight:1.4}}>{s.event.replace(/^[^\s]+\s/,"")}</div>
-                            {s.note&&<div style={{fontSize:12,color:s.note.includes("Required")?C.teal:C.muted,marginTop:4,lineHeight:1.5,fontStyle:s.note.includes("Optional")?"italic":"normal"}}>
-                              {s.note.includes("Required")?"⚡ ":s.note.includes("Optional")?"":"📋 "}{s.note}
-                            </div>}
-                            {s.address&&<div style={{marginTop:8}}>
-                              <div style={{fontSize:12,color:C.muted}}>📍 {s.address}</div>
-                              <a href={s.mapUrl} target="_blank" rel="noopener noreferrer"
-                                style={{display:"inline-block",marginTop:6,fontSize:12,fontWeight:700,color:C.teal,background:`${C.teal}15`,border:`1px solid ${C.teal}40`,borderRadius:8,padding:"6px 12px",textDecoration:"none"}}>
-                                🗺️ Get Directions →
-                              </a>
-                            </div>}
+                {/* ── CORPORATE SCHEDULE (accordion by day) ── */}
+                {Object.keys(CORPORATE_SCHEDULE).map(dayKey=>{
+                  const dayShort = dayKey.split(",")[0];
+                  const open = corpExpDay === dayKey;
+                  const reqCount = CORPORATE_SCHEDULE[dayKey].filter(s=>s.note?.includes("Required")).length;
+                  return (
+                    <div key={dayKey} style={{marginBottom:8,borderRadius:14,overflow:"hidden",border:`1px solid ${open?C.teal+"80":C.border}`,transition:"border-color .2s"}}>
+                      <div onClick={()=>setCorpExpDay(open?null:dayKey)}
+                        style={{display:"flex",alignItems:"center",gap:12,padding:"13px 16px",background:open?`${C.teal}10`:C.card,cursor:"pointer",userSelect:"none",transition:"background .2s"}}>
+                        <div style={{width:10,height:10,borderRadius:"50%",background:C.teal,flexShrink:0}}/>
+                        <div style={{flex:1}}>
+                          <div style={{fontWeight:700,fontSize:14,color:open?C.teal:C.text}}>{dayShort} — {dayKey.split(", ")[1]}</div>
+                          <div style={{fontSize:10,color:C.muted,marginTop:2}}>
+                            {CORPORATE_SCHEDULE[dayKey].length} events{reqCount>0?` · ${reqCount} required`:""}
                           </div>
                         </div>
+                        <div style={{fontSize:16,color:open?C.teal:C.muted,transition:"transform .2s",transform:open?"rotate(180deg)":"rotate(0deg)"}}>&#9660;</div>
                       </div>
-                    ))}
-                  </div>
-                ))}
+                      {open&&(
+                        <div style={{padding:"0 12px 14px",background:C.surface}}>
+                          {CORPORATE_SCHEDULE[dayKey].map((s,i)=>(
+                            <div key={i} style={{borderLeft:`3px solid ${s.note?.includes("Required")?C.teal:C.gold}`,padding:"10px 12px",marginTop:8,background:C.card,borderRadius:"0 10px 10px 0"}}>
+                              <div style={{display:"flex",alignItems:"flex-start",gap:10}}>
+                                <div style={{fontSize:18,flexShrink:0}}>{s.emoji}</div>
+                                <div style={{flex:1}}>
+                                  <div style={{fontSize:11,fontWeight:700,color:C.teal,marginBottom:2}}>{s.time}</div>
+                                  <div style={{fontSize:13,fontWeight:700,color:C.text,lineHeight:1.4}}>{s.event.replace(/^[^\s]+\s/,"")}</div>
+                                  {s.note&&<div style={{fontSize:11,color:s.note.includes("Required")?C.teal:C.muted,marginTop:3,lineHeight:1.5,fontStyle:s.note.includes("Optional")?"italic":"normal"}}>
+                                    {s.note.includes("Required")?"⚡ ":""}{s.note}
+                                  </div>}
+                                  {s.address&&<div style={{marginTop:6}}>
+                                    <div style={{fontSize:11,color:C.muted}}>📍 {s.address}</div>
+                                    <a href={s.mapUrl} target="_blank" rel="noopener noreferrer"
+                                      style={{display:"inline-block",marginTop:4,fontSize:11,fontWeight:700,color:C.teal,background:`${C.teal}15`,border:`1px solid ${C.teal}40`,borderRadius:8,padding:"5px 10px",textDecoration:"none"}}>
+                                      🗺️ Get Directions →
+                                    </a>
+                                  </div>}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
 
                 {/* ── ROUND ROBIN GROUPS (accordion) ── */}
                 <div style={{height:1,background:C.border,margin:"16px 0"}}/>
@@ -1376,6 +1650,19 @@ export default function App() {
                 ))}
                 <div className="card" style={{marginTop:6,borderColor:`${C.gold}30`,background:`${C.gold}08`}}>
                   <div style={{fontSize:12,color:C.muted,lineHeight:1.6}}>💡 <strong style={{color:C.gold}}>Tip:</strong> Each session is ~50 min. Listen for announcements to rotate to your next auditorium!</div>
+                </div>
+
+                {/* WHO'S IN MY GROUP */}
+                <div style={{marginTop:14}}>
+                  <div style={{fontSize:12,fontWeight:600,color:C.muted,marginBottom:8,letterSpacing:.4,textTransform:"uppercase"}}>👥 Who's in {GROUP_INFO[myGroup].label}?</div>
+                  <div className="group-members">
+                    {ATTENDEES.filter(a=>!a.corporate&&a.group===GROUP_INFO[myGroup].label).map(a=>(
+                      <div key={a.id} className="gm-chip" onClick={()=>{setTab("connect");setTimeout(()=>openModal(a),100);}}>
+                        <div className="gm-av" style={{background:avColor(a.id)}}>{ini(a.name)}</div>
+                        <span>{a.name.split(" ")[0]}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </>
           }
@@ -1461,6 +1748,10 @@ export default function App() {
 
         {/* ── VENDORS ── */}
         {tab==="vendors"&&<>
+          {isPreview&&<div className="preview-banner">
+            <span style={{fontSize:20}}>🎮</span>
+            <div>You're exploring early! All points, check-ins, and quiz scores <strong>reset automatically Sunday night</strong> so everyone starts fresh on Monday.</div>
+          </div>}
           <div className="stitle">🎯 Vendor Quest</div>
           <div className="ssub">Check in at each booth · ace the quiz · earn points!</div>
           <div className="card" style={{marginBottom:12,borderColor:`${C.gold}40`,display:"flex",alignItems:"center",gap:12}}>
@@ -1505,6 +1796,10 @@ export default function App() {
 
         {/* ── CONNECT ── */}
         {tab==="connect"&&<>
+          {isPreview&&<div className="preview-banner">
+            <span style={{fontSize:20}}>🎮</span>
+            <div>You're exploring early! All connections and nominations <strong>reset automatically Sunday night</strong> so everyone starts fresh on Monday.</div>
+          </div>}
           <div style={{background:"linear-gradient(160deg,#1a0a2e 0%,#0d1b2e 60%,#0f1923 100%)",borderRadius:14,padding:"16px",marginBottom:12,border:"1px solid rgba(255,215,0,.12)"}}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
               <div>
@@ -1538,6 +1833,53 @@ export default function App() {
             <div style={{fontSize:10,color:"rgba(240,230,211,.35)",marginTop:4}}>{pct}% connected · {CONNECT_PTS} pts per connection</div>
           </div>
           <input className="srch" placeholder="🔍  Search name, theatre, group…" value={cSearch} onChange={e=>setCSearch(e.target.value)}/>
+
+          {/* FIND ME AT */}
+          <div className="findme-card">
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:findMeEdit||!findMeAt?8:0}}>
+              <div style={{fontSize:12,fontWeight:700,color:C.teal}}>📍 Find Me At</div>
+              {findMeAt&&!findMeEdit&&<button onClick={()=>setFindMeEdit(true)} style={{background:"none",border:"none",fontSize:11,color:C.teal,cursor:"pointer",fontFamily:"'Plus Jakarta Sans',sans-serif"}}>Edit</button>}
+            </div>
+            {findMeAt&&!findMeEdit
+              ? <div style={{fontSize:13,color:C.text}}>{findMeAt}</div>
+              : <div style={{display:"flex",gap:6}}>
+                  <input className="findme-input" placeholder="e.g. At the pizza table! 🍕" value={findMeAt}
+                    onChange={e=>setFindMeAt(e.target.value)}
+                    onKeyDown={e=>{if(e.key==="Enter"){saveFindMeAt(findMeAt);setFindMeEdit(false);}}}/>
+                  <button onClick={()=>{saveFindMeAt(findMeAt);setFindMeEdit(false);}}
+                    style={{background:C.teal,color:"#fff",border:"none",borderRadius:8,padding:"8px 12px",fontWeight:700,fontSize:12,cursor:"pointer",fontFamily:"'Plus Jakarta Sans',sans-serif",whiteSpace:"nowrap"}}>
+                    Save
+                  </button>
+                </div>}
+          </div>
+
+          {/* DAILY POLL */}
+          <div className="poll-card">
+            <div style={{fontSize:12,fontWeight:700,color:C.gold,marginBottom:3}}>📊 Daily Poll</div>
+            <div style={{fontSize:14,fontWeight:700,color:C.text,marginBottom:10,lineHeight:1.4}}>{todayPoll.q}</div>
+            {todayPoll.opts.map((opt,i)=>{
+              const voted = pollVote[todayPollKey] !== undefined;
+              const myVote = pollVote[todayPollKey] === i;
+              const pollDoc = pollResults[`poll_${todayPollKey}`] || {};
+              const total = pollDoc.totalVotes || 0;
+              const count = pollDoc[`opt${i}`] || 0;
+              const pctV = total > 0 ? Math.round((count/total)*100) : 0;
+              return (
+                <div key={i} className={`poll-opt${myVote?" voted":""}`}
+                  onClick={()=>!voted&&votePoll(i)}
+                  style={voted?{cursor:"default"}:{}}>
+                  <div style={{flex:1}}>
+                    <div style={{marginBottom:voted?4:0}}>{opt}</div>
+                    {voted&&<div className="poll-bar"><div className="poll-fill" style={{width:`${pctV}%`}}/></div>}
+                  </div>
+                  {voted&&<div style={{fontSize:12,fontWeight:700,color:myVote?C.teal:C.muted,minWidth:36,textAlign:"right"}}>{pctV}%</div>}
+                </div>
+              );
+            })}
+            {pollVote[todayPollKey]!==undefined&&<div style={{fontSize:10,color:C.muted,marginTop:6,textAlign:"center"}}>
+              {(pollResults[`poll_${todayPollKey}`]?.totalVotes||0)} votes so far
+            </div>}
+          </div>
           <div className="tabs" style={{marginBottom:6}}>
             {["all","met","not yet"].map(f=>(
               <button key={f} className={`tab${cFilter===f?" on":""}`} onClick={()=>setCFilter(f)}>
@@ -1658,6 +2000,10 @@ export default function App() {
             </div>
           )}
           <div style={{fontSize:11,color:C.muted,marginBottom:8,fontStyle:"italic"}}>* Live scores — updates as attendees check in & connect</div>
+          {nomCount>0&&<div className="card" style={{marginBottom:12,borderColor:`${C.teal}30`,background:`${C.teal}06`,textAlign:"center",padding:"12px 14px"}}>
+            <div style={{fontSize:13,color:C.teal}}>✨ <strong>{nomCount.toLocaleString()}</strong> award nominations submitted so far!</div>
+            <div style={{fontSize:11,color:C.muted,marginTop:3}}>Winners announced at Thursday's Awards Ceremony 🏆</div>
+          </div>}
           {lb.length===0&&(
             <div className="card" style={{textAlign:"center",padding:28,borderColor:`${C.gold}25`}}>
               <div style={{fontSize:36,marginBottom:10}}>🏆</div>
@@ -1683,7 +2029,68 @@ export default function App() {
           })}
         </>}
 
+      </>}{/* end summitOver ternary */}
       </div>{/* end .wrap */}
+
+      {/* SETTINGS PANEL */}
+      {showSettings&&(
+        <div className="settings-overlay">
+          <div className="settings-bg" onClick={()=>setShowSettings(false)}/>
+          <div className="settings-sheet">
+            <div className="settings-hdr">
+              <div className="settings-title">⚙️ Settings</div>
+              <button onClick={()=>setShowSettings(false)} style={{background:"none",border:"none",fontSize:18,cursor:"pointer",color:C.muted}}>✕</button>
+            </div>
+            <div className="settings-row">
+              <div>
+                <div className="settings-label">👤 Name</div>
+                <div className="settings-sub">{uName}</div>
+              </div>
+            </div>
+            <div className="settings-row">
+              <div>
+                <div className="settings-label">📍 Location</div>
+                <div className="settings-sub">{uLoc}</div>
+              </div>
+            </div>
+            <div className="settings-row">
+              <div>
+                <div className="settings-label">{darkMode?"☀️":"🌙"} Appearance</div>
+                <div className="settings-sub">{darkMode?"Dark mode":"Light mode"}</div>
+              </div>
+              <button onClick={toggleDark} style={{background:C.tealBg,border:`1px solid ${C.tealBorder}`,borderRadius:8,padding:"6px 14px",color:C.teal,fontSize:12,fontWeight:600,cursor:"pointer",fontFamily:"'Plus Jakarta Sans',sans-serif"}}>
+                Switch to {darkMode?"Light":"Dark"}
+              </button>
+            </div>
+            <div className="settings-row">
+              <div>
+                <div className="settings-label">🏆 Your Points</div>
+                <div className="settings-sub">{totalPts} total · {Object.keys(checkedIn).length} vendors · {metCount} connections</div>
+              </div>
+            </div>
+            <div className="settings-row" style={{border:"none"}}>
+              <div>
+                <div className="settings-label">📍 Find Me At</div>
+                <div className="settings-sub">{findMeAt || "Not set"}</div>
+              </div>
+              <button onClick={()=>{setShowSettings(false);setTab("connect");setFindMeEdit(true);}}
+                style={{background:C.tealBg,border:`1px solid ${C.tealBorder}`,borderRadius:8,padding:"6px 14px",color:C.teal,fontSize:12,fontWeight:600,cursor:"pointer",fontFamily:"'Plus Jakarta Sans',sans-serif"}}>
+                Update
+              </button>
+            </div>
+            <div style={{marginTop:16,paddingTop:14,borderTop:`1px solid ${C.border}`}}>
+              <button onClick={()=>{
+                  if(confirm("Change your name/location? This will reset your profile.")){
+                    save("name",""); save("loc",""); setUName(""); setULoc(""); setShowSettings(false);
+                  }
+                }} style={{width:"100%",padding:"12px",borderRadius:10,border:`1px solid ${C.red}40`,background:`${C.red}08`,color:C.red,fontSize:13,fontWeight:600,cursor:"pointer",fontFamily:"'Plus Jakarta Sans',sans-serif"}}>
+                🔄 Change Name / Location
+              </button>
+            </div>
+            <div style={{textAlign:"center",marginTop:16,fontSize:11,color:C.muted}}>B&B Summit 2026 · Creating Community</div>
+          </div>
+        </div>
+      )}
 
       {/* TUTORIAL OVERLAY */}
       {showTutorial && uName && (
