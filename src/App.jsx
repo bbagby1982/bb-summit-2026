@@ -1176,7 +1176,7 @@ export default function App() {
 
   // ─── DAILY POLLS ────────────────────────────────────────────────────────────
   const DAILY_POLLS = {
-    "Tuesday":   { q:"🍿 What's your go-to concession order?", opts:["Popcorn & Soda","Nachos","Candy","I sneak in snacks 😅"] },
+    "Tuesday":   { q:"🍿 What's your go-to concession order?", opts:["Popcorn & Soda","Nachos","Candy","All of the above!"] },
     "Wednesday": { q:"🎬 Best movie of the last year?",        opts:["Inside Out 2","Dune: Part Two","Deadpool & Wolverine","Other — tell us in Connect!"] },
     "Thursday":  { q:"🏠 What's one thing you're taking home from this Summit?", opts:["New friendships","Fresh ideas for my theatre","Motivation to lead","All of the above!"] },
   };
