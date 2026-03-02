@@ -131,6 +131,26 @@ const ROTATIONS = {
   ],
 };
 
+// ─── CORPORATE SCHEDULE ──────────────────────────────────────────────────────
+const CORPORATE_SCHEDULE = {
+  "Tuesday, March 10":[
+    {time:"1:30 PM",  event:"🪄 All Company Welcome + State of the Company",  note:"ALL Corporate — Required", emoji:"🪄"},
+    {time:"2:15 PM",  event:"😊 HR Session",                                   note:"ALL Corporate — Required", emoji:"😊"},
+    {time:"3:30 PM",  event:"📦 Inventory Session",                            note:"If you're involved in this process, please plan to attend", emoji:"📦"},
+    {time:"4:15 PM",  event:"📒 Scheduling Session",                           note:"If you're involved in this process, please plan to attend", emoji:"📒"},
+    {time:"6:30 PM",  event:"🎬 Film Screening!",                              note:"Optional — Be among the first to see a brand new film before its official release. Popcorn & Soft Drinks provided.", emoji:"🎬"},
+  ],
+  "Wednesday, March 11":[
+    {time:"6:00 PM",  event:"🎳 Main Event — Kansas City North",               note:"Optional, but strongly encouraged! We would love to see you there. If you're presenting at any time during the Summit, your attendance is highly encouraged. Please plan to drive yourself to Main Event.", emoji:"🎳",
+      address:"8081 NW Roanridge Rd, Kansas City, MO 64151", mapUrl:"https://maps.google.com/?q=8081+NW+Roanridge+Rd+Kansas+City+MO+64151"},
+  ],
+  "Thursday, March 12":[
+    {time:"1:45 PM",  event:"💻 IT Presentation",                              note:"ALL Corporate — Required", emoji:"💻"},
+    {time:"2:30 PM",  event:"🎖️ Years of Service Awards",                     note:"Optional, but encouraged to stay!", emoji:"🎖️"},
+    {time:"3:00 PM",  event:"🏆 Awards Ceremony",                              note:"Optional, but encouraged to stay!", emoji:"🏆"},
+  ],
+};
+
 // ─── HOTEL LOOKUP ─────────────────────────────────────────────────────────────
 const LOCATION_HOTEL = {
   "Airway Heights":"TownePlace Suites","Athens":"TownePlace Suites",
@@ -324,64 +344,62 @@ const VENDORS = [
 // ─── SCHEDULE ────────────────────────────────────────────────────────────────
 const SCHEDULE = {
   "Monday, March 9":[
-    {time:"1:30 – 3:00 PM",  event:"District Manager Stockroom Training",                loc:"Stockroom",                  venue:"🏪"},
-    {time:"2:30 – 3:00 PM",  event:"Registration",                                       loc:"Main Lobby",                 venue:"🏛️"},
-    {time:"3:00 – 6:00 PM",  event:"CEC Meeting",                                        loc:"Auditorium 12",              venue:"🎬"},
+    {time:"1:30 PM",  event:"District Manager Stockroom Training",                loc:"Stockroom",                  venue:"🏪"},
+    {time:"2:30 PM",  event:"Registration",                                       loc:"Main Lobby",                 venue:"🏛️"},
+    {time:"3:00 PM",  event:"CEC Meeting",                                        loc:"Auditorium 12",              venue:"🎬"},
     {time:"6:00 PM+",        event:"🍽️ Dinner — Johnnie's Jazz Bar & Grill. Build-Your-Own Sliders & Fresh Salad Bar — craft your perfect bite with a spread of slider options and toppings. Use your drink tickets received at registration — valid for mocktails, cocktails, and specialty sodas. Bartenders on hand all evening!", loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
     {time:"6:15 PM",         event:"RealD — Special Guest Dinner. Meet and Greet",       loc:"Johnnie's Jazz Bar & Grill", venue:"🎷"},
-    {time:"7:00 – 8:30 PM",  event:"🚌 Transport from Theatre to Hotel",                 loc:"Hotel",                      venue:"🚌"},
+    {time:"7:00 PM",  event:"🚌 Transport from Theatre to Hotel",                 loc:"Hotel",                      venue:"🚌"},
   ],
   "Tuesday, March 10":[
     {time:"Breakfast",          event:"🍳 Breakfast at Home or Hotel",                     loc:"Home / Hotel",               venue:"🏨", food:true},
-    {time:"9:30 – 10:00 AM",   event:"☕️ Coffee & Juice Provided at the Theatre",          loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"9:30 – 9:45 AM",    event:"🚌 Hotel Guests Bus Pickup (Flyers Only) → Liberty Cinema 12", loc:"TownePlace Suites", venue:"🚌"},
-    {time:"9:45 AM",           event:"🎬 Non-Driver Arrival at Liberty Cinema 12",         loc:"Liberty Cinema 12",          venue:"🏛️"},
-    {time:"10:00 – 11:30 AM",  event:"🍽️ F&B Town Meeting (Food & Bar Managers)",         loc:"Auditorium 12",              venue:"🎬"},
-    {time:"11:15 – 11:45 AM",  event:"✅ Non-CEC Registration",                            loc:"Main Lobby",                 venue:"🏛️"},
-    {time:"11:30 AM – 12:00 PM",event:"📽️ ScreenX Presentation (Towns Only)",             loc:"Auditorium 1",               venue:"🎬"},
-    {time:"11:30 – 1:15 PM",   event:"🍽️ Lunch & ✔️ Vendor Meet & Greet Tables Open — Meddy's Mediterranean: Chicken & Steak Shawarma with garlic potatoes, roasted veggies, Mediterranean salad, and hummus with warm chips & pita. Falafel available for vegetarians. Check in and earn points via the app 🎯", loc:"Johnnie's & Main Lobby", venue:"🎷", food:true},
-    {time:"1:15 – 1:30 PM",    event:"📽️ Screenvision Presentation",                     loc:"Auditorium 1",               venue:"🎬"},
-    {time:"1:30 – 2:15 PM",    event:"🪄 All Company Gathering — Welcome & State of Company", loc:"Auditorium 1",            venue:"🎬"},
-    {time:"2:15 – 3:15 PM",    event:"😊 Respect. Safety. Belonging. Creating Community Within — HR", loc:"Auditorium 1",    venue:"🎬"},
-    {time:"3:15 – 3:30 PM",    event:"Break",                                              loc:"Lobby",                      venue:"☕️"},
-    {time:"3:30 – 4:15 PM",    event:"📦 The Inventory Standard",                          loc:"Auditorium 1",               venue:"🎬"},
-    {time:"4:15 – 4:45 PM",    event:"📒 Smart Scheduling — Amanda",                       loc:"Auditorium 1",               venue:"🎬"},
-    {time:"4:45 – 5:00 PM",    event:"Break",                                              loc:"Lobby",                      venue:"☕️"},
-    {time:"5:00 – 5:45 PM",    event:"👨‍🏫 Training the Magic — Training & Development", loc:"Auditorium 1",  venue:"🎬"},
-    {time:"5:45 – 6:15 PM",    event:"🍕 Dinner — J&S Pizza (Local & Cinema-Obsessed!). A mountain of hand-crafted pizzas — Cheese, Pepperoni, Sausage, Veggie, and Gluten-Free options. Spinach & Chicken Salads, Turkey Bacon Ranch, and a classic Garden Salad. Save room for fresh-baked Chocolate Chip, Snickerdoodle, M&M, and Sugar Cookies. Use your drink tickets at the bar or grab a soda from concessions!", loc:"Auditorium 1", venue:"🍕", food:true},
-    {time:"6:15 – 6:30 PM",    event:"📽️ ScreenX Presentation",                          loc:"Auditorium 1",               venue:"🎬"},
+    {time:"9:30 AM",   event:"☕️ Coffee & Juice Provided at the Theatre",          loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"9:30 AM",    event:"🚌 Hotel Guests Bus Pickup (Flyers Only) → Liberty Cinema 12", loc:"TownePlace Suites", venue:"🚌"},
+    {time:"10:00 AM",  event:"🍽️ F&B Town Meeting (Food & Bar Managers)",         loc:"Auditorium 12",              venue:"🎬"},
+    {time:"11:15 AM",  event:"✅ Non-CEC Registration",                            loc:"Main Lobby",                 venue:"🏛️"},
+    {time:"11:30 AM",event:"📽️ ScreenX Presentation — If you have a ScreenX in your location, please attend this presentation prior to attending lunch.", loc:"Auditorium 1", venue:"🎬"},
+    {time:"11:30 AM",   event:"🍽️ Lunch & ✔️ Vendor Meet & Greet Tables Open — Meddy's Mediterranean: Chicken & Steak Shawarma with garlic potatoes, roasted veggies, Mediterranean salad, and hummus with warm chips & pita. Falafel available for vegetarians. Check in and earn points via the app 🎯", loc:"Johnnie's & Main Lobby", venue:"🎷", food:true},
+    {time:"1:15 PM",    event:"🎬 B&B Circle Up! — When you enter the auditorium, don't grab a seat just yet. We're forming one big circle — lined up by the year you joined the B&B family. From our founding in 1924 to our newest team members in 2026, every year matters. Every person matters. Take a look around. This circle? That's what Creating Community looks like.", loc:"Auditorium 1", venue:"🎬"},
+    {time:"1:30 PM",    event:"📽️ Screenvision Presentation",                     loc:"Auditorium 1",               venue:"🎬"},
+    {time:"1:45 PM",    event:"🪄 All Company Gathering — Welcome & State of Company", loc:"Auditorium 1",            venue:"🎬"},
+    {time:"2:15 PM",    event:"😊 Respect. Safety. Belonging. Creating Community Within — HR", loc:"Auditorium 1",    venue:"🎬"},
+    {time:"3:15 PM",    event:"Break",                                              loc:"Lobby",                      venue:"☕️"},
+    {time:"3:30 PM",    event:"📦 The Inventory Standard",                          loc:"Auditorium 1",               venue:"🎬"},
+    {time:"4:15 PM",    event:"📒 Smart Scheduling — Amanda Carmichael",                       loc:"Auditorium 1",               venue:"🎬"},
+    {time:"4:45 PM",    event:"Break",                                              loc:"Lobby",                      venue:"☕️"},
+    {time:"5:00 PM",    event:"👨‍🏫 Training the Magic — Training & Development", loc:"Auditorium 1",  venue:"🎬"},
+    {time:"5:45 PM",    event:"🍕 Dinner — J&S Pizza (Local & Cinema-Obsessed!). A mountain of hand-crafted pizzas — Cheese, Pepperoni, Sausage, Veggie, and Gluten-Free options. Spinach & Chicken Salads, Turkey Bacon Ranch, and a classic Garden Salad. Save room for fresh-baked Chocolate Chip, Snickerdoodle, M&M, and Sugar Cookies. Use your drink tickets at the bar or grab a soda from concessions!", loc:"Auditorium 1", venue:"🍕", food:true},
+    {time:"6:15 PM",    event:"📽️ ScreenX Presentation",                          loc:"Auditorium 1",               venue:"🎬"},
     {time:"6:30 PM+",          event:"📽️ Studio Screening",                               loc:"Auditorium 1",               venue:"🎬"},
-    {time:"9:00 – 10:15 PM",   event:"🎉 After Party & Dessert",                          loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"9:00 PM",   event:"🎉 After Party & Dessert",                          loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
     {time:"10:15 PM",          event:"🚌 Bus Returns to Hotels",                           loc:"Hotel",                      venue:"🚌"},
   ],
   "Wednesday, March 11":[
     {time:"Breakfast",        event:"🍳 Breakfast at Home or Hotel",                     loc:"Home / Hotel",               venue:"🏨", food:true},
-    {time:"9:30 – 10:00 AM", event:"☕ Coffee & Juice Provided at the Theatre — grab a cup and get ready for Round Robin day!", loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"9:30 – 9:45 AM",  event:"🚌 Hotel Guests Bus Pickup (Flyers Only) → Liberty Cinema 12", loc:"TownePlace Suites", venue:"🚌"},
-    {time:"9:45 AM",         event:"🎬 Non-Driver Arrival at Liberty Cinema 12",         loc:"Liberty Cinema 12",          venue:"🏛️"},
-    {time:"10:00 AM – 5:00", event:"🔄 Round Robin Sessions (see My Group tab!)",        loc:"Aud 1 / 4 / 6 / 7 / 8 / 9 / 12", venue:"🎬"},
+    {time:"9:30 AM", event:"☕ Coffee & Juice Provided at the Theatre — grab a cup and get ready for Round Robin day!", loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"9:30 AM",  event:"🚌 Hotel Guests Bus Pickup (Flyers Only) → Liberty Cinema 12", loc:"TownePlace Suites", venue:"🚌"},
+    {time:"10:00 AM", event:"🔄 Round Robin Sessions (see My Group tab!)",        loc:"Aud 1 / 4 / 6 / 7 / 8 / 9 / 12", venue:"🎬"},
     {time:"Staggered",       event:"🍽️ Lunch — Brancato's Catering. Slow-smoked Beef Brisket with au jus and Grilled Chicken, garlic whipped mashed potatoes with pan gravy, green beans, pasta salad, garden salad, warm rolls, and fudge brownies. See My Group Tab for your time!", loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"5:00 – 5:30 PM",  event:"🚌 Buses → Main Event (Managers Only — Corp drive yourself)", loc:"Liberty Cinema 12", venue:"🚌"},
-    {time:"5:30 – 8:15 PM",  event:"🎳 Off-Site Activity & Dinner at Main Event — 🔥 BBQ Feast! Pork Ribs, Grilled Chicken Legs & Thighs, and Smoked Jalapeño Cheddar Sausage. Baked Mac & Cheese, Baked Beans & Bacon, House-Made Potato Salad, Coleslaw, Seasonal Fruit, and Honey Cornbread with honey butter. 🎟️ Please check in at the welcome table to receive your drink tickets for the night and arcade information! Corporate employees in KC Metro — drive yourself. 8081 NW Roanridge Rd., Kansas City, MO 64151", loc:"Main Event", venue:"🎳", food:true},
-    {time:"8:45 – 9:00 PM",  event:"🚌 Return Trip to Hotel and Theatre",               loc:"Hotel / Theatre",            venue:"🚌"},
+    {time:"5:00 PM",  event:"🚌 Buses → Main Event (Managers Only — Corp drive yourself)", loc:"Liberty Cinema 12", venue:"🚌"},
+    {time:"5:30 PM",  event:"🎳 Off-Site Activity & Dinner at Main Event — 🔥 BBQ Feast! Pork Ribs, Grilled Chicken Legs & Thighs, and Smoked Jalapeño Cheddar Sausage. Baked Mac & Cheese, Baked Beans & Bacon, House-Made Potato Salad, Coleslaw, Seasonal Fruit, and Honey Cornbread with honey butter. 🎟️ Please check in at the welcome table to receive your drink tickets for the night and arcade information! Corporate employees in KC Metro — drive yourself. 8081 NW Roanridge Rd., Kansas City, MO 64151", loc:"Main Event", venue:"🎳", food:true},
+    {time:"8:45 PM",  event:"🚌 Return Trip to Hotel and Theatre",               loc:"Hotel / Theatre",            venue:"🚌"},
   ],
   "Thursday, March 12":[
     {time:"Breakfast",        event:"🍳 Breakfast at Home or Hotel",                     loc:"Home / Hotel",               venue:"🏨", food:true},
-    {time:"9:30 – 10:00 AM", event:"🍩 Donuts, Coffee & Juice at the Theatre — the sweetest way to start the final day!", loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"9:30 – 9:45 AM",  event:"🚌 Hotel Guests Bus Pickup (Flyers Only) → Liberty Cinema 12", loc:"TownePlace Suites", venue:"🚌"},
-    {time:"9:45 AM",         event:"🎬 Non-Driver Arrival at Liberty Cinema 12",         loc:"Liberty Cinema 12",          venue:"🏛️"},
-    {time:"10:00 – 10:15 AM",event:"🎥 Sony — Studio Presentation",                     loc:"Auditorium 1",               venue:"🎥"},
-    {time:"10:15 – 10:45 AM",event:"🎞️ Programming — Chad Christopher & Ed Carl",      loc:"Auditorium 1",               venue:"🎬"},
-    {time:"10:45 – 11:00 AM",event:"📽️ GDC Presentation",                              loc:"Auditorium 1",               venue:"🎬"},
-    {time:"11:00 – 11:15 AM",event:"⭐ Paramount — Studio Presentation",                loc:"Auditorium 1",               venue:"⭐"},
-    {time:"11:15 – 11:45 AM",event:"🔨 Facilities Maintenance",                         loc:"Auditorium 1",               venue:"🎬"},
-    {time:"11:45 AM – 12:00",event:"🦁 Lionsgate Presentation",                         loc:"Auditorium 1",               venue:"🎬"},
-    {time:"12:00 – 1:00 PM", event:"🍽️ Lunch — Rancho Grande. 🌮 Taco Bar! Ground Beef & Shredded Chicken Tacos plus Bean Burritos, with beans, rice, queso, guac, sour cream, and pico. Churros for dessert — the perfect send-off meal!", loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
-    {time:"1:15 – 1:45 PM",  event:"🎉 Cheers! — Paul Farnsworth & Toma Foster",       loc:"Auditorium 1",               venue:"🎬"},
-    {time:"1:45 – 2:15 PM",  event:"💻 Smart Systems, Seamless Experiences — IT Talks", loc:"Auditorium 1",               venue:"🎬"},
-    {time:"2:15 – 2:30 PM",  event:"☕️ Break",                                          loc:"Lobby",                      venue:"☕️"},
-    {time:"2:30 – 3:00 PM",  event:"🎖️ Years of Service Recognition",                  loc:"Auditorium 1",               venue:"🏆"},
-    {time:"3:00 – 4:00 PM",  event:"🏆 Awards Ceremony",                                loc:"Auditorium 1",               venue:"🏆"},
+    {time:"9:30 AM", event:"🍩 Donuts, Coffee & Juice at the Theatre — the sweetest way to start the final day!", loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"9:30 AM",  event:"🚌 Hotel Guests Bus Pickup (Flyers Only) → Liberty Cinema 12", loc:"TownePlace Suites", venue:"🚌"},
+    {time:"10:00 AM",event:"🎥 Sony — Studio Presentation",                     loc:"Auditorium 1",               venue:"🎥"},
+    {time:"10:15 AM",event:"🎞️ Programming — Chad Christopher & Ed Carl",      loc:"Auditorium 1",               venue:"🎬"},
+    {time:"10:45 AM",event:"📽️ GDC Presentation",                              loc:"Auditorium 1",               venue:"🎬"},
+    {time:"11:00 AM",event:"⭐ Paramount — Studio Presentation",                loc:"Auditorium 1",               venue:"⭐"},
+    {time:"11:15 AM",event:"🔨 Facilities Maintenance",                         loc:"Auditorium 1",               venue:"🎬"},
+    {time:"11:45 AM",event:"🦁 Lionsgate Presentation",                         loc:"Auditorium 1",               venue:"🎬"},
+    {time:"12:00 PM", event:"🍽️ Lunch — Rancho Grande. 🌮 Taco Bar! Ground Beef & Shredded Chicken Tacos plus Bean Burritos, with beans, rice, queso, guac, sour cream, and pico. Churros for dessert — the perfect send-off meal!", loc:"Johnnie's Jazz Bar & Grill", venue:"🎷", food:true},
+    {time:"1:15 PM",  event:"🎉 Cheers! — Paul Farnsworth & Toma Foster",       loc:"Auditorium 1",               venue:"🎬"},
+    {time:"1:45 PM",  event:"💻 Smart Systems, Seamless Experiences — IT Talks", loc:"Auditorium 1",               venue:"🎬"},
+    {time:"2:15 PM",  event:"☕️ Break",                                          loc:"Lobby",                      venue:"☕️"},
+    {time:"2:30 PM",  event:"🎖️ Years of Service Recognition",                  loc:"Auditorium 1",               venue:"🏆"},
+    {time:"3:00 PM",  event:"🏆 Awards Ceremony",                                loc:"Auditorium 1",               venue:"🏆"},
   ],
 };
 const DAYS = ["Monday, March 9","Tuesday, March 10","Wednesday, March 11","Thursday, March 12"];
@@ -770,28 +788,29 @@ export default function App() {
   function toggleDark() { const v = !darkMode; setDarkMode(v); save("darkMode", v); }
 
   // "Happening Now" helper — checks if current time falls within a schedule item's range
-  function isHappeningNow(dayLabel, timeStr) {
+  function isHappeningNow(dayLabel, timeStr, allEvents, idx) {
     const now = new Date();
-    // Only highlight on the actual day
     const dayMap = {"Monday, March 9":9,"Tuesday, March 10":10,"Wednesday, March 11":11,"Thursday, March 12":12};
     const dayNum = dayMap[dayLabel];
     if (!dayNum || now.getMonth() !== 2 || now.getDate() !== dayNum || now.getFullYear() !== 2026) return false;
-    // Parse time range like "10:00 – 11:30 AM" or "1:30 – 2:15 PM"
-    const m = timeStr.match(/(\d{1,2}):?(\d{2})?\s*(?:–|-)\s*(\d{1,2}):?(\d{2})?\s*(AM|PM)/i);
-    if (!m) return false;
-    const endH24 = ((h,p) => { let h24 = parseInt(h); if (p==='PM' && h24!==12) h24+=12; if (p==='AM' && h24===12) h24=0; return h24; })(m[3], m[5]);
-    const endMin = parseInt(m[4]||'0');
-    // Infer start AM/PM: if start hour > end hour, start is AM
-    let startH = parseInt(m[1]);
-    const startMin = parseInt(m[2]||'0');
-    const period = m[5].toUpperCase();
-    let startH24;
-    if (startH > parseInt(m[3]) && period === 'PM') { startH24 = startH; } // AM implicit
-    else { startH24 = ((h,p) => { let h24 = parseInt(h); if (p==='PM' && h24!==12) h24+=12; if (p==='AM' && h24===12) h24=0; return h24; })(m[1], period); }
+    // Parse a single time like "1:30 PM" or "9:30 AM"
+    function parseT(t) {
+      const m = t.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+      if (!m) return null;
+      let h = parseInt(m[1]); const min = parseInt(m[2]); const p = m[3].toUpperCase();
+      if (p==='PM' && h!==12) h+=12; if (p==='AM' && h===12) h=0;
+      return h*60+min;
+    }
+    const start = parseT(timeStr);
+    if (start===null) return false;
+    // End = next event's start time, or +45 min if last
+    let end = start + 45;
+    if (allEvents && idx < allEvents.length - 1) {
+      const nextStart = parseT(allEvents[idx+1].time);
+      if (nextStart !== null && nextStart > start) end = nextStart;
+    }
     const nowMins = now.getHours()*60 + now.getMinutes();
-    const startMins = startH24*60 + startMin;
-    const endMins = endH24*60 + endMin;
-    return nowMins >= startMins && nowMins < endMins;
+    return nowMins >= start && nowMins < end;
   }
 
   // Onboarding
@@ -989,7 +1008,29 @@ export default function App() {
     setGalleryUploading(true);
     try {
       const id = `${Date.now()}_${uName.replace(/[^a-zA-Z0-9]/g,"-")}`;
-      const url = URL.createObjectURL(file);
+      // Resize & convert to base64 so it persists across sessions
+      const url = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          const img = new Image();
+          img.onload = () => {
+            const MAX = 1200;
+            let w = img.width, h = img.height;
+            if (w > MAX || h > MAX) {
+              if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
+              else { w = Math.round(w * MAX / h); h = MAX; }
+            }
+            const canvas = document.createElement("canvas");
+            canvas.width = w; canvas.height = h;
+            canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+            resolve(canvas.toDataURL("image/jpeg", 0.7));
+          };
+          img.onerror = reject;
+          img.src = ev.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
       await setDoc(doc(db, "gallery", id), {
         url, caption: galleryCaption.trim(),
         uploaderName: uName, uploaderLoc: uLoc,
@@ -1217,7 +1258,8 @@ export default function App() {
           </div>
           <div style={{fontSize:13,fontWeight:700,color:C.teal,marginBottom:9}}>{DAYS[day]}</div>
           {SCHEDULE[DAYS[day]].map((s,i)=>{
-            const hapNow = isHappeningNow(DAYS[day], s.time);
+            const evts = SCHEDULE[DAYS[day]];
+            const hapNow = isHappeningNow(DAYS[day], s.time, evts, i);
             return (
             <div className={`si${hapNow?" now":""}`} key={i} style={s.food&&!hapNow?{borderColor:`${C.gold}30`}:{}}>
               <div className="si-time">{s.time}</div>
@@ -1236,18 +1278,41 @@ export default function App() {
         {/* ── MY GROUP ── */}
         {tab==="mygroup"&&<>
           <div className="stitle">My Group</div>
-          <div className="ssub">Wednesday, March 11 · Round Robin Rotation</div>
+          <div className="ssub">{myGroup ? "Wednesday, March 11 · Round Robin Rotation" : "Your Corporate Summit Schedule"}</div>
           {!myGroup
             ? <>
-                <div className="card" style={{borderColor:`${C.gold}30`,background:`${C.gold}08`,marginBottom:14}}>
-                  <div style={{display:"flex",alignItems:"center",gap:10}}>
-                    <span style={{fontSize:28}}>🏢</span>
-                    <div>
-                      <div style={{fontWeight:700,fontSize:15,color:C.gold}}>Corporate Staff View</div>
-                      <div style={{fontSize:12,color:C.muted,marginTop:2,lineHeight:1.5}}>All 6 group schedules — tap any group to expand</div>
-                    </div>
+                {/* ── CORPORATE SCHEDULE ── */}
+                {Object.keys(CORPORATE_SCHEDULE).map(dayKey=>(
+                  <div key={dayKey} style={{marginBottom:16}}>
+                    <div style={{fontSize:13,fontWeight:700,color:C.teal,marginBottom:8,letterSpacing:.3}}>{dayKey}</div>
+                    {CORPORATE_SCHEDULE[dayKey].map((s,i)=>(
+                      <div key={i} className="card" style={{marginBottom:8,borderLeft:`3px solid ${s.note?.includes("Required")?C.teal:C.gold}`,padding:"12px 14px"}}>
+                        <div style={{display:"flex",alignItems:"flex-start",gap:10}}>
+                          <div style={{fontSize:20,flexShrink:0,marginTop:2}}>{s.emoji}</div>
+                          <div style={{flex:1}}>
+                            <div style={{fontSize:11,fontWeight:700,color:C.teal,marginBottom:3}}>{s.time}</div>
+                            <div style={{fontSize:14,fontWeight:700,color:C.text,lineHeight:1.4}}>{s.event.replace(/^[^\s]+\s/,"")}</div>
+                            {s.note&&<div style={{fontSize:12,color:s.note.includes("Required")?C.teal:C.muted,marginTop:4,lineHeight:1.5,fontStyle:s.note.includes("Optional")?"italic":"normal"}}>
+                              {s.note.includes("Required")?"⚡ ":s.note.includes("Optional")?"":"📋 "}{s.note}
+                            </div>}
+                            {s.address&&<div style={{marginTop:8}}>
+                              <div style={{fontSize:12,color:C.muted}}>📍 {s.address}</div>
+                              <a href={s.mapUrl} target="_blank" rel="noopener noreferrer"
+                                style={{display:"inline-block",marginTop:6,fontSize:12,fontWeight:700,color:C.teal,background:`${C.teal}15`,border:`1px solid ${C.teal}40`,borderRadius:8,padding:"6px 12px",textDecoration:"none"}}>
+                                🗺️ Get Directions →
+                              </a>
+                            </div>}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                </div>
+                ))}
+
+                {/* ── ROUND ROBIN GROUPS (accordion) ── */}
+                <div style={{height:1,background:C.border,margin:"16px 0"}}/>
+                <div style={{fontSize:12,fontWeight:600,color:C.muted,marginBottom:4,letterSpacing:.4,textTransform:"uppercase"}}>Wednesday Round Robin Groups</div>
+                <div style={{fontSize:11,color:C.muted,marginBottom:12,lineHeight:1.5}}>Tap any group to see their rotation schedule</div>
                 {[1,2,3,4,5,6].map(gn=>{
                   const gi = GROUP_INFO[gn];
                   const open = expandedGroup === gn;
@@ -1458,7 +1523,7 @@ export default function App() {
                   </svg>
                   <div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",textAlign:"center"}}>
                     <div style={{fontSize:14,fontWeight:700,color:C.gold,lineHeight:1}}>{metCount}</div>
-                    <div style={{fontSize:9,color:"rgba(255,255,255,.3)"}}>/{ATTENDEES.length}</div>
+                    <div style={{fontSize:9,color:C.muted}}>/{ATTENDEES.length}</div>
                   </div>
                 </div>
                 <div style={{background:"rgba(255,215,0,.1)",border:"1px solid rgba(255,215,0,.25)",borderRadius:10,padding:"5px 10px",textAlign:"center"}}>
@@ -1535,14 +1600,14 @@ export default function App() {
                 <div style={{fontSize:12,color:"rgba(255,255,255,.4)"}}>Your photo is being reviewed and will appear soon.</div>
               </div>
             : <div style={{marginBottom:12}}>
-                <input style={{width:"100%",padding:"10px 14px",borderRadius:10,border:"1px solid #2A2A40",background:"#1A1A28",color:"#E8E8F0",fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:13,outline:"none",marginBottom:8,boxSizing:"border-box"}}
+                <input style={{width:"100%",padding:"10px 14px",borderRadius:10,border:`1px solid ${C.border}`,background:C.inputBg,color:C.text,fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:13,outline:"none",marginBottom:8,boxSizing:"border-box"}}
                   placeholder="Add a caption (optional)…" value={galleryCaption} onChange={e=>setGalleryCaption(e.target.value)}/>
                 <label className="gallery-upload">
                   {galleryUploading
-                    ? <><div style={{fontSize:28,marginBottom:6}}>⏳</div><div style={{fontSize:13,color:"rgba(255,215,0,.7)",fontWeight:600}}>Uploading…</div></>
+                    ? <><div style={{fontSize:28,marginBottom:6}}>⏳</div><div style={{fontSize:13,color:`${C.gold}BB`,fontWeight:600}}>Uploading…</div></>
                     : <><div style={{fontSize:32,marginBottom:6}}>📷</div>
-                        <div style={{fontSize:14,fontWeight:700,color:"rgba(255,215,0,.8)"}}>Tap to Upload a Photo</div>
-                        <div style={{fontSize:11,color:"rgba(255,255,255,.3)",marginTop:4}}>Photos are reviewed before posting</div></>}
+                        <div style={{fontSize:14,fontWeight:700,color:C.gold}}>Tap to Upload a Photo</div>
+                        <div style={{fontSize:11,color:C.muted,marginTop:4}}>Photos are reviewed before posting</div></>}
                   <input type="file" accept="image/*" capture="environment" style={{display:"none"}} onChange={e=>uploadPhoto(e.target.files[0])} disabled={galleryUploading}/>
                 </label>
               </div>}
@@ -1718,7 +1783,7 @@ export default function App() {
                 ? <img src={photos[modal.id]} alt={modal.name} style={{width:64,height:64,borderRadius:"50%",objectFit:"cover",marginBottom:5,border:"3px solid rgba(255,255,255,.3)"}}/>
                 : <div className="csh-av">{ini(modal.name)}</div>}
               <div style={{fontSize:18,fontWeight:700,color:"#fff",textAlign:"center"}}>{modal.name}</div>
-              <div style={{fontSize:12,color:"rgba(255,255,255,.58)",textAlign:"center"}}>{modal.role} · {modal.theatre}</div>
+              <div style={{fontSize:12,color:"rgba(255,255,255,.7)",textAlign:"center"}}>{modal.role} · {modal.theatre}</div>
               <div style={{fontSize:10,borderRadius:20,border:`1px solid ${GROUP_COLOR[modal.group]||"#666"}55`,padding:"2px 12px",marginTop:3,letterSpacing:".05em",background:`${GROUP_COLOR[modal.group]||"#666"}30`,color:GROUP_COLOR[modal.group]||"#ccc"}}>{GROUP_ICON[modal.group]||""} {modal.group}</div>
               {modal.corporate&&<div style={{fontSize:10,color:"rgba(255,215,0,.5)",marginTop:3,fontStyle:"italic"}}>Earns {CONNECT_PTS} pts · No nomination needed</div>}
               <button onClick={closeModal} style={{position:"absolute",top:12,right:12,background:"rgba(0,0,0,.28)",border:"none",color:"#fff",fontSize:14,borderRadius:"50%",width:28,height:28,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}}>✕</button>
@@ -1740,15 +1805,15 @@ export default function App() {
               </>)}
               {cStep===2&&(<>
                 <div className="step-lbl">Step 2 of 2 · Spotlight & Values</div>
-                <p style={{fontSize:13,color:"rgba(240,230,211,.6)",lineHeight:1.6,marginBottom:14}}>
+                <p style={{fontSize:13,color:C.muted,lineHeight:1.6,marginBottom:14}}>
                   Does {modal.name.split(" ")[0]} deserve any of these? <span style={{color:C.gold,fontWeight:700}}>⭐ {CONNECT_PTS} pts</span> with a nomination.
                 </p>
                 <div style={{fontSize:10,letterSpacing:".12em",textTransform:"uppercase",color:"rgba(240,230,211,.35)",marginBottom:7}}>✨ Spotlight Awards</div>
                 {SPOTLIGHT_AWARDS.map(a=><AwardRow key={a.id} award={a} selected={cNoms.includes(a.id)} onToggle={toggleNom}/>)}
-                <div style={{fontSize:10,letterSpacing:".12em",textTransform:"uppercase",color:"rgba(240,230,211,.35)",margin:"12px 0 7px"}}>🏠 Core Values</div>
+                <div style={{fontSize:10,letterSpacing:".12em",textTransform:"uppercase",color:C.muted,margin:"12px 0 7px"}}>🏠 Core Values</div>
                 {VALUE_AWARDS.map(a=><AwardRow key={a.id} award={a} selected={cNoms.includes(a.id)} onToggle={toggleNom}/>)}
                 {cNoms.length>0&&(<div style={{marginTop:12}}>
-                  <div style={{fontSize:11,color:"rgba(240,230,211,.4)",marginBottom:5}}>Why? (optional)</div>
+                  <div style={{fontSize:11,color:C.muted,marginBottom:5}}>Why? (optional)</div>
                   <textarea className="ctextarea" rows={2} placeholder="What made them stand out?" value={cNote} onChange={e=>setCNote(e.target.value)}/>
                 </div>)}
                 <div style={{display:"flex",gap:8,marginTop:8}}>
@@ -1763,7 +1828,7 @@ export default function App() {
                   <span style={{fontSize:24}}>🤝</span>
                   <div style={{flex:1}}>
                     <div style={{fontSize:14,fontWeight:700,color:"#00e676"}}>Connected!</div>
-                    <div style={{fontSize:11,color:"rgba(240,230,211,.35)",marginTop:2}}>
+                    <div style={{fontSize:11,color:C.muted,marginTop:2}}>
                       {conns[modal.id]?.metAt ? new Date(conns[modal.id].metAt).toLocaleDateString("en-US",{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}) : ""}
                     </div>
                   </div>
@@ -1771,12 +1836,12 @@ export default function App() {
                     <div style={{fontSize:12,fontWeight:700,color:C.gold,background:"rgba(255,215,0,.1)",border:"1px solid rgba(255,215,0,.2)",borderRadius:20,padding:"3px 10px"}}>+{CONNECT_PTS} pts</div>}
                 </div>
                 <div style={{background:"rgba(255,215,0,.05)",border:"1px solid rgba(255,215,0,.12)",borderRadius:10,padding:"11px 13px",marginBottom:13}}>
-                  <div style={{fontSize:10,letterSpacing:".1em",textTransform:"uppercase",color:"rgba(240,230,211,.35)",marginBottom:5}}>{cQuestion}</div>
-                  <div style={{fontSize:13,color:"rgba(240,230,211,.75)",fontStyle:"italic",lineHeight:1.6}}>"{conns[modal.id]?.answer}"</div>
+                  <div style={{fontSize:10,letterSpacing:".1em",textTransform:"uppercase",color:C.muted,marginBottom:5}}>{cQuestion}</div>
+                  <div style={{fontSize:13,color:C.text,fontStyle:"italic",lineHeight:1.6,opacity:.75}}>"{conns[modal.id]?.answer}"</div>
                 </div>
                 {!modal.corporate&&conns[modal.id]?.nominations?.length>0&&(
                   <div style={{marginBottom:13}}>
-                    <div style={{fontSize:10,letterSpacing:".1em",textTransform:"uppercase",color:"rgba(240,230,211,.35)",marginBottom:7}}>Nominations given:</div>
+                    <div style={{fontSize:10,letterSpacing:".1em",textTransform:"uppercase",color:C.muted,marginBottom:7}}>Nominations given:</div>
                     {conns[modal.id].nominations.map(nid=>(
                       <span key={nid} className="nom-chip">{ALL_AWARDS.find(a=>a.id===nid)?.emoji} {ALL_AWARDS.find(a=>a.id===nid)?.label}</span>
                     ))}
@@ -1820,7 +1885,7 @@ export default function App() {
           <div className="admin-hdr">
             <div>
               <div className="admin-title">🎬 Admin Panel</div>
-              <div style={{fontSize:11,color:"rgba(255,255,255,.3)",marginTop:2}}>B&B Summit 2026 · Live Results</div>
+              <div style={{fontSize:11,color:C.muted,marginTop:2}}>B&B Summit 2026 · Live Results</div>
             </div>
             <button className="admin-close" onClick={()=>setShowAdmin(false)}>✕</button>
           </div>
@@ -1876,7 +1941,7 @@ export default function App() {
               {pendingPhotos.length>0&&<span style={{marginLeft:8,background:"#E63946",color:"#fff",borderRadius:20,padding:"1px 8px",fontSize:10,fontWeight:700}}>{pendingPhotos.length} pending</span>}
             </div>
             {pendingPhotos.length===0
-              ? <div style={{color:"rgba(255,255,255,.3)",fontSize:13,fontStyle:"italic",padding:"10px 0"}}>No photos waiting for approval</div>
+              ? <div style={{color:C.muted,fontSize:13,fontStyle:"italic",padding:"10px 0"}}>No photos waiting for approval</div>
               : pendingPhotos.map(p=>(
                   <div className="pending-photo" key={p.id}>
                     <img src={p.url} alt="pending"/>
@@ -1897,7 +1962,7 @@ export default function App() {
           <div className="admin-section">
             <div className="admin-sh">✨ Spotlight Awards — Vote Tallies</div>
             {!adminData
-              ? <div style={{color:"rgba(255,255,255,.3)",fontSize:13,fontStyle:"italic"}}>Connecting to Firebase…</div>
+              ? <div style={{color:C.muted,fontSize:13,fontStyle:"italic"}}>Connecting to Firebase…</div>
               : (() => {
                   const tally = {};
                   ALL_AWARDS.forEach(a => { tally[a.id] = {}; });
@@ -1942,9 +2007,9 @@ export default function App() {
           <div className="admin-section">
             <div className="admin-sh">🏆 Live Points Leaderboard</div>
             {!lbData
-              ? <div style={{color:"rgba(255,255,255,.3)",fontSize:13,fontStyle:"italic"}}>Loading scores…</div>
+              ? <div style={{color:C.muted,fontSize:13,fontStyle:"italic"}}>Loading scores…</div>
               : lbData.length===0
-                ? <div style={{color:"rgba(255,255,255,.3)",fontSize:13,fontStyle:"italic"}}>No scores yet</div>
+                ? <div style={{color:C.muted,fontSize:13,fontStyle:"italic"}}>No scores yet</div>
                 : lbData.map((e,i) => (
                     <div className="score-row" key={i} style={i<3?{border:`1px solid ${["rgba(255,215,0,.3)","rgba(192,192,192,.2)","rgba(205,127,50,.2)"][i]}`}:{}}>
                       <div className="score-rank">{i===0?"🥇":i===1?"🥈":i===2?"🥉":`${i+1}`}</div>
@@ -1964,7 +2029,7 @@ export default function App() {
           <div className="admin-section">
             <div className="admin-sh">📋 All Nomination Notes</div>
             {!adminData||Object.values(adminData).length===0
-              ? <div style={{color:"rgba(255,255,255,.3)",fontSize:13,fontStyle:"italic"}}>No nominations submitted yet</div>
+              ? <div style={{color:C.muted,fontSize:13,fontStyle:"italic"}}>No nominations submitted yet</div>
               : Object.values(adminData)
                   .filter(r=>r.nominations?.length>0&&r.note)
                   .sort((a,b)=>(b.submittedAt?.seconds||0)-(a.submittedAt?.seconds||0))
@@ -1990,8 +2055,8 @@ function AwardRow({ award, selected, onToggle }) {
     <div className={`award-card${selected?" sel":""}`} onClick={()=>onToggle(award.id)}>
       <span style={{fontSize:19,flexShrink:0,width:24,textAlign:"center"}}>{award.emoji}</span>
       <div style={{flex:1}}>
-        <div style={{fontSize:12,fontWeight:700,color:"#f0e6d3",lineHeight:1.3}}>{award.label}</div>
-        <div style={{fontSize:10,color:"rgba(240,230,211,.4)",fontStyle:"italic",marginTop:2}}>{award.desc}</div>
+        <div style={{fontSize:12,fontWeight:700,lineHeight:1.3}}>{award.label}</div>
+        <div style={{fontSize:10,fontStyle:"italic",marginTop:2,opacity:.5}}>{award.desc}</div>
       </div>
       <div className={`check${selected?" sel":""}`}>{selected?"✓":""}</div>
     </div>
