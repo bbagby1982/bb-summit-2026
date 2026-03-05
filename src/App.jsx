@@ -1,3 +1,7 @@
+✓ Change 1: Added hotel overrides
+✓ Change 2: Added transportation schedule
+✓ Change 3: Added Coca-Cola and CEN vendors
+✓ Change 4: Updated myHotel derivation
 import { useState, useMemo, useEffect, useRef } from "react";
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, setDoc, collection, onSnapshot, serverTimestamp }
@@ -183,6 +187,23 @@ const HOTEL_INFO = {
     notes:"Theatre managers & drivers. Enjoy breakfast every morning at the hotel! Coffee only will be available at the theatre. Check-in after 3 PM." },
 };
 
+// ─── NAME-BASED HOTEL OVERRIDES ───────────────────────────────────────────────
+const TOWNEPLACE_GUESTS = new Set([
+  "Jake Anderson","John Bernard","Kirstin Bradel","Noah Braun","Kevin Cowden",
+  "Jaughn Cyr","Patrick Doherty","Meagan Faulk","Yasemin Henningsen","Christy Hinkley",
+  "Jeff Horton","Charles Pate","Tyler Rice","Terika Rucker","Jonathan Turner",
+  "Alyssa Valenti","Dan VanOrden","James Warner","CB Williams","Will Werner","Chris Hartzler"
+]);
+const HAMPTON_GUESTS = new Set([
+  "Connor Arnold","Jacob Berggren","Karen Calderon","Tannim Coley","Mathew Collishaw",
+  "Dalton Crooks","Davin Cruz","Rachel Cunningham","Trinidad Garcia","Travis George",
+  "Emily Hall","Brandi Heinsohn","Tokina Kerri","Roman King","Joe Kitchen",
+  "Abraham LaFrance","Bryan Langston","Lindsey Lorscheider","Jacob Lynch","Jeremy Mack",
+  "Josh McConnell","Dylan McGhee","Wesley Minet","Kelly Morris","Kathy Mys",
+  "Ryan Novak","Matt Rice","Melissa Riesenberg","JC Roberts","Gage Roberts",
+  "Faro Rodakowski","Michael Schmidt","Noel Scott","Denell Stein","Lucas Ventura","Josh Wickwire"
+]);
+
 // ─── FLIGHTS ─────────────────────────────────────────────────────────────────
 const FLIGHTS = [
   { name:"Jake Anderson",       loc:"Airway Heights",       airline:"Southwest",        conf:"AEJG9Z",  arrival:"Sun 1:10 PM",   departure:"Thu 7:10 PM",  notes:"" },
@@ -202,6 +223,36 @@ const FLIGHTS = [
   { name:"Kevin Cowden",        loc:"Liberty Township",     airline:"Southwest",        conf:"AFRSSV",  arrival:"Sun 11:40 AM",  departure:"Thu 6:00 PM",  notes:"" },
   { name:"Steve Ramskill",      loc:"Corporate",            airline:"Delta",            conf:"GCU6VC",  arrival:"Sun 2:54 PM",   departure:"Thu 5:31 PM",  notes:"Made own flight arrangements. Rental car: Hertz #L47741042B0" },
 ];
+
+// ─── TRANSPORTATION SCHEDULE ──────────────────────────────────────────────────
+const TRANSPORTATION = {
+  "Monday, March 9": [
+    { time: "1:30 PM", type: "airport", desc: "Airport Pickup → Liberty Cinema 12", note: "Southwest & American arrivals", passengers: ["Kevin Cowden", "Patrick Doherty", "Yasemin Henningsen", "Alyssa Valenti", "Jake Anderson"] },
+    { time: "3:15 PM", type: "airport", desc: "Airport Pickup → Liberty Cinema 12", note: "Southwest & Delta arrivals", passengers: ["CB Williams", "Terika Rucker", "Kirstin Bradel", "Jaughn Cyr", "Christy Hinkley"] },
+    { time: "5:15 PM", type: "airport", desc: "Airport Pickup → Liberty Cinema 12", note: "Southwest & United arrivals", passengers: ["Jonathan Turner", "John Bernard", "Meagan Faulk"] },
+    { time: "7:00 PM", type: "shuttle", desc: "Liberty Cinema 12 → TownePlace Suites", note: "Evening shuttle to hotel" },
+    { time: "8:00 PM", type: "shuttle", desc: "Liberty Cinema 12 → TownePlace Suites", note: "Late evening shuttle" },
+  ],
+  "Tuesday, March 10": [
+    { time: "9:30 AM", type: "shuttle", desc: "TownePlace Suites → Liberty Cinema 12", note: "Flyers only · Meet in hotel lobby", forFlyers: true },
+    { time: "10:15 AM", type: "airport", desc: "Airport Pickup → Liberty Cinema 12", note: "Southwest · Late arrival", passengers: ["Charles Pate"] },
+    { time: "9:00 PM", type: "shuttle", desc: "Liberty Cinema 12 → TownePlace Suites", note: "Evening return · Flyers", forFlyers: true },
+    { time: "10:30 PM", type: "shuttle", desc: "Liberty Cinema 12 → TownePlace Suites", note: "Late return · Flyers", forFlyers: true },
+  ],
+  "Wednesday, March 11": [
+    { time: "9:30 AM", type: "shuttle", desc: "TownePlace Suites → Liberty Cinema 12", note: "Flyers only · Meet in hotel lobby", forFlyers: true },
+    { time: "5:30 PM", type: "event", desc: "Liberty Cinema 12 → Main Event", note: "Managers only · Corporate drive yourself", forManagers: true },
+    { time: "9:00 PM", type: "event", desc: "Main Event → Liberty Cinema 12", note: "Return from Main Event", forManagers: true },
+    { time: "10:00 PM", type: "shuttle", desc: "Liberty Cinema 12 → TownePlace Suites", note: "Flyers · Return to hotel", forFlyers: true },
+  ],
+  "Thursday, March 12": [
+    { time: "9:30 AM", type: "shuttle", desc: "TownePlace Suites → Liberty Cinema 12", note: "Flyers only · Meet in hotel lobby", forFlyers: true },
+    { time: "4:00 PM", type: "airport", desc: "Liberty Cinema 12 → MCI Airport", note: "Departures · 10 Southwest, 4 American", forFlyers: true },
+  ],
+  "Friday, March 13": [
+    { time: "9:30 AM", type: "airport", desc: "TownePlace Suites → MCI Airport", note: "American Airlines departure", passengers: ["Patrick Doherty"] },
+  ],
+};
 const VENDORS = [
     { id:"v_amazonmgm", name:"Amazon MGM Studios",         logo:"🎬", logoUrl:"https://logo.clearbit.com/mgm.com", color:"#FF9900",
     booth:"Studio Row — Lobby", contact:"Branden Miller", days:"Mon–Wed",
@@ -338,6 +389,22 @@ const VENDORS = [
       {q:"Vivian's rep at the summit is?",options:["Jessica Benson","Matt Kopp","Holly Shoaf","Tony Adamson"],answer:1},
       {q:"Vivian is present at the summit which days?",options:["Tue–Thu","Mon–Wed","Wed–Thu","Mon only"],answer:1},
       {q:"What is Vivian's sponsorship level?",options:["$5,000","$10,000","$7,500","$2,500"],answer:3},
+    ]},
+  { id:"v_cocacola", name:"Coca-Cola Company",           logo:"🥤", logoUrl:"https://logo.clearbit.com/coca-cola.com", color:"#E63946",
+    booth:"Lobby", contact:"TBD", days:"Tue–Wed",
+    description:"B&B Theatres' primary beverage partner keeping guests refreshed in every theatre. From classic Coca-Cola to Freestyle machines, they're the taste of the movies!",
+    quiz:[
+      {q:"Coca-Cola is B&B's primary partner for what?",options:["Popcorn","Beverages","Projection","Ticketing"],answer:1},
+      {q:"What days is Coca-Cola at the summit?",options:["Mon–Tue","Tue–Wed","Wed–Thu","Mon only"],answer:1},
+      {q:"What Coca-Cola machine offers 100+ drink options?",options:["Classic dispenser","Freestyle","PowerAde station","Minute Maid bar"],answer:1},
+    ]},
+  { id:"v_cen", name:"CEN Media Group",                  logo:"📺", logoUrl:"", color:"#1E88E5",
+    booth:"Lobby", contact:"TBD", days:"Tue–Wed",
+    description:"Digital signage experts powering B&B's lobby displays and menu boards. CEN keeps your guests informed and engaged before they even reach the auditorium!",
+    quiz:[
+      {q:"CEN Media Group provides what for B&B theatres?",options:["In-auditorium content","Lobby displays & menu boards","Projection systems","Sound systems"],answer:1},
+      {q:"Where does CEN content appear?",options:["On the big screen","In lobbies and concession areas","At the box office only","None of the above"],answer:1},
+      {q:"What days is CEN at the summit?",options:["Mon–Tue","Tue–Wed","Wed–Thu","Thu only"],answer:1},
     ]},
 ];
 
@@ -1016,7 +1083,15 @@ export default function App() {
   // ██ FIX: Derived values MUST be declared BEFORE the useEffect that uses them
   // ══════════════════════════════════════════════════════════════════════════
   const myGroup = uLoc ? LOCATION_GROUP[uLoc] || null : null;
-  const myHotel = uLoc ? (LOCATION_HOTEL[uLoc] || null) : null;
+  // Hotel lookup — check name first (for corporate/flyers), then fall back to location
+  const myHotel = useMemo(() => {
+    if (!uName && !uLoc) return null;
+    // Check name-based override first (flyers & corporate staff)
+    if (uName && TOWNEPLACE_GUESTS.has(uName)) return "TownePlace Suites";
+    if (uName && HAMPTON_GUESTS.has(uName)) return "Hampton Inn";
+    // Fall back to location-based lookup
+    return uLoc ? (LOCATION_HOTEL[uLoc] || null) : null;
+  }, [uName, uLoc]);
   const hotelInfo = myHotel ? HOTEL_INFO[myHotel] : null;
 
   // Flight lookup — match by location, then refine by name if multiple
@@ -2469,3 +2544,4 @@ function AwardRow({ award, selected, onToggle }) {
     </div>
   );
 }
+
