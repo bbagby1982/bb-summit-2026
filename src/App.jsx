@@ -1,7 +1,3 @@
-✓ Change 1: Added hotel overrides
-✓ Change 2: Added transportation schedule
-✓ Change 3: Added Coca-Cola and CEN vendors
-✓ Change 4: Updated myHotel derivation
 import { useState, useMemo, useEffect, useRef } from "react";
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, setDoc, collection, onSnapshot, serverTimestamp }
