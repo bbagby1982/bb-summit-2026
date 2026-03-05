@@ -1095,14 +1095,15 @@ export default function App() {
   const hotelInfo = myHotel ? HOTEL_INFO[myHotel] : null;
 
   // Flight lookup — match by location, then refine by name if multiple
+  // Flight lookup — match by name (only people in FLIGHTS array see flight info)
   const myFlights = useMemo(() => {
-    if (!uLoc) return [];
-    const locMatch = FLIGHTS.filter(f => f.loc === uLoc || (uLoc === "Corporate Staff" && f.loc === "Corporate"));
-    if (locMatch.length <= 1) return locMatch;
-    // Multiple flyers at same location — try to match by name
-    const nameMatch = locMatch.filter(f => uName && f.name.toLowerCase().includes(uName.split(" ")[0].toLowerCase()));
-    return nameMatch.length > 0 ? nameMatch : locMatch;
-  }, [uName, uLoc]);
+    if (!uName) return [];
+    // Match by name - must be in the FLIGHTS array to see flight info
+    return FLIGHTS.filter(f => 
+      f.name.toLowerCase() === uName.toLowerCase() ||
+      f.name.toLowerCase().split(" ")[0] === uName.toLowerCase().split(" ")[0]
+    );
+  }, [uName]);
 
   const vendorPts = Object.keys(checkedIn).length * BOOTH_PTS +
     Object.values(quizDone).reduce((s,v) => s + (v||0)*QUIZ_PTS, 0);
