@@ -937,7 +937,17 @@ export default function App() {
   // Tabs / day
   const [tab, setTab] = useState("schedule");
   const [expandedGroup, setExpandedGroup] = useState(null);
-  const [day, setDay] = useState(0);
+  const [day, setDay] = useState(() => {
+    const n = new Date();
+    if (n.getFullYear()===2026 && n.getMonth()===2) {
+      const d = n.getDate();
+      if (d===9)  return 0;
+      if (d===10) return 1;
+      if (d===11) return 2;
+      if (d===12) return 3;
+    }
+    return 0;
+  });
 
   // Vendor state
   const [checkedIn, setCI]  = useState(() => load("ci",{}));
@@ -969,6 +979,7 @@ export default function App() {
   const [adminData, setAdminData]   = useState(null);
   const [lbData,    setLbData]      = useState(null);
   const adminTapTimer = useRef(null);
+  const nowEventRef = useRef(null);
   const [bannerMsg,  setBannerMsg]  = useState("");
   const [bannerType, setBannerType] = useState("warning");
   const [bannerSaving, setBannerSaving] = useState(false);
@@ -977,6 +988,13 @@ export default function App() {
   const [pushMsg,     setPushMsg]     = useState("");
   const [pushSending, setPushSending] = useState(false);
   const [pushSent,    setPushSent]    = useState(false);
+
+  // Auto-scroll to current event when day tab changes
+  useEffect(() => {
+    if (nowEventRef.current) {
+      setTimeout(() => nowEventRef.current?.scrollIntoView({ behavior:"smooth", block:"center" }), 150);
+    }
+  }, [day]);
 
   // Push notification registration (disabled)
   useEffect(() => {
@@ -1581,7 +1599,7 @@ export default function App() {
             const evts = SCHEDULE[DAYS[day]];
             const hapNow = isHappeningNow(DAYS[day], s.time, evts, i);
             return (
-            <div className={`si${hapNow?" now":""}`} key={i} style={s.food&&!hapNow?{borderColor:`${C.gold}30`}:{}}>
+            <div ref={hapNow ? nowEventRef : null} className={`si${hapNow?" now":""}`} key={i} style={s.food&&!hapNow?{borderColor:`${C.gold}30`}:{}}>
               <div className="si-time">{s.time}</div>
               <div>
                 <div className="si-ev">{s.event}</div>
