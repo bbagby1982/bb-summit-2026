@@ -273,14 +273,12 @@ const VENDORS = [
     description:"The original popcorn machine company — Cretors has been making theatres smell amazing since 1885. A cornerstone of the cinema concession experience.",
         quiz:[
       {q:"Who is representing Cretors at the summit?",options:["Shelly Olson & Brett Torgler","Mike Riffle","Jayne Davis","Holly Shoaf"],answer:0},
-    ],answer:1},
     ]},
     { id:"v_drpepper", name:"Dr Pepper",                   logo:"🥤", logoUrl:"https://logo.clearbit.com/drpepper.com", color:"#8B0000",
     booth:"Lobby", contact:"Mike Riffle", days:"Tuesday",
     description:"B&B's beverage partner keeping guests refreshed in every theatre. Dr Pepper is bringing their famous traveling mugs for the welcome bags!",
         quiz:[
       {q:"Who is Dr Pepper's rep at the summit?",options:["Brittany Rials","Mike Riffle","Jayne Davis","Tony Adamson"],answer:1},
-    ],answer:2},
     ]},
     { id:"v_fandango", name:"Fandango",                    logo:"🎟️", logoUrl:"https://logo.clearbit.com/fandango.com", color:"#FF6B35",
     booth:"Lobby", contact:"Brittany Rials", days:"Tue–Fri",
@@ -348,7 +346,8 @@ const VENDORS = [
     description:"Innovative solutions partner helping B&B theatres grow. Vivian brings tools and expertise to elevate the guest experience across B&B locations.",
         quiz:[
       {q:"Who is Vivian's rep at the summit?",options:["Jessica Benson","Matt Kopp","Holly Shoaf","Tony Adamson"],answer:1},
-    ],answer:1},
+      {q:"What location has Vivian worked on for B&B Theatres?",options:["Bolivar","West Olive","Liberty Township","Dodge City"],answer:1},
+      {q:"Where is Vivian based?",options:["Kansas City area","St. Louis area","Springfield","Columbia"],answer:1},
     ]},
   { id:"v_cocacola", name:"Coca-Cola Company",           logo:"🥤", logoUrl:"https://logo.clearbit.com/coca-cola.com", color:"#E63946",
     booth:"Lobby", contact:"TBD", days:"Tue–Wed",
