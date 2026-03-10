@@ -575,6 +575,7 @@ const ATTENDEES = [
   { id:131, name:"Bridget Bagby",      role:"Owners",             theatre:"B&B Corporate", group:"Corporate", corporate:true },
   { id:132, name:"Brittanie Bagby Baker",      role:"Chief Operating Officer",            theatre:"B&B Corporate", group:"Corporate", corporate:true },
   { id:133, name:"Brock Bagby",      role:"Chief Content, Programming & Development",             theatre:"B&B Corporate", group:"Corporate", corporate:true },
+  { id:134, name:"Toma Foster",         role:"Director of Guest/Employee Relations",                  theatre:"B&B Corporate", group:"Corporate", corporate:true },
   { id: 79, name:"Brooke Anderson",     role:"Payables Assistant",    theatre:"B&B Corporate", group:"Corporate", corporate:true },
   { id: 80, name:"Chad Christopher",      role:"Executive Director of Programming & Film",    theatre:"B&B Corporate", group:"Corporate", corporate:true },
   { id: 81, name:"Chad Kirby",      role:"Financial Analyst",       theatre:"B&B Corporate", group:"Corporate", corporate:true },
@@ -978,6 +979,7 @@ export default function App() {
   const [showAdmin, setShowAdmin]   = useState(false);
   const [adminData, setAdminData]   = useState(null);
   const [lbData,    setLbData]      = useState(null);
+  const [publicLbData, setPublicLbData] = useState([]);
   const adminTapTimer = useRef(null);
   const nowEventRef = useRef(null);
   const [bannerMsg,  setBannerMsg]  = useState("");
@@ -1058,6 +1060,18 @@ export default function App() {
       pending.sort((a,b) => (a.uploadedAt?.seconds||0) - (b.uploadedAt?.seconds||0));
       setGalleryPhotos(approved);
       setPendingPhotos(pending);
+    });
+    return () => unsub();
+  }, []);
+
+  // Public leaderboard — always subscribed so everyone sees live scores
+  useEffect(() => {
+    if (!db) return;
+    const unsub = onSnapshot(collection(db, "scores"), snap => {
+      const rows = [];
+      snap.forEach(d => rows.push(d.data()));
+      rows.sort((a,b) => b.pts - a.pts);
+      setPublicLbData(rows);
     });
     return () => unsub();
   }, []);
@@ -1421,7 +1435,17 @@ export default function App() {
 
   // Leaderboard
   const myEntry = uName ? {name:`${uName} (You)`,loc:uLoc,pts:totalPts,v:Object.keys(checkedIn).length,q:Object.values(quizDone).reduce((s,v)=>s+(v||0),0),c:metCount} : null;
-  const lb = myEntry ? [myEntry].sort((a,b)=>b.pts-a.pts) : [];
+  // Merge Firebase scores with local entry — local entry always reflects live local points
+  const lb = useMemo(() => {
+    const myId = uName && uLoc ? `${uName.replace(/[^a-zA-Z0-9]/g,"-")}_${uLoc.replace(/[^a-zA-Z0-9]/g,"-")}` : null;
+    // Remove any existing entry for current user from Firebase data (we'll use local live pts instead)
+    const others = publicLbData.filter(e => {
+      const eId = `${(e.name||"").replace(/[^a-zA-Z0-9]/g,"-")}_${(e.location||"").replace(/[^a-zA-Z0-9]/g,"-")}`;
+      return eId !== myId;
+    });
+    const all = myEntry ? [...others, {...myEntry, name:uName, location:uLoc, pts:totalPts, v:Object.keys(checkedIn).length, q:Object.values(quizDone).reduce((s,v)=>s+(v||0),0), c:metCount, isMe:true}] : others;
+    return all.sort((a,b) => b.pts - a.pts);
+  }, [publicLbData, myEntry, totalPts, metCount]);
 
   // ─── ONBOARDING ────────────────────────────────────────────────────────────
   if (!uName || !uLoc) {
@@ -2095,13 +2119,13 @@ export default function App() {
             </div>
           )}
           {lb.map((e,i)=>{
-            const r=i+1, me=e.name?.includes("(You)");
+            const r=i+1, me=e.isMe||e.name?.includes("(You)");
             return(
               <div className={`le${r===1?" g1":r===2?" g2":r===3?" g3":""}`} key={i} style={me?{borderColor:C.gold,background:`${C.gold}12`}:{}}>
                 <div className={`rb${r===1?" r1":r===2?" r2":r===3?" r3":" ro"}`}>{r<=3?["🥇","🥈","🥉"][r-1]:r}</div>
                 <div style={{flex:1}}>
                   <div className="lb-n" style={me?{color:C.gold}:{}}>{e.name}</div>
-                  <div className="lb-l">{e.loc}</div>
+                  <div className="lb-l">{e.loc||e.location}</div>
                   <div style={{display:"flex",gap:5,marginTop:3}}>
                     <span className="lb-t">🏪 {e.v}</span><span className="lb-t">🧠 {e.q}</span><span className="lb-t">🤝 {e.c}</span>
                   </div>
