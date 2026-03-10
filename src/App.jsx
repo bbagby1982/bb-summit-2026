@@ -2049,7 +2049,7 @@ export default function App() {
                     : <><div style={{fontSize:32,marginBottom:6}}>📷</div>
                         <div style={{fontSize:14,fontWeight:700,color:C.gold}}>Tap to Upload a Photo</div>
                         <div style={{fontSize:11,color:C.muted,marginTop:4}}>Photos are reviewed before posting</div></>}
-                  <input type="file" accept="image/*" capture="environment" style={{display:"none"}} onChange={e=>uploadPhoto(e.target.files[0])} disabled={galleryUploading}/>
+                  <input type="file" accept="image/*" style={{display:"none"}} onChange={e=>uploadPhoto(e.target.files[0])} disabled={galleryUploading}/>
                 </label>
               </div>}
           {galleryPhotos.length===0
