@@ -329,7 +329,7 @@ const VENDORS = [
     booth:"Lobby", contact:"Jayne Davis", days:"Tue–Wed",
     description:"Premium popcorn supplier bringing the best kernels to B&B screens. Preferred Popcorn provides welcome bag gifts including bags and pens!",
         quiz:[
-      {q:"Who is Preferred Popcorn's rep at the summit?",options:["Holly Shoaf","Brett Torgler","Jayne Davis","Mike Riffle"],answer:0},
+      {q:"Who is Preferred Popcorn's rep at the summit?",options:["Holly Shoaf","Brett Torgler","Jayne Davis","Mike Riffle"],answer:2},
     ]},
   { id:"v_redemption", name:"Redemption Plus",            logo:"🎮", logoUrl:"https://logo.clearbit.com/redemptionplus.com", color:"#2E7D32",
     booth:"Lobby", contact:"Holly Shoaf", days:"Tue–Thu",
