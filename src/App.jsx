@@ -253,140 +253,114 @@ const VENDORS = [
     { id:"v_amazonmgm", name:"Amazon MGM Studios",         logo:"🎬", logoUrl:"https://logo.clearbit.com/mgm.com", color:"#FF9900",
     booth:"Studio Row — Lobby", contact:"Branden Miller", days:"Mon–Wed",
     description:"One of Hollywood's biggest studios — Amazon MGM brings an exciting film slate to B&B screens. They're bringing phone ring lights for the welcome bags!",
-    quiz:[
-      {q:"Amazon MGM Studios is presenting films for which year?",options:["2024","2025","2026","2027"],answer:2},
-      {q:"What welcome bag item is Amazon MGM providing?",options:["Hats","Phone ring lights","Water bottles","Tote bags"],answer:1},
-
+        quiz:[
+      {q:"Who is Amazon MGM Studios' rep at the summit?",options:["Branden Miller","Tyler Rice","Paul Weiss","Chris Tickner"],answer:0},
     ]},
     { id:"v_apple", name:"Apple Industries",               logo:"🍎", logoUrl:"https://logo.clearbit.com/appleind.com", color:"#FF3B30",
     booth:"Lobby", contact:"Heather Blair & Julie K", days:"Tue–Thu",
     description:"Innovative photo booth and entertainment solutions for cinema lobbies. Apple Industries brings fun, revenue-generating experiences to B&B guests.",
-    quiz:[
-      {q:"Apple Industries provides what type of lobby experience?",options:["Arcade games only","Photo booths & entertainment solutions","VR headsets","Concession stands"],answer:1},
-      {q:"What does Apple Industries bring to B&B theatre lobbies?",options:["Arcade games","Photo booths & entertainment experiences","Concession equipment","Digital signage"],answer:1},
-      {q:"Apple Industries has been in the photo booth business for approximately how long?",options:["10 years","25 years","Nearly 50 years","5 years"],answer:2},
+        quiz:[
+      {q:"Who is representing Apple Industries at the summit?",options:["Holly Shoaf","Heather Blair & Julie K","Casey Collins","Jayne Davis"],answer:1},
     ]},
     { id:"v_barco", name:"Barco",                          logo:"🔦", logoUrl:"https://logo.clearbit.com/barco.com", color:"#4CAF7D",
     booth:"Vendor Table", contact:"Casey Collins", days:"Tue–Thu",
     description:"Global leader in cinema projection technology — the projectors powering B&B screens. Stop by their table to learn more!",
-    quiz:[
-      {q:"What product category is Barco known for in cinema?",options:["Sound systems","Cinema projectors","Ticketing software","Concession equipment"],answer:1},
-      {q:"Barco projectors are used in how many cinemas worldwide?",options:["Over 1,000","Over 10,000","Over 50,000","Over 100,000"],answer:2},
-      {q:"What cinema product is Barco best known for?",options:["Sound systems","Cinema projectors","Ticketing software","Concession equipment"],answer:1},
+        quiz:[
+      {q:"Who is Barco's rep at the summit?",options:["Tony Adamson","Branden Miller","Casey Collins","Matt Kopp"],answer:2},
     ]},
     { id:"v_cretors", name:"Cretors",                      logo:"🍿", logoUrl:"https://logo.clearbit.com/cretors.com", color:"#FFA000",
     booth:"Lobby", contact:"Shelly Olson & Brett Torgler", days:"Tue–Thu",
     description:"The original popcorn machine company — Cretors has been making theatres smell amazing since 1885. A cornerstone of the cinema concession experience.",
-    quiz:[
-      {q:"Cretors is famous for making what?",options:["Projectors","Popcorn machines","Seating","Point-of-sale systems"],answer:1},
-      {q:"Cretors has been in business since approximately what year?",options:["1950","1920","1885","1965"],answer:2},
-      {q:"How many Cretors reps are attending the summit?",options:["One","Two","Three","Four"],answer:1},
+        quiz:[
+      {q:"Who is representing Cretors at the summit?",options:["Shelly Olson & Brett Torgler","Mike Riffle","Jayne Davis","Holly Shoaf"],answer:0},
+    ],answer:1},
     ]},
     { id:"v_drpepper", name:"Dr Pepper",                   logo:"🥤", logoUrl:"https://logo.clearbit.com/drpepper.com", color:"#8B0000",
     booth:"Lobby", contact:"Mike Riffle", days:"Tuesday",
     description:"B&B's beverage partner keeping guests refreshed in every theatre. Dr Pepper is bringing their famous traveling mugs for the welcome bags!",
-    quiz:[
-      {q:"What welcome bag item is Dr Pepper providing?",options:["Koozies","Tumblers","Dr Pepper Traveling Mugs","Hats"],answer:2},
-      {q:"Dr Pepper is part of which company?",options:["PepsiCo","The Coca-Cola Company","Keurig Dr Pepper","Nestlé"],answer:2},
-      {q:"When is Dr Pepper's rep at the summit?",options:["Mon–Wed","Wed–Thu","Tuesday","Thu only"],answer:2},
+        quiz:[
+      {q:"Who is Dr Pepper's rep at the summit?",options:["Brittany Rials","Mike Riffle","Jayne Davis","Tony Adamson"],answer:1},
+    ],answer:2},
     ]},
     { id:"v_fandango", name:"Fandango",                    logo:"🎟️", logoUrl:"https://logo.clearbit.com/fandango.com", color:"#FF6B35",
     booth:"Lobby", contact:"Brittany Rials", days:"Tue–Fri",
     description:"The nation's leading digital ticketing platform connecting millions of moviegoers to B&B shows — integrates with the Backstage Pass loyalty program.",
-    quiz:[
-      {q:"What is Fandango's primary function?",options:["Film distribution","Online movie ticketing","Concession management","Theatre staffing"],answer:1},
-      {q:"Fandango connects with B&B's loyalty program — what's it called?",options:["B&B Rewards","Movie Club","Backstage Pass","CinemaPoints"],answer:2},
-      {q:"How do most customers use Fandango?",options:["In-person kiosks only","Mobile app and website","Phone calls","None of the above"],answer:1},
+        quiz:[
+      {q:"Who is Fandango's rep at the summit?",options:["Jessica Benson","Matt Kopp","Brittany Rials","Casey Collins"],answer:2},
     ]},
     { id:"v_gdc", name:"GDC Technology",                   logo:"🖥️", logoUrl:"https://logo.clearbit.com/gdc-tech.com", color:"#1565C0",
     booth:"Auditorium 1 — Presentation", contact:"Tony Adamson", days:"Tue–Thu",
-    description:"Leading provider of digital cinema solutions including servers, media storage, and automation systems. GDC is presenting Thursday morning at the summit.",
-    quiz:[
-      {q:"GDC is best known for which cinema product?",options:["Seating systems","Digital cinema servers & automation","Concession equipment","Loyalty software"],answer:1},
-      {q:"GDC is best known for which cinema product?",options:["Seating systems","Digital cinema servers & automation","Concession equipment","Loyalty software"],answer:1},
+    description:"Leading provider of digital cinema solutions including automation servers, media servers, theatre management systems, and storage. GDC keeps B&B's auditoriums running smoothly.",
+        quiz:[
+      {q:"Who is GDC Technology's rep at the summit?",options:["Duncan McDonald","Tony Adamson","Mohammad Ahmadi","Wesley Ratliffe"],answer:1},
     ]},
 
     { id:"v_ims", name:"Integrated Media Systems",         logo:"📡", logoUrl:"https://logo.clearbit.com/integratedmediasystems.com", color:"#546E7A",
     booth:"Lobby", contact:"Mohammad Ahmadi", days:"Summit",
     description:"AV integration experts providing cinema-grade audio, video, and control systems. IMS helps B&B deliver the best possible on-screen experience.",
-    quiz:[
-      {q:"IMS specializes in which type of systems?",options:["Loyalty programs","AV integration & cinema systems","Food & beverage","HR software"],answer:1},
-      {q:"What did IMS's payment status show in the summit records?",options:["Not paid","Invoice sent","Paid - confirmed","TBD"],answer:2},
-      {q:"What type of solutions does IMS provide to cinemas?",options:["Projection equipment","Theatre management software","Concession supplies","Seating systems"],answer:1},
+        quiz:[
+      {q:"Who is representing Integrated Media Systems at the summit?",options:["Tony Adamson","Wesley Ratliffe","Mohammad Ahmadi","Casey Collins"],answer:2},
     ]},
     { id:"v_lionsgate", name:"Lionsgate",                  logo:"🦁", logoUrl:"https://logo.clearbit.com/lionsgate.com", color:"#FF5722",
     booth:"Studio Row — Aud 1", contact:"Ryan Garcia & Clara Madenwald", days:"Summit",
     description:"The studio behind John Wick, The Hunger Games, and countless hits. Lionsgate is attending the summit with items at their booth!",
-    quiz:[
-      {q:"What franchise is Lionsgate famous for?",options:["Fast & Furious","John Wick / Hunger Games","Mission Impossible","Transformers"],answer:1},
-
-      {q:"Lionsgate will have what at their summit presence?",options:["Nothing","Items at booth","A 30-min presentation","A dinner event"],answer:1},
+        quiz:[
+      {q:"Who is representing Lionsgate at the summit?",options:["Tritia Nakamura","Ryan Garcia & Clara Madenwald","Wesley Ratliffe","Branden Miller"],answer:1},
     ]},
     { id:"v_paramount", name:"Paramount Pictures",         logo:"⭐", logoUrl:"https://logo.clearbit.com/paramount.com", color:"#FFD700",
     booth:"Studio Row — Aud 1", contact:"Tritia Nakamura", days:"Thu",
     description:"One of Hollywood's most iconic studios presenting their exciting 2026 slate. Paramount is bringing SWEATSHIRTS for attendees — presenting Thursday morning. 🧥",
-    quiz:[
-      {q:"What welcome bag / gift is Paramount bringing?",options:["Hats","Phone cases","Sweatshirts","Tote bags"],answer:2},
-      {q:"Studio Row presentations are in which location?",options:["Stockroom","Johnnie's","Auditorium 1","Lobby"],answer:2},
+        quiz:[
+      {q:"Who is Paramount Pictures' rep at the summit?",options:["Ryan Garcia","Tritia Nakamura","Duncan McDonald","Branden Miller"],answer:1},
     ]},
     { id:"v_popcorn", name:"Preferred Popcorn",            logo:"🌽", logoUrl:"https://logo.clearbit.com/preferredpopcorn.com", color:"#F9A825",
     booth:"Lobby", contact:"Jayne Davis", days:"Tue–Wed",
     description:"Premium popcorn supplier bringing the best kernels to B&B screens. Preferred Popcorn provides welcome bag gifts including bags and pens!",
-    quiz:[
-      {q:"What welcome bag items is Preferred Popcorn providing?",options:["T-shirts","Bags & pens","Hats","Phone cases"],answer:1},
-
+        quiz:[
+      {q:"Who is Preferred Popcorn's rep at the summit?",options:["Holly Shoaf","Shelly Olson","Jayne Davis","Mike Riffle"],answer:2},
     ]},
     { id:"v_redemption", name:"Redemption Plus",            logo:"🎮", logoUrl:"https://logo.clearbit.com/redemptionplus.com", color:"#2E7D32",
     booth:"Lobby", contact:"Holly Shoaf", days:"Tue–Thu",
     description:"The leader in redemption and entertainment solutions for cinema entertainment centers. Redemption Plus helps B&B's CEC locations drive revenue and guest delight.",
-    quiz:[
-      {q:"Redemption Plus specializes in which type of solutions?",options:["Food & beverage","Redemption & entertainment","Projection systems","Ticketing"],answer:1},
-      {q:"Redemption Plus is particularly relevant for which B&B locations?",options:["All locations","Drive-ins only","CEC entertainment centers","Corporate offices"],answer:2},
-
+        quiz:[
+      {q:"Who is Redemption Plus' rep at the summit?",options:["Jessica Benson","Jayne Davis","Holly Shoaf","Matt Kopp"],answer:2},
     ]},
     { id:"v_screenvision", name:"Screenvision Media",     logo:"📽️", logoUrl:"https://logo.clearbit.com/screenvisionmedia.com", color:"#E63946",
     booth:"Lobby Booth A", contact:"Jessica Benson", days:"Mon–Wed",
     description:"National cinema advertising network powering pre-show entertainment and advertising for hundreds of theatre circuits across the country.",
-    quiz:[
-      {q:"What does Screenvision primarily provide to theatres?",options:["Projection equipment","Pre-show advertising & entertainment","Concession software","Point-of-sale systems"],answer:1},
-      {q:"Which event kicks off Tuesday with a Screenvision presentation?",options:["Thursday Awards","The All Company Gathering","Wednesday Round Robin","Monday Dinner"],answer:1},
-      {q:"Where is the Screenvision booth located?",options:["Auditorium 1","Lobby Booth B","Lobby Booth A","Stockroom"],answer:2},
+        quiz:[
+      {q:"Who is Screenvision's rep at the summit?",options:["Brittany Rials","Matt Kopp","Jessica Benson","Casey Collins"],answer:2},
     ]},
     { id:"v_screenx", name:"ScreenX / 4DX",               logo:"🎥", logoUrl:"https://logo.clearbit.com/cj4dx.com", color:"#0D47A1",
     booth:"Auditorium 1 — Presentation", contact:"Duncan McDonald", days:"Mon–Thu",
     description:"The ultimate premium large-format experience. ScreenX wraps the audience in 270° immersive cinema and 4DX moves you into the story. Presenting Tuesday evening!",
-    quiz:[
-      {q:"ScreenX wraps the audience in how many degrees of screen?",options:["180°","360°","270°","90°"],answer:2},
-      {q:"ScreenX offers a unique cinema experience — what makes it different?",options:["Recliner seating only","270° multi-projection screen","4K laser projection","Dolby Atmos sound"],answer:1},
-      {q:"When is the ScreenX presentation at the summit?",options:["Monday dinner","Tuesday evening","Wednesday wrap-up","Thursday morning"],answer:1},
+        quiz:[
+      {q:"Who is ScreenX / 4DX's rep at the summit?",options:["Wesley Ratliffe","Tony Adamson","Matt Kopp","Duncan McDonald"],answer:3},
     ]},
     { id:"v_sony", name:"Sony Pictures",                   logo:"🎥", logoUrl:"https://logo.clearbit.com/sonypictures.com", color:"#A78BFA",
     booth:"Studio Row — Aud 1", contact:"Wesley Ratliffe", days:"Wed–Thu",
     description:"Columbia Pictures, Screen Gems, and more — Sony brings a powerful film slate to B&B screens every year. Presenting their 2026 lineup on Thursday. Items in welcome bags after presentation!",
-    quiz:[
-      {q:"Which logo is Sony Pictures known for?",options:["A golden star","The Torch Lady","A film reel","A castle"],answer:1},
-      {q:"Sony Pictures is part of which parent company?",options:["Disney","Warner Bros","Sony Group Corporation","Comcast"],answer:2},
+        quiz:[
+      {q:"Who is Sony Pictures' rep at the summit?",options:["Branden Miller","Tritia Nakamura","Duncan McDonald","Wesley Ratliffe"],answer:3},
     ]},
     { id:"v_vivian", name:"Vivian",                        logo:"💼", logoUrl:"https://logo.clearbit.com/vivianhealth.com", color:"#7B1FA2",
     booth:"Lobby", contact:"Matt Kopp", days:"Mon–Wed",
     description:"Innovative solutions partner helping B&B theatres grow. Vivian brings tools and expertise to elevate the guest experience across B&B locations.",
-    quiz:[
-      {q:"Vivian's rep at the summit is?",options:["Jessica Benson","Matt Kopp","Holly Shoaf","Tony Adamson"],answer:1},
-      {q:"What location has Vivian worked on for B&B Theatres?",options:["Bolivar","West Olive","Liberty Township","Dodge City"],answer:1},
+        quiz:[
+      {q:"Who is Vivian's rep at the summit?",options:["Jessica Benson","Matt Kopp","Holly Shoaf","Tony Adamson"],answer:1},
+    ],answer:1},
     ]},
   { id:"v_cocacola", name:"Coca-Cola Company",           logo:"🥤", logoUrl:"https://logo.clearbit.com/coca-cola.com", color:"#E63946",
     booth:"Lobby", contact:"TBD", days:"Tue–Wed",
     description:"B&B Theatres' primary beverage partner keeping guests refreshed in every theatre. From classic Coca-Cola to Freestyle machines, they're the taste of the movies!",
-    quiz:[
-      {q:"Coca-Cola is B&B's primary partner for what?",options:["Popcorn","Beverages","Projection","Ticketing"],answer:1},
-      {q:"What Coca-Cola machine offers 100+ drink options?",options:["Classic dispenser","Freestyle","PowerAde station","Minute Maid bar"],answer:1},
+        quiz:[
+      {q:"Who is Coca-Cola's rep at the summit?",options:["TBD — check with the booth!","Matt Kopp","Mike Riffle","Casey Collins"],answer:0},
     ]},
   { id:"v_cen", name:"CEN Media Group",                  logo:"📺", logoUrl:"", color:"#1E88E5",
     booth:"Lobby", contact:"TBD", days:"Tue–Wed",
     description:"Digital signage experts powering B&B's lobby displays and menu boards. CEN keeps your guests informed and engaged before they even reach the auditorium!",
-    quiz:[
-      {q:"CEN Media Group provides what for B&B theatres?",options:["In-auditorium content","Lobby displays & menu boards","Projection systems","Sound systems"],answer:1},
-      {q:"Where does CEN content appear?",options:["On the big screen","In lobbies and concession areas","At the box office only","None of the above"],answer:1},
+        quiz:[
+      {q:"Who is CEN Media Group's rep at the summit?",options:["TBD — check with the booth!","Tony Adamson","Duncan McDonald","Wesley Ratliffe"],answer:0},
     ]},
 ];
 
