@@ -18,6 +18,9 @@ try {
   db = getFirestore(fbApp);
 } catch(e) { console.warn("Firebase init failed — running offline", e); }
 
+// ─── VERSION (increment this on each deploy to force client refresh) ──────────
+const APP_VERSION = "1.1.0";
+
 // ─── THEME ────────────────────────────────────────────────────────────────────
 const LIGHT = {
   bg:"#F5F7F6", surface:"#fff", card:"#fff", border:"rgba(0,0,0,0.07)",
@@ -250,110 +253,23 @@ const TRANSPORTATION = {
   ],
 };
 const VENDORS = [
-    { id:"v_amazonmgm", name:"Amazon MGM Studios",         logo:"🎬", logoUrl:"https://logo.clearbit.com/mgm.com", color:"#FF9900",
+  { id:"v_amazonmgm", name:"Amazon MGM Studios",         logo:"🎬", logoUrl:"https://logo.clearbit.com/mgm.com", color:"#FF9900",
     booth:"Studio Row — Lobby", contact:"Branden Miller", days:"Mon–Wed",
     description:"One of Hollywood's biggest studios — Amazon MGM brings an exciting film slate to B&B screens. They're bringing phone ring lights for the welcome bags!",
         quiz:[
       {q:"Who is Amazon MGM Studios' rep at the summit?",options:["Branden Miller","Tyler Rice","Paul Weiss","Chris Tickner"],answer:0},
     ]},
-    { id:"v_apple", name:"Apple Industries",               logo:"🍎", logoUrl:"https://logo.clearbit.com/appleind.com", color:"#FF3B30",
+  { id:"v_apple", name:"Apple Industries",               logo:"🍎", logoUrl:"https://logo.clearbit.com/appleind.com", color:"#FF3B30",
     booth:"Lobby", contact:"Heather Blair & Julie K", days:"Tue–Thu",
     description:"Innovative photo booth and entertainment solutions for cinema lobbies. Apple Industries brings fun, revenue-generating experiences to B&B guests.",
         quiz:[
       {q:"Who is representing Apple Industries at the summit?",options:["Holly Shoaf","Heather Blair & Julie K","Casey Collins","Jayne Davis"],answer:1},
     ]},
-    { id:"v_barco", name:"Barco",                          logo:"🔦", logoUrl:"https://logo.clearbit.com/barco.com", color:"#4CAF7D",
+  { id:"v_barco", name:"Barco",                          logo:"🔦", logoUrl:"https://logo.clearbit.com/barco.com", color:"#4CAF7D",
     booth:"Vendor Table", contact:"Casey Collins", days:"Tue–Thu",
     description:"Global leader in cinema projection technology — the projectors powering B&B screens. Stop by their table to learn more!",
         quiz:[
       {q:"Who is Barco's rep at the summit?",options:["Tony Adamson","Branden Miller","Casey Collins","Matt Kopp"],answer:2},
-    ]},
-    { id:"v_cretors", name:"Cretors",                      logo:"🍿", logoUrl:"https://logo.clearbit.com/cretors.com", color:"#FFA000",
-    booth:"Lobby", contact:"Shelly Olson & Brett Torgler", days:"Tue–Thu",
-    description:"The original popcorn machine company — Cretors has been making theatres smell amazing since 1885. A cornerstone of the cinema concession experience.",
-        quiz:[
-      {q:"Who is representing Cretors at the summit?",options:["Shelly Olson & Brett Torgler","Mike Riffle","Jayne Davis","Holly Shoaf"],answer:0},
-    ]},
-    { id:"v_drpepper", name:"Dr Pepper",                   logo:"🥤", logoUrl:"https://logo.clearbit.com/drpepper.com", color:"#8B0000",
-    booth:"Lobby", contact:"Mike Riffle", days:"Tuesday",
-    description:"B&B's beverage partner keeping guests refreshed in every theatre. Dr Pepper is bringing their famous traveling mugs for the welcome bags!",
-        quiz:[
-      {q:"Who is Dr Pepper's rep at the summit?",options:["Brittany Rials","Mike Riffle","Jayne Davis","Tony Adamson"],answer:1},
-    ]},
-    { id:"v_fandango", name:"Fandango",                    logo:"🎟️", logoUrl:"https://logo.clearbit.com/fandango.com", color:"#FF6B35",
-    booth:"Lobby", contact:"Brittany Rials", days:"Tue–Fri",
-    description:"The nation's leading digital ticketing platform connecting millions of moviegoers to B&B shows — integrates with the Backstage Pass loyalty program.",
-        quiz:[
-      {q:"Who is Fandango's rep at the summit?",options:["Jessica Benson","Matt Kopp","Brittany Rials","Casey Collins"],answer:2},
-    ]},
-    { id:"v_gdc", name:"GDC Technology",                   logo:"🖥️", logoUrl:"https://logo.clearbit.com/gdc-tech.com", color:"#1565C0",
-    booth:"Auditorium 1 — Presentation", contact:"Tony Adamson", days:"Tue–Thu",
-    description:"Leading provider of digital cinema solutions including automation servers, media servers, theatre management systems, and storage. GDC keeps B&B's auditoriums running smoothly.",
-        quiz:[
-      {q:"Who is GDC Technology's rep at the summit?",options:["Duncan McDonald","Tony Adamson","Mohammad Ahmadi","Wesley Ratliffe"],answer:1},
-    ]},
-
-    { id:"v_ims", name:"Integrated Media Systems",         logo:"📡", logoUrl:"https://logo.clearbit.com/integratedmediasystems.com", color:"#546E7A",
-    booth:"Lobby", contact:"Mohammad Ahmadi", days:"Summit",
-    description:"AV integration experts providing cinema-grade audio, video, and control systems. IMS helps B&B deliver the best possible on-screen experience.",
-        quiz:[
-      {q:"Who is representing Integrated Media Systems at the summit?",options:["Tony Adamson","Wesley Ratliffe","Mohammad Ahmadi","Casey Collins"],answer:2},
-    ]},
-    { id:"v_lionsgate", name:"Lionsgate",                  logo:"🦁", logoUrl:"https://logo.clearbit.com/lionsgate.com", color:"#FF5722",
-    booth:"Studio Row — Aud 1", contact:"Ryan Garcia & Clara Madenwald", days:"Summit",
-    description:"The studio behind John Wick, The Hunger Games, and countless hits. Lionsgate is attending the summit with items at their booth!",
-        quiz:[
-      {q:"Who is representing Lionsgate at the summit?",options:["Tritia Nakamura","Ryan Garcia & Clara Madenwald","Wesley Ratliffe","Branden Miller"],answer:1},
-    ]},
-    { id:"v_paramount", name:"Paramount Pictures",         logo:"⭐", logoUrl:"https://logo.clearbit.com/paramount.com", color:"#FFD700",
-    booth:"Studio Row — Aud 1", contact:"Tritia Nakamura", days:"Thu",
-    description:"One of Hollywood's most iconic studios presenting their exciting 2026 slate. Paramount is bringing SWEATSHIRTS for attendees — presenting Thursday morning. 🧥",
-        quiz:[
-      {q:"Who is Paramount Pictures' rep at the summit?",options:["Ryan Garcia","Tritia Nakamura","Duncan McDonald","Branden Miller"],answer:1},
-    ]},
-    { id:"v_popcorn", name:"Preferred Popcorn",            logo:"🌽", logoUrl:"https://logo.clearbit.com/preferredpopcorn.com", color:"#F9A825",
-    booth:"Lobby", contact:"Jayne Davis", days:"Tue–Wed",
-    description:"Premium popcorn supplier bringing the best kernels to B&B screens. Preferred Popcorn provides welcome bag gifts including bags and pens!",
-        quiz:[
-      {q:"Who is Preferred Popcorn's rep at the summit?",options:["Holly Shoaf","Shelly Olson","Jayne Davis","Mike Riffle"],answer:2},
-    ]},
-    { id:"v_redemption", name:"Redemption Plus",            logo:"🎮", logoUrl:"https://logo.clearbit.com/redemptionplus.com", color:"#2E7D32",
-    booth:"Lobby", contact:"Holly Shoaf", days:"Tue–Thu",
-    description:"The leader in redemption and entertainment solutions for cinema entertainment centers. Redemption Plus helps B&B's CEC locations drive revenue and guest delight.",
-        quiz:[
-      {q:"Who is Redemption Plus' rep at the summit?",options:["Jessica Benson","Jayne Davis","Holly Shoaf","Matt Kopp"],answer:2},
-    ]},
-    { id:"v_screenvision", name:"Screenvision Media",     logo:"📽️", logoUrl:"https://logo.clearbit.com/screenvisionmedia.com", color:"#E63946",
-    booth:"Lobby Booth A", contact:"Jessica Benson", days:"Mon–Wed",
-    description:"National cinema advertising network powering pre-show entertainment and advertising for hundreds of theatre circuits across the country.",
-        quiz:[
-      {q:"Who is Screenvision's rep at the summit?",options:["Brittany Rials","Matt Kopp","Jessica Benson","Casey Collins"],answer:2},
-    ]},
-    { id:"v_screenx", name:"ScreenX / 4DX",               logo:"🎥", logoUrl:"https://logo.clearbit.com/cj4dx.com", color:"#0D47A1",
-    booth:"Auditorium 1 — Presentation", contact:"Duncan McDonald", days:"Mon–Thu",
-    description:"The ultimate premium large-format experience. ScreenX wraps the audience in 270° immersive cinema and 4DX moves you into the story. Presenting Tuesday evening!",
-        quiz:[
-      {q:"Who is ScreenX / 4DX's rep at the summit?",options:["Wesley Ratliffe","Tony Adamson","Matt Kopp","Duncan McDonald"],answer:3},
-    ]},
-    { id:"v_sony", name:"Sony Pictures",                   logo:"🎥", logoUrl:"https://logo.clearbit.com/sonypictures.com", color:"#A78BFA",
-    booth:"Studio Row — Aud 1", contact:"Wesley Ratliffe", days:"Wed–Thu",
-    description:"Columbia Pictures, Screen Gems, and more — Sony brings a powerful film slate to B&B screens every year. Presenting their 2026 lineup on Thursday. Items in welcome bags after presentation!",
-        quiz:[
-      {q:"Who is Sony Pictures' rep at the summit?",options:["Branden Miller","Tritia Nakamura","Duncan McDonald","Wesley Ratliffe"],answer:3},
-    ]},
-    { id:"v_vivian", name:"Vivian",                        logo:"💼", logoUrl:"https://logo.clearbit.com/vivianhealth.com", color:"#7B1FA2",
-    booth:"Lobby", contact:"Matt Kopp", days:"Mon–Wed",
-    description:"Innovative solutions partner helping B&B theatres grow. Vivian brings tools and expertise to elevate the guest experience across B&B locations.",
-        quiz:[
-      {q:"Who is Vivian's rep at the summit?",options:["Jessica Benson","Matt Kopp","Holly Shoaf","Tony Adamson"],answer:1},
-      {q:"What location has Vivian worked on for B&B Theatres?",options:["Bolivar","West Olive","Liberty Township","Dodge City"],answer:1},
-      {q:"Where is Vivian based?",options:["Kansas City area","St. Louis area","Springfield","Columbia"],answer:1},
-    ]},
-  { id:"v_cocacola", name:"Coca-Cola Company",           logo:"🥤", logoUrl:"https://logo.clearbit.com/coca-cola.com", color:"#E63946",
-    booth:"Lobby", contact:"TBD", days:"Tue–Wed",
-    description:"B&B Theatres' primary beverage partner keeping guests refreshed in every theatre. From classic Coca-Cola to Freestyle machines, they're the taste of the movies!",
-        quiz:[
-      {q:"Who is Coca-Cola's rep at the summit?",options:["TBD — check with the booth!","Matt Kopp","Mike Riffle","Casey Collins"],answer:0},
     ]},
   { id:"v_cen", name:"CEN Media Group",                  logo:"📺", logoUrl:"", color:"#1E88E5",
     booth:"Lobby", contact:"TBD", days:"Tue–Wed",
@@ -361,6 +277,92 @@ const VENDORS = [
         quiz:[
       {q:"Who is CEN Media Group's rep at the summit?",options:["TBD — check with the booth!","Tony Adamson","Duncan McDonald","Wesley Ratliffe"],answer:0},
     ]},
+  { id:"v_cocacola", name:"Coca-Cola Company",           logo:"🥤", logoUrl:"https://logo.clearbit.com/coca-cola.com", color:"#E63946",
+    booth:"Lobby", contact:"TBD", days:"Tue–Wed",
+    description:"B&B Theatres' primary beverage partner keeping guests refreshed in every theatre. From classic Coca-Cola to Freestyle machines, they're the taste of the movies!",
+        quiz:[
+      {q:"Who is Coca-Cola's rep at the summit?",options:["TBD — check with the booth!","Matt Kopp","Mike Riffle","Casey Collins"],answer:0},
+    ]},
+  { id:"v_cretors", name:"Cretors",                      logo:"🍿", logoUrl:"https://logo.clearbit.com/cretors.com", color:"#FFA000",
+    booth:"Lobby", contact:"Brett Torgler", days:"Tue–Thu",
+    description:"The original popcorn machine company — Cretors has been making theatres smell amazing since 1885. A cornerstone of the cinema concession experience.",
+        quiz:[
+      {q:"Who is representing Cretors at the summit?",options:["Brett Torgler","Mike Riffle","Jayne Davis","Holly Shoaf"],answer:0},
+    ]},
+  { id:"v_drpepper", name:"Dr Pepper",                   logo:"🥤", logoUrl:"https://logo.clearbit.com/drpepper.com", color:"#8B0000",
+    booth:"Lobby", contact:"Mike Riffle", days:"Tuesday",
+    description:"B&B's beverage partner keeping guests refreshed in every theatre. Dr Pepper is bringing their famous traveling mugs for the welcome bags!",
+        quiz:[
+      {q:"Who is Dr Pepper's rep at the summit?",options:["Brittany Rials","Mike Riffle","Jayne Davis","Tony Adamson"],answer:1},
+    ]},
+  { id:"v_fandango", name:"Fandango",                    logo:"🎟️", logoUrl:"https://logo.clearbit.com/fandango.com", color:"#FF6B35",
+    booth:"Lobby", contact:"Brittany Rials", days:"Tue–Fri",
+    description:"The nation's leading digital ticketing platform connecting millions of moviegoers to B&B shows — integrates with the Backstage Pass loyalty program.",
+        quiz:[
+      {q:"Who is Fandango's rep at the summit?",options:["Jessica Benson","Matt Kopp","Brittany Rials","Casey Collins"],answer:2},
+    ]},
+  { id:"v_gdc", name:"GDC Technology",                   logo:"🖥️", logoUrl:"https://logo.clearbit.com/gdc-tech.com", color:"#1565C0",
+    booth:"Auditorium 1 — Presentation", contact:"Tony Adamson", days:"Tue–Thu",
+    description:"Leading provider of digital cinema solutions including automation servers, media servers, theatre management systems, and storage. GDC keeps B&B's auditoriums running smoothly.",
+        quiz:[
+      {q:"Who is GDC Technology's rep at the summit?",options:["Duncan McDonald","Tony Adamson","Mohammad Ahmadi","Wesley Ratliffe"],answer:1},
+    ]},
+  { id:"v_ims", name:"Integrated Media Systems",         logo:"📡", logoUrl:"https://logo.clearbit.com/integratedmediasystems.com", color:"#546E7A",
+    booth:"Lobby", contact:"Mohammad Ahmadi", days:"Summit",
+    description:"AV integration experts providing cinema-grade audio, video, and control systems. IMS helps B&B deliver the best possible on-screen experience.",
+        quiz:[
+      {q:"Who is representing Integrated Media Systems at the summit?",options:["Tony Adamson","Wesley Ratliffe","Mohammad Ahmadi","Casey Collins"],answer:2},
+    ]},
+  { id:"v_lionsgate", name:"Lionsgate",                  logo:"🦁", logoUrl:"https://logo.clearbit.com/lionsgate.com", color:"#FF5722",
+    booth:"Studio Row — Aud 1", contact:"Ryan Garcia & Clara Madenwald", days:"Summit",
+    description:"The studio behind John Wick, The Hunger Games, and countless hits. Lionsgate is attending the summit with items at their booth!",
+        quiz:[
+      {q:"Who is representing Lionsgate at the summit?",options:["Tritia Nakamura","Ryan Garcia & Clara Madenwald","Wesley Ratliffe","Branden Miller"],answer:1},
+    ]},
+  { id:"v_paramount", name:"Paramount Pictures",         logo:"⭐", logoUrl:"https://logo.clearbit.com/paramount.com", color:"#FFD700",
+    booth:"Studio Row — Aud 1", contact:"Tritia Nakamura", days:"Thu",
+    description:"One of Hollywood's most iconic studios presenting their exciting 2026 slate. Paramount is bringing SWEATSHIRTS for attendees — presenting Thursday morning. 🧥",
+        quiz:[
+      {q:"Who is Paramount Pictures' rep at the summit?",options:["Ryan Garcia","Tritia Nakamura","Duncan McDonald","Branden Miller"],answer:1},
+    ]},
+  { id:"v_popcorn", name:"Preferred Popcorn",            logo:"🌽", logoUrl:"https://logo.clearbit.com/preferredpopcorn.com", color:"#F9A825",
+    booth:"Lobby", contact:"Jayne Davis", days:"Tue–Wed",
+    description:"Premium popcorn supplier bringing the best kernels to B&B screens. Preferred Popcorn provides welcome bag gifts including bags and pens!",
+        quiz:[
+      {q:"Who is Preferred Popcorn's rep at the summit?",options:["Holly Shoaf","Brett Torgler","Jayne Davis","Mike Riffle"],answer:0},
+    ]},
+  { id:"v_redemption", name:"Redemption Plus",            logo:"🎮", logoUrl:"https://logo.clearbit.com/redemptionplus.com", color:"#2E7D32",
+    booth:"Lobby", contact:"Holly Shoaf", days:"Tue–Thu",
+    description:"The leader in redemption and entertainment solutions for cinema entertainment centers. Redemption Plus helps B&B's CEC locations drive revenue and guest delight.",
+        quiz:[
+      {q:"Who is Redemption Plus' rep at the summit?",options:["Jessica Benson","Jayne Davis","Holly Shoaf","Matt Kopp"],answer:2},
+    ]},
+  { id:"v_screenvision", name:"Screenvision Media",     logo:"📽️", logoUrl:"https://logo.clearbit.com/screenvisionmedia.com", color:"#E63946",
+    booth:"Lobby Booth A", contact:"Jessica Benson", days:"Mon–Wed",
+    description:"National cinema advertising network powering pre-show entertainment and advertising for hundreds of theatre circuits across the country.",
+        quiz:[
+      {q:"Who is Screenvision's rep at the summit?",options:["Brittany Rials","Matt Kopp","Jessica Benson","Casey Collins"],answer:2},
+    ]},
+  { id:"v_screenx", name:"ScreenX / 4DX",               logo:"🎥", logoUrl:"https://logo.clearbit.com/cj4dx.com", color:"#0D47A1",
+    booth:"Auditorium 1 — Presentation", contact:"Duncan McDonald", days:"Mon–Thu",
+    description:"The ultimate premium large-format experience. ScreenX wraps the audience in 270° immersive cinema and 4DX moves you into the story. Presenting Tuesday evening!",
+        quiz:[
+      {q:"Who is ScreenX / 4DX's rep at the summit?",options:["Wesley Ratliffe","Tony Adamson","Matt Kopp","Duncan McDonald"],answer:3},
+    ]},
+  { id:"v_sony", name:"Sony Pictures",                   logo:"🎥", logoUrl:"https://logo.clearbit.com/sonypictures.com", color:"#A78BFA",
+    booth:"Studio Row — Aud 1", contact:"Wesley Ratliffe", days:"Wed–Thu",
+    description:"Columbia Pictures, Screen Gems, and more — Sony brings a powerful film slate to B&B screens every year. Presenting their 2026 lineup on Thursday. Items in welcome bags after presentation!",
+        quiz:[
+      {q:"Who is Sony Pictures' rep at the summit?",options:["Branden Miller","Tritia Nakamura","Duncan McDonald","Wesley Ratliffe"],answer:3},
+    ]},
+  { id:"v_vivian", name:"Vivian",                        logo:"💼", logoUrl:"https://logo.clearbit.com/vivianhealth.com", color:"#7B1FA2",
+    booth:"Lobby", contact:"Matt Kopp", days:"Mon–Wed",
+    description:"Innovative solutions partner helping B&B theatres grow. Vivian brings tools and expertise to elevate the guest experience across B&B locations.",
+        quiz:[
+      {q:"Who is Vivian's rep at the summit?",options:["Jessica Benson","Matt Kopp","Holly Shoaf","Tony Adamson"],answer:1},
+      {q:"What location has Vivian worked on for B&B Theatres?",options:["Bolivar","West Olive","Liberty Township","Dodge City"],answer:1},
+      {q:"Where is Vivian based?",options:["Kansas City area","St. Louis area","Springfield","Columbia"],answer:1},
+    ]}
 ];
 
 // ─── SCHEDULE ────────────────────────────────────────────────────────────────
@@ -442,7 +444,7 @@ const ALL_AWARDS = [...SPOTLIGHT_AWARDS, ...VALUE_AWARDS];
 const VERIFY_QUESTIONS = [
   "What's one thing you learned about them?",
   "What made your conversation memorable?",
-  "What's something they're proud of at their theatre?",
+  "What's something they're proud of at work?",
   "What did you discover you have in common?",
   "Share one word that describes their energy.",
   "What's a goal they mentioned?",
@@ -493,7 +495,7 @@ const ATTENDEES = [
   { id: 39, name:"Kelly Morris",        role:"General Manager",                   theatre:"Warrensburg",               group:"Group 4", corporate:false },
   { id: 40, name:"Kevin Cowden",        role:"General Manager",                   theatre:"Liberty Township",          group:"Group 5", corporate:false },
   { id: 41, name:"Kevin White",         role:"Director of Facilities Management",  theatre:"Overland Park",             group:"Group 4", corporate:false },
-  { id: 42, name:"Kirstin Bradel",      role:"General Manager",                   theatre:"Bloomington",               group:"Group 4", corporate:false },
+  { id: 42, name:"Kirstin Bradel",      role:"General Manager",                   theatre:"Bloomington Mall of America",  group:"Group 4", corporate:false },
   { id: 43, name:"Kris Simmons",        role:"General Manager",                   theatre:"Union Station KC",          group:"Group 3", corporate:false },
   { id: 44, name:"Lindsey Lorscheider", role:"General Manager",                   theatre:"Ozark",                     group:"Group 2", corporate:false },
   { id: 45, name:"Lisa Crane",          role:"Operations Manager",                theatre:"Overland Park",             group:"Group 4", corporate:false },
@@ -893,6 +895,21 @@ export default function App() {
   }, []);
   const noticeVisible = notice && noticeDismissed !== notice.updated;
 
+  // Version watcher — forces reload when a new version is deployed
+  useEffect(() => {
+    if (!db) return;
+    const unsub = onSnapshot(doc(db, "config", "version"), snap => {
+      if (snap.exists()) {
+        const serverVersion = snap.data().version;
+        if (serverVersion && serverVersion !== APP_VERSION) {
+          // New version detected — hard reload to pick up latest build
+          window.location.reload(true);
+        }
+      }
+    }, () => {});
+    return () => unsub();
+  }, []);
+
   // Tabs / day
   const [tab, setTab] = useState("schedule");
   const [expandedGroup, setExpandedGroup] = useState(null);
@@ -1234,6 +1251,23 @@ export default function App() {
       if (!active) setBannerMsg("");
     } catch(e) { alert("Firebase error: " + e.message); }
     setBannerSaving(false);
+  }
+
+  const [refreshSaving, setRefreshSaving] = useState(false);
+  const [refreshSaved,  setRefreshSaved]  = useState(false);
+  async function forceRefresh() {
+    if (!db) return;
+    setRefreshSaving(true);
+    try {
+      // Write a new version string — any connected device that doesn't match APP_VERSION will reload
+      await setDoc(doc(db, "config", "version"), {
+        version: APP_VERSION + "-" + Date.now(),
+        forcedAt: new Date().toISOString(),
+      });
+      setRefreshSaved(true);
+      setTimeout(() => setRefreshSaved(false), 3000);
+    } catch(e) { alert("Firebase error: " + e.message); }
+    setRefreshSaving(false);
   }
 
   // ─── DAILY POLLS ────────────────────────────────────────────────────────────
@@ -2393,7 +2427,18 @@ export default function App() {
             </div>
           </div>
 
-          {/* PUSH NOTIFICATIONS */}
+          {/* FORCE REFRESH */}
+          <div className="admin-section">
+            <div className="admin-sh">🔄 Force App Refresh</div>
+            <div style={{background:"rgba(255,255,255,.04)",border:"1px solid rgba(255,255,255,.08)",borderRadius:12,padding:"14px"}}>
+              <div style={{fontSize:12,color:"rgba(255,255,255,.4)",marginBottom:12,lineHeight:1.6}}>Pushes a hard reload to every device. Use after deploying updates so everyone gets the latest version automatically.</div>
+              <button onClick={forceRefresh} disabled={refreshSaving}
+                style={{width:"100%",padding:"11px",borderRadius:10,border:"none",background:refreshSaved?"#4CAF7D":"linear-gradient(135deg,#FF8C00,#FFB347)",color:"#0A0A0F",fontSize:14,fontWeight:700,cursor:"pointer",fontFamily:"'Plus Jakarta Sans',sans-serif",opacity:refreshSaving?0.4:1,transition:"all .2s"}}>
+                {refreshSaving?"Sending…":refreshSaved?"✅ Refresh Sent! Devices reloading…":"🔄 Force Refresh All Devices"}
+              </button>
+              <div style={{fontSize:11,color:"rgba(255,255,255,.25)",marginTop:8,fontStyle:"italic"}}>All open devices will reload within a few seconds.</div>
+            </div>
+          </div>
           <div className="admin-section">
             <div className="admin-sh">🔔 Push Notification</div>
             <div style={{background:"rgba(255,255,255,.04)",border:"1px solid rgba(255,255,255,.08)",borderRadius:12,padding:"14px"}}>
